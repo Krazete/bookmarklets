@@ -1,5 +1,4 @@
 javascript:
-/* Piano Map with History */
 var piano = {
 	audio: new AudioContext(),
 	initTime: new Date().getTime(),
@@ -72,71 +71,3 @@ var piano = {
 	}
 };
 piano.init();
-
-javascript:
-/* Piano Map */
-var aud = new AudioContext();
-document.addEventListener("keydown", function (e) {
-	var gradient = [
-		"Tab", "1", "q", "2", "w", "3", "e", "r", "5", "t", "6", "y",
-		"u", "8", "i", "9", "o", "0", "p", "[", "=", "]", "Backspace", "\\",
-		"ShiftLeft", "a", "z", "s", "x", "d", "c", "v", "g", "b", "h", "n",
-		"m", "k", ",", "l", ".", ";", "/", "ShiftRight",
-	];
-	var fr = gradient.indexOf(e.key.length == 1 ? e.key.toLowerCase() : e.code);
-	var vol = aud.createGain();
-	vol.connect(aud.destination);
-	var osc = aud.createOscillator();
-	osc.frequency.value = fr < 0 ? 0 : (440 * Math.pow(2, (fr - 49) / 12));
-	osc.type = "triangle";
-	osc.connect(vol);
-	osc.start();
-	var stepsize = 25;
-	var time = 1000;
-	for (var i = 0; i < stepsize; i++) {
-		(function (j) {
-			setTimeout(e => vol.gain.value = j / stepsize, (stepsize - (i + 1)) * time / stepsize);
-		})(i);
-	}
-	setTimeout(e => osc.disconnect(), time);
-	setTimeout(e => vol.disconnect(), time);
-});
-
-javascript:
-/* Aural Map */
-var aud = new AudioContext();
-document.addEventListener("keydown", function (e) {
-	var gradient = [
-		"`", "Tab", "CapsLock", "ShiftLeft",
-		"1", "q", "a", "z", "2", "w", "s", "x", "3", "e", "d", "c",
-		"4", "r", "f", "v", "5", "t", "g", "b", " ", "6", "y", "h", "n",
-		"7", "u", "j", "m", "8", "i", "k", ",", "9", "o", "l", ".", "0", "p", ";", "/",
-		"-", "[", "'", "=", "]", "Backspace", "\\", "Enter", "ShiftRight"
-	];
-	var fr = gradient.indexOf(e.key.length == 1 ? e.key.toLowerCase() : e.code);
-	var osc = aud.createOscillator();
-	osc.frequency.value = fr < 0 ? 0 : (10 * fr);
-	osc.connect(aud.destination);
-	osc.start();
-	setTimeout(e => osc.stop(), 100);
-	setTimeout(e => osc.disconnect(), 100);
-});
-
-javascript:
-/* Aural Reader */
-var aud = new AudioContext();
-function note(e, s) {
-	if (e == "")
-		return;
-	var gradient = "~!@#$%^&*()_+-=[]\\;',./{}|:\"<>?0123456789zyxwvutsrqponmlkjihgfedcba ";
-	var fr = gradient.indexOf(e[0].toLowerCase());
-	var osc = aud.createOscillator();
-	osc.frequency.value = fr < 0 ? 0 : (50 + 10 * fr);
-	osc.connect(aud.destination);
-	osc.start();
-	setTimeout(o => osc.stop(), s);
-	setTimeout(o => osc.disconnect(), s);
-	setTimeout(o => note(e.substr(1), s), s);
-}
-var string = document.body.innerHTML.replace(/<.*?>/g, "");
-note(string, 50);
