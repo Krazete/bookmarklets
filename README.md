@@ -1,7 +1,7 @@
-# 3D
+# 3D.js
 View a website in 3D layers.
 
-# Piano
+# Piano.js
 A piano on any website with a click of a button (with basic recording functionality).
 ## Use
 1. Select and drag (or copy and paste) the following code into your bookmarks.
