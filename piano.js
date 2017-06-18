@@ -58,6 +58,7 @@ var pui = {
 				outline: 1px solid black;
 				display: inline-block;
 				z-index: 9999;
+				text-align: center;
 			}
 			.pwhitekey.hit {
 				background: gray;
@@ -72,6 +73,7 @@ var pui = {
 				background: black;
 				display: inline-block;
 				z-index: 10000;
+				text-align: center;
 			}
 			.pblackkey.hit {
 				background: gray;
