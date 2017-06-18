@@ -47,7 +47,7 @@ var pui = {
 				background: gray;
 				height: 100%;
 				width: 70%;
-				transform: translateZ(30px) rotateX(30deg);
+				transform: translateZ(10px) rotateX(30deg);
 				display: inline-block;
 			}
 			.pwhitekey {
@@ -59,18 +59,21 @@ var pui = {
 				display: inline-block;
 				z-index: 9999;
 			}
+			.pwhitekey.hit {
+				background: gray;
+			}
 			.pblackkey {
 				position: relative;
 				color: white;
 				height: 70%;
 				width: 2%;
 				margin-right: -2%;
-				transform: translateX(-50%) translateZ(5px);
+				transform: translateX(-50%) translateZ(20px);
 				background: black;
 				display: inline-block;
 				z-index: 10000;
 			}
-			.hit {
+			.pblackkey.hit {
 				background: gray;
 			}
 		`;
@@ -104,7 +107,12 @@ var pui = {
 			else {
 				key.className = "pblackkey";
 			}
-			key.innerHTML = e;
+			if (["Tab", "Backspace", "ShiftLeft", "ShiftRight"].includes(e)) {
+				key.innerHTML = {"Tab": "⇥", "Backspace": "⌫", "ShiftLeft": "⇧L", "ShiftRight": "⇧R"}[e];
+			}
+			else {
+				key.innerHTML = e;
+			}
 			this.piano.appendChild(key);
 			this.keyboard.push(key);
 		}
