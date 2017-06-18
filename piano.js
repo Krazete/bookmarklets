@@ -48,6 +48,7 @@ var pui = {
 				height: 100%;
 				width: 70%;
 				transform: translateZ(10px) rotateX(30deg);
+				transform-style: preserve-3d;
 				display: inline-block;
 			}
 			.pwhitekey {
@@ -59,9 +60,11 @@ var pui = {
 				display: inline-block;
 				z-index: 9999;
 				text-align: center;
+				transform: translateZ(6px);
 			}
 			.pwhitekey.hit {
-				background: gray;
+				background: #b0b0b0;
+				transform: translateZ(2px);
 			}
 			.pblackkey {
 				position: relative;
@@ -69,14 +72,15 @@ var pui = {
 				height: 70%;
 				width: 2%;
 				margin-right: -2%;
-				transform: translateX(-50%) translateZ(20px);
+				transform: translateX(-50%) translateZ(12px);
 				background: black;
 				display: inline-block;
 				z-index: 10000;
 				text-align: center;
 			}
 			.pblackkey.hit {
-				background: gray;
+				background: #404040;
+				transform: translateX(-50%) translateZ(8px);
 			}
 		`;
 
