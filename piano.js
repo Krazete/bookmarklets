@@ -31,27 +31,29 @@ var pui = {
 				bottom: 0;
 				background: #69c;
 				perspective: 512px;
-				perspective-origin: 50% 100%;
 			}
 			#pleftmenu {
 				background: gray;
 				display: inline-block;
+				width: 15%;
+				text-align: right;
 			}
 			#prightmenu {
 				background: gray;
 				display: inline-block;
+				width: 15%;
 			}
 			#ppiano {
 				background: gray;
 				height: 100%;
 				width: 70%;
-				margin: auto;
 				transform: translateZ(30px) rotateX(30deg);
+				display: inline-block;
 			}
 			.pwhitekey {
 				position: relative;
 				height: 100%;
-				width: 3%;
+				width: 3.7%;
 				background: white;
 				outline: 1px solid black;
 				display: inline-block;
@@ -59,21 +61,14 @@ var pui = {
 			}
 			.pblackkey {
 				position: relative;
-				height: 50%;
+				color: white;
+				height: 70%;
 				width: 2%;
 				margin-right: -2%;
 				transform: translateX(-50%) translateZ(5px);
 				background: black;
 				display: inline-block;
 				z-index: 10000;
-			}
-			.pblackkey:after {
-				position: relative;
-				height: 50%;
-				width: 2%;
-				margin-right: -1%;
-				background: black;
-				display: inline-block;
 			}
 			.hit {
 				background: gray;
@@ -103,10 +98,12 @@ var pui = {
 		this.piano.id = "ppiano";
 		for (var i = 0, e; e = this.keys[i]; i++) {
 			var key = document.createElement("div");
-			if ([0, 2, 4, 5, 7, 9, 11].some(e => (i + this.shift - e) % 12 == 0))
+			if ([0, 2, 4, 5, 7, 9, 11].some(e => (i + this.shift - e) % 12 == 0)) {
 				key.className = "pwhitekey";
-			else
+			}
+			else {
 				key.className = "pblackkey";
+			}
 			key.innerHTML = e;
 			this.piano.appendChild(key);
 			this.keyboard.push(key);
@@ -114,6 +111,13 @@ var pui = {
 
 		this.pui.appendChild(this.rightmenu);
 		this.rightmenu.id = "pleftmenu";
+
+		var t = this;
+		var quit = document.createElement("input");
+		quit.type = "button";
+		quit.value = "Quit";
+		quit.addEventListener("click", e => t.pui.remove());
+		this.rightmenu.appendChild(quit);
 
 		var record = document.createElement("input");
 		record.type = "radio";
@@ -214,4 +218,5 @@ var p = {
 	getHistory: function() {
 		console.log(JSON.stringify(this.history));
 	}
-}.init();
+};
+p.init();
