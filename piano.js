@@ -63,7 +63,7 @@ var pui = {
 				left: 0;
 				height: 100%;
 				width: 100%;
-				transform: translateZ(-9px);
+				transform: translateZ(-6px);
 				border-radius: 0 0 5px 5px;
 			}
 			.pwhite {
@@ -71,8 +71,7 @@ var pui = {
 				height: 100%;
 				width: 3.5%;
 				background: white;
-				z-index: 9999;
-				transform: translateZ(10px);
+				transform: translateZ(7px);
 				margin-left: 0.2%;
 			}
 			.pwhite.hit {
@@ -84,13 +83,18 @@ var pui = {
 				height: 70%;
 				width: 2%;
 				margin-right: -2%;
-				transform: translateX(-55%) translateZ(20px);
+				transform: translateX(-55%) translateZ(14px);
 				background: black;
-				z-index: 10000;
+				vertical-align: top;
 			}
 			.pblack.hit {
 				background: #404040;
-				transform: translateX(-55%) translateZ(11px);
+				transform: translateX(-55%) translateZ(8px);
+			}
+			.pkeykey {
+				position: absolute;
+				bottom: inherit;
+				transform: translateX(-50%);
 			}
 		`;
 
@@ -123,12 +127,18 @@ var pui = {
 			else {
 				key.className = "pblack pkey";
 			}
+			var keykey = document.createElement("span");
+			keykey.className = "pkeykey";
 			if (["Tab", "Backspace", "ShiftLeft", "ShiftRight"].includes(e)) {
-				key.innerHTML = {"Tab": "⇥", "Backspace": "⌫", "ShiftLeft": "⇧L", "ShiftRight": "⇧R"}[e];
+				keykey.innerHTML = {"Tab": "⇥", "Backspace": "⌫", "ShiftLeft": "⇧L", "ShiftRight": "⇧R"}[e];
 			}
 			else {
-				key.innerHTML = e;
+				keykey.innerHTML = e;
 			}
+			key.appendChild(keykey);
+			(function(o) {
+				key.addEventListener("mouseover", function(){p.note(o, 1)});
+			})(e);
 			this.piano.appendChild(key);
 			this.keyboard.push(key);
 		}
