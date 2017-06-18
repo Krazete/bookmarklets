@@ -25,62 +25,72 @@ var pui = {
 			#pui {
 				position: fixed;
 				left: 0;
-				bottom: 0;
-				height: 50px;
+				height: 75px;
 				width: 100%;
 				bottom: 0;
-				background: #69c;
-				perspective: 512px;
+				perspective: 1024px;
 			}
 			#pleftmenu {
-				background: gray;
 				display: inline-block;
 				width: 15%;
 				text-align: right;
 			}
 			#prightmenu {
-				background: gray;
 				display: inline-block;
 				width: 15%;
 			}
 			#ppiano {
-				background: gray;
 				height: 100%;
 				width: 70%;
-				transform: translateZ(10px) rotateX(30deg);
+				bottom: inherit;
+				transform: translateZ(45px) rotateX(45deg);
 				transform-style: preserve-3d;
 				display: inline-block;
 			}
-			.pwhitekey {
+			.pkey {
 				position: relative;
-				height: 100%;
-				width: 3.7%;
-				background: white;
-				outline: 1px solid black;
 				display: inline-block;
-				z-index: 9999;
 				text-align: center;
-				transform: translateZ(6px);
+				border-radius: 0 0 5px 5px;
+				bottom: inherit;
+				transform-style: preserve-3d;
 			}
-			.pwhitekey.hit {
-				background: #b0b0b0;
-				transform: translateZ(2px);
+			.pkey:after {
+				content: "";
+				background: #808080;
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+				transform: translateZ(-9px);
+				border-radius: 0 0 5px 5px;
 			}
-			.pblackkey {
-				position: relative;
+			.pwhite {
+				color: black;
+				height: 100%;
+				width: 3.5%;
+				background: white;
+				z-index: 9999;
+				transform: translateZ(10px);
+				margin-left: 0.2%;
+			}
+			.pwhite.hit {
+				background: #c0c0c0;
+				transform: translateZ(1px);
+			}
+			.pblack {
 				color: white;
 				height: 70%;
 				width: 2%;
 				margin-right: -2%;
-				transform: translateX(-50%) translateZ(12px);
+				transform: translateX(-55%) translateZ(20px);
 				background: black;
-				display: inline-block;
 				z-index: 10000;
-				text-align: center;
 			}
-			.pblackkey.hit {
+			.pblack.hit {
 				background: #404040;
-				transform: translateX(-50%) translateZ(8px);
+				transform: translateX(-55%) translateZ(11px);
 			}
 		`;
 
@@ -108,10 +118,10 @@ var pui = {
 		for (var i = 0, e; e = this.keys[i]; i++) {
 			var key = document.createElement("div");
 			if ([0, 2, 4, 5, 7, 9, 11].some(e => (i + this.shift - e) % 12 == 0)) {
-				key.className = "pwhitekey";
+				key.className = "pwhite pkey";
 			}
 			else {
-				key.className = "pblackkey";
+				key.className = "pblack pkey";
 			}
 			if (["Tab", "Backspace", "ShiftLeft", "ShiftRight"].includes(e)) {
 				key.innerHTML = {"Tab": "⇥", "Backspace": "⌫", "ShiftLeft": "⇧L", "ShiftRight": "⇧R"}[e];
