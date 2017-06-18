@@ -1,4 +1,120 @@
 javascript:
+
+var pui = {
+	keys: [
+		"`", "Tab", "1", "q", "2", "w", "3", "e", "r", "5", "t", "6", "y",
+		"u", "8", "i", "9", "o", "0", "p", "[", "=", "]", "Backspace", "\\",
+		"ShiftLeft", "a", "z", "s", "x", "d", "c", "v", "g", "b", "h", "n",
+		"m", "k", ",", "l", ".", ";", "/", "ShiftRight",
+	],
+	pui: document.createElement("div"),
+	stylesheet: document.createElement("style"),
+	leftmenu: document.createElement("div"),
+	rightmenu: document.createElement("div"),
+	piano: document.createElement("div"),
+	keyboard: [],
+	hit: function(n) {
+		this.keyboard[n].classList.add("hit");
+		var t = this;
+		setTimeout(e => this.keyboard[n].classList.remove("hit"), 100);
+	},
+	init: function() {
+		document.body.appendChild(this.stylesheet);
+		this.stylesheet.innerHTML = `
+			#pui {
+				position: fixed;
+				left: 0;
+				bottom: 0;
+				height: 50px;
+				width: 100%;
+				bottom: 0;
+				background: #69c;
+				perspective: 512px;
+				perspective-origin: 50% 100%;
+			}
+			#pleftmenu {
+				background: gray;
+				display: inline-block;
+			#prightmenu {
+				background: gray;
+				display: inline-block;
+			}
+			#ppiano {
+				background: gray;
+				width: 70%;
+				margin: auto;
+				transform: translateZ(30px) rotateX(30deg);
+			}
+			.pwhitekey {
+				position: relative;
+				bottom: 0;
+				height: 100%;
+				width: 3%;
+				background: white;
+				outline: 1px solid black;
+				display: inline-block;
+			}
+			.pblackkey {
+				position: relative;
+				bottom: 0;
+				height: 50%;
+				width: 2%;
+				background: black;
+				display: inline-block;
+			}
+			.pplaceholderkey {
+				position: relative;
+				bottom: 0;
+				height: 50%;
+				width: 2%;
+				display: inline-block;
+			}
+			.hit {
+				background = gray;
+			}
+		`;
+
+		document.body.appendChild(this.pui);
+		this.pui.id = "pui";
+
+		this.pui.appendChild(this.leftmenu);
+		this.leftmenu.id = "pleftmenu";
+
+		var frequency = document.createElement("input");
+		frequency.type = "radio";
+		frequency.label = "Frequency";
+		this.leftmenu.appendChild(frequency);
+
+		var rotation = document.createElement("input");
+		rotation.type = "checkbox";
+		this.leftmenu.appendChild(rotation);
+
+		var shift = document.createElement("input");
+		shift.type = "checkbox";
+		this.leftmenu.appendChild(shift);
+
+		this.pui.appendChild(this.piano);
+		this.piano.id = "ppiano";
+		for (var i = 0, e; e = this.keys[i]; i++) {
+			var key = document.createElement("div");
+			key.className = "pwhitekey";
+			key.innerHTML = e;
+			this.piano.appendChild(key);
+			this.keyboard.push(key);
+		}
+	}
+};
+pui.init();
+
+
+
+
+
+
+
+
+
+
 var fo = prompt("Frequency Offset:", 29);
 var piano = {
 	audio: new AudioContext(),
@@ -12,6 +128,7 @@ var piano = {
 	history: [],
 	note: function(e, h) {
 		var hz = this.keys.indexOf(e);
+		pui.hit(hz);
 		if (h)
 			this.history.push({key: e, time: this.audio.currentTime - this.initTime});
 		var vol = this.audio.createGain();
