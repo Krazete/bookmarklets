@@ -18,6 +18,7 @@ var pui = {
 		var t = this;
 		setTimeout(e => this.keyboard[n].classList.remove("hit"), 100);
 	},
+	shift: -8,
 	init: function() {
 		document.body.appendChild(this.stylesheet);
 		this.stylesheet.innerHTML = `
@@ -35,42 +36,47 @@ var pui = {
 			#pleftmenu {
 				background: gray;
 				display: inline-block;
+			}
 			#prightmenu {
 				background: gray;
 				display: inline-block;
 			}
 			#ppiano {
 				background: gray;
+				height: 100%;
 				width: 70%;
 				margin: auto;
 				transform: translateZ(30px) rotateX(30deg);
 			}
 			.pwhitekey {
 				position: relative;
-				bottom: 0;
 				height: 100%;
 				width: 3%;
 				background: white;
 				outline: 1px solid black;
 				display: inline-block;
+				z-index: 9999;
 			}
 			.pblackkey {
 				position: relative;
-				bottom: 0;
 				height: 50%;
 				width: 2%;
+				margin-right: -2%;
+				transform: translateX(-50%) translateZ(5px);
+				background: black;
+				display: inline-block;
+				z-index: 10000;
+			}
+			.pblackkey:after {
+				position: relative;
+				height: 50%;
+				width: 2%;
+				margin-right: -1%;
 				background: black;
 				display: inline-block;
 			}
-			.pplaceholderkey {
-				position: relative;
-				bottom: 0;
-				height: 50%;
-				width: 2%;
-				display: inline-block;
-			}
 			.hit {
-				background = gray;
+				background: gray;
 			}
 		`;
 
@@ -97,11 +103,30 @@ var pui = {
 		this.piano.id = "ppiano";
 		for (var i = 0, e; e = this.keys[i]; i++) {
 			var key = document.createElement("div");
-			key.className = "pwhitekey";
+			if ([0, 2, 4, 5, 7, 9, 11].some(e => (i + this.shift - e) % 12 == 0))
+				key.className = "pwhitekey";
+			else
+				key.className = "pblackkey";
 			key.innerHTML = e;
 			this.piano.appendChild(key);
 			this.keyboard.push(key);
 		}
+
+		this.pui.appendChild(this.rightmenu);
+		this.rightmenu.id = "pleftmenu";
+
+		var record = document.createElement("input");
+		record.type = "radio";
+		record.label = "Frequency";
+		this.rightmenu.appendChild(record);
+
+		var play = document.createElement("input");
+		play.type = "checkbox";
+		this.rightmenu.appendChild(play);
+
+		var history = document.createElement("input");
+		history.type = "checkbox";
+		this.rightmenu.appendChild(history);
 	}
 };
 pui.init();
@@ -115,8 +140,8 @@ pui.init();
 
 
 
-var fo = prompt("Frequency Offset:", 29);
-var piano = {
+var fo = 49;
+var p = {
 	audio: new AudioContext(),
 	initTime: 0,
 	keys: [
@@ -144,8 +169,9 @@ var piano = {
 		setTimeout(e => vol.disconnect(), secs * 1000);
 	},
 	playHistory: function() {
+		var t = this;
 		this.history.forEach(function(e) {
-			setTimeout(o => piano.note(e.key, false), e.time * 1000);
+			setTimeout(o => t.note(e.key, false), e.time * 1000);
 		});
 	},
 	clearHistory: function() {
@@ -153,14 +179,15 @@ var piano = {
 		this.initTime = this.audio.currentTime;
 	},
 	init: function() {
+		var t = this;
 		document.addEventListener("keydown", function(e) {
 			var key = e.key.length == 1 ? e.key.toLowerCase() : e.code;
-			if (piano.keys.includes(key))
-				piano.note(key, true);
+			if (t.keys.includes(key))
+				t.note(key, true);
 			if (key == " ")
-				piano.clearHistory();
+				t.clearHistory();
 			if (key == "Enter")
-				piano.playHistory();
+				t.playHistory();
 		});
 	},
 	record: [
@@ -168,14 +195,16 @@ var piano = {
 		[{"key":"o","time":0.7380725623582767},{"key":"0","time":1.0109070294784581},{"key":"p","time":1.277936507936508},{"key":"x","time":1.3069614512471655},{"key":"s","time":2.572448979591837},{"key":"\\","time":2.5782539682539687},{"key":"o","time":3.803106575963719},{"key":"z","time":3.8089115646258502},{"key":"a","time":4.9582993197278915},{"key":"]","time":4.969909297052155},{"key":"i","time":6.363106575963719},{"key":"ShiftLeft","time":6.386326530612245},{"key":"[","time":7.976893424036282},{"key":"i","time":9.259795918367347},{"key":"u","time":9.521020408163265},{"key":"\\","time":10.780702947845805},{"key":"o","time":10.7981179138322},{"key":"a","time":11.657256235827665},{"key":"0","time":11.668866213151928},{"key":"a","time":12.17390022675737},{"key":"p","time":12.179705215419501},{"key":"y","time":13.329092970521542},{"key":"o","time":14.937074829931973},{"key":"z","time":14.948684807256235},{"key":"]","time":16.492811791383218},{"key":"a","time":16.49861678004535},{"key":"i","time":18.21689342403628},{"key":"ShiftLeft","time":19.946780045351474},{"key":"[","time":19.952585034013605},{"key":"u","time":21.50832199546485},{"key":"[","time":23.37172335600907},{"key":"ShiftLeft","time":23.63294784580499},{"key":"p","time":25.107414965986393},{"key":"\\","time":26.541247165532877},{"key":"z","time":27.905419501133785},{"key":"o","time":27.92283446712018},{"key":"p","time":29.57145124716553},{"key":"a","time":29.57725623582766},{"key":"u","time":31.109773242630386},{"key":"ShiftLeft","time":31.13299319727891},{"key":"\\","time":32.77},{"key":"y","time":32.78741496598639},{"key":"o","time":34.26768707482994},{"key":"0","time":36.40392290249433},{"key":"p","time":37.219523809523814},{"key":"a","time":38.12219954648526},{"key":"\\","time":38.85943310657596},{"key":"y","time":39.66052154195012},{"key":"9","time":40.17716553287982},{"key":"o","time":40.461609977324265},{"key":"\\","time":41.25108843537415},{"key":"]","time":42.03476190476191},{"key":"]","time":42.77780045351474},{"key":"o","time":43.36990929705215},{"key":"i","time":43.64274376417234},{"key":"]","time":44.49027210884354},{"key":"[","time":45.29136054421769},{"key":"z","time":46.080839002267574},{"key":"ShiftLeft","time":47.02705215419501},{"key":"[","time":47.89199546485261},{"key":"u","time":48.745328798185945},{"key":"i","time":49.37807256235828},{"key":"o","time":49.659614512471656},{"key":"[","time":50.1733560090703},{"key":"p","time":50.48102040816327},{"key":"ShiftLeft","time":51.56074829931973},{"key":"\\","time":52.27476190476191},{"key":"9","time":53.2674149659864},{"key":"o","time":54.2252380952381},{"key":"i","time":55.125011337868486},{"key":"i","time":56.01897959183674},{"key":"8","time":56.924557823129255},{"key":"]","time":57.94043083900227},{"key":"u","time":58.89825396825397},{"key":"o","time":59.873492063492066},{"key":"]","time":60.72102040816327},{"key":"\\","time":61.58015873015873},{"key":"p","time":62.49154195011338},{"key":"0","time":63.379705215419506}]
 	],
 	playRecord: function(i) {
+		var t = this;
 		this.record[i].forEach(function(r) {
-			setTimeout(e => piano.note(r.key, false), r.time * 1000);
+			setTimeout(e => t.note(r.key, false), r.time * 1000);
 		});
 	},
 	playRecords: function() {
+		var t = this;
 		this.record.forEach(function(r) {
 			r.forEach(function(ri) {
-				setTimeout(e => piano.note(ri.key, false), ri.time * 1000);
+				setTimeout(e => t.note(ri.key, false), ri.time * 1000);
 			});
 		});
 	},
@@ -185,5 +214,4 @@ var piano = {
 	getHistory: function() {
 		console.log(JSON.stringify(this.history));
 	}
-};
-piano.init();
+}.init();
