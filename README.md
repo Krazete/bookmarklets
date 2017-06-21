@@ -15,9 +15,6 @@ javascript:(function(){document.body.appendChild(document.createElement("script"
 2. Go on another website that doesn't have shortcut keys (e.g. not GitHub, Youtube, nor Facebook).
 3. Click the bookmark.
 4. Turn up the volume and press some keys.
-## Recording
-- Clear history with Spacebar.
-- Play history with Enter.
 # YTScroller.js
 Allows the user to watch and read comments simultaneously.
 ## Use
