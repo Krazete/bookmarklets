@@ -1,5 +1,5 @@
 javascript:
-(function() {
+//(function() {
 var piano = {
 	keymap: [
 		"`", "Tab", "1", "q", "2", "w", "3", "e", "r", "5", "t", "6", "y",
@@ -7,26 +7,28 @@ var piano = {
 		"ShiftLeft", "a", "z", "s", "x", "d", "c", "v", "g", "b", "h", "n",
 		"m", "k", ",", "l", ".", ";", "/", "ShiftRight", "Enter"
 	],
-	alternate_keymap: [
-		"`", "Tab", "1", "q", "2", "w", "3", "e", "r", "5", "t", "6", "y",
-		"u", "8", "i", "9", "o", "0", "p", "[", "=", "]", "Backspace", "\\",
-		"ShiftLeft", "a", "z", "s", "x", "d", "c", "v", "g", "b", "h", "n",
-		"m", "k", ",", "l", ".", ";", "/", "ShiftRight",
+	caps_keymap: [
+		"~", "Tab", "!", "Q", "@", "W", "#", "E", "R", "%", "T", "^", "Y",
+		"U", "*", "I", "(", "O", ")", "P", "{", "+", "}", "Backspace", "|",
+		"ShiftLeft", "A", "Z", "S", "X", "D", "C", "V", "G", "B", "H", "N",
+		"M", "K", "<", "L", ">", ":", "?", "ShiftRight", "Enter"
 	],
+	notemap: function(k) {
+		return piano.keymap.indexOf();
+	},
 	audio: new AudioContext(),
-	offset: 36,
+	pitchShift: 36,
 	initialTime: 0,
 	history: [],
-	note: function(key, enableHistory) {
-		var hz = piano.keymap.indexOf(key);
+	note: function(hz, enableHistory) {
 		piano.hit(hz);
 		if (enableHistory) {
-			piano.history.push({key: key, time: piano.audio.currentTime - piano.initialTime});
+			piano.history.push({hz: hz, time: piano.audio.currentTime - piano.initialTime});
 		}
 		var vol = piano.audio.createGain();
 		vol.connect(piano.audio.destination);
 		var osc = piano.audio.createOscillator();
-		osc.frequency.value = hz < 0 ? 0 : (440 * Math.pow(2, (hz + piano.offset - 72) / 12));
+		osc.frequency.value = hz < 0 ? 0 : (440 * Math.pow(2, (hz + piano.pitchShift - 72) / 12));
 		osc.type = "triangle";
 		osc.connect(vol);
 		osc.start();
@@ -41,8 +43,8 @@ var piano = {
 		});
 	},
 	clearHistory: function() {
-		piano.history = [];
 		piano.initialTime = piano.audio.currentTime;
+		piano.history = [];
 	},
 	listen: function(e) {
 		alert();
@@ -90,20 +92,32 @@ var piano = {
 	getHistory: function() {
 		console.log(JSON.stringify(piano.history));
 	},
+	keyispressed: Array(46).fill(0),
+	keyup: function(e) {
+		var keyi = piano.detectkey(e);
+		piano.keyispressed[keyi] = 0;
+		piano.keys[keyi].classList.remove("piano-hit");
+	},
+	detectkey: function(e) {
+		var key = e.key.length == 1 ? e.key : e.code;
+		keyi = piano.keymap.indexOf(key);
+		if (keyi == -1)
+			keyi = piano.caps_keymap.indexOf(key);
+		return keyi;
+	},
+	keydown: function(e) {
+		var keyi = piano.detectkey(e);
+		if (!piano.keyispressed[keyi]) {
+			piano.keyispressed[keyi] = 1;
+			if (keyi > -1) {
+				piano.note(keyi, true);
+			}
+			e.preventDefault(); // IMPORTANT
+		}
+	},
 	init_audio: function() {
-		document.addEventListener("keydown", function(e) {
-			var key = e.key.length == 1 ? e.key.toLowerCase() : e.code;
-			if (piano.keymap.includes(key)) {
-				piano.note(key, true);
-			}
-			if (key == " ") {
-				piano.clearHistory();
-			}
-			if (key == "Enter" || key == "Tab") {
-				e.preventDefault(); // IMPORTANT
-				return false;
-			}
-		});
+		document.addEventListener("keydown", piano.keydown);
+		document.addEventListener("keyup", piano.keyup);
 	},
 
 
@@ -117,34 +131,44 @@ var piano = {
 	keys: [],
 	hit: function(n) {
 		piano.keys[n].classList.add("piano-hit");
-		setTimeout(e => piano.keys[n].classList.remove("piano-hit"), 100);
+		//setTimeout(e => piano.keys[n].classList.remove("piano-hit"), 100);
 	},
 	newcss: function(tilt) {
 		piano.css.innerHTML = `
 			#piano-ui {
+				background: linear-gradient(transparent, rgba(64, 64, 64, 0.5));
+				font-family: Klee;
 				position: fixed;
 				left: 0;
+				bottom: 0;
 				height: 75px;
 				width: 100%;
-				bottom: 0;
 				perspective: 1024px;
-				background: linear-gradient(transparent, rgba(0, 64, 64, 0.5));
 				z-index: 999;
 			}
-			
+
 			.piano-menu {
 				height: 100%;
 				width: 15%;
-				text-align: center;
 				vertical-align: top;
 				display: inline-block;
 			}
+			.piano-menu > label {
+				float: none;
+			}
+			.piano-menu > input {
+				background: white;
+				font-size: 100%;
+				border: 1px solid black;
+				border-radius: 5px;
+				float: none;
+			}
 			#piano-left {
-				background: linear-gradient(to right, white, transparent);
+				background: linear-gradient(to right, rgba(255, 255, 255, 0.5), transparent);
 				text-align: left;
 			}
 			#piano-right {
-				background: linear-gradient(to right, transparent, white);
+				background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5));
 				text-align: right;
 			}
 			#piano-middle {
@@ -233,6 +257,8 @@ var piano = {
 		piano.ui.remove();
 		piano.css.remove();
 		piano.audio.close();
+		document.removeEventListener("keydown", piano.keydown);
+		document.removeEventListener("keyup", piano.keyup);
 	},
 	init_ui: function() {
 		/* define styles */
@@ -249,7 +275,7 @@ var piano = {
 		piano.menuleft.id = "piano-left";
 
 		var pitch = piano.newinput(piano.menuleft, "number", function(e) {
-			piano.offset = Number(this.value);
+			piano.pitchShift = Number(this.value);
 		}, "Pitch: ", 1);
 		pitch.min = "0";
 		pitch.step = "12";
@@ -313,4 +339,4 @@ var piano = {
 };
 piano.init_audio();
 piano.init_ui();
-})();
+//})();
