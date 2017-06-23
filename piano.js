@@ -2,21 +2,55 @@ javascript:
 //(function() {
 var piano = {
 	keymap: [
-		"`", "Tab", "1", "q", "2", "w", "3", "e", "r", "5", "t", "6", "y",
-		"u", "8", "i", "9", "o", "0", "p", "[", "=", "]", "Backspace", "\\",
-		"ShiftLeft", "a", "z", "s", "x", "d", "c", "v", "g", "b", "h", "n",
-		"m", "k", ",", "l", ".", ";", "/", "ShiftRight", "Enter"
+		{key: "`", caps_key: "~", dom: document.createElement("div"), ispressed: 0},
+		{key: "Tab", caps_key: "Tab", dom: document.createElement("div"), ispressed: 0},
+		{key: "1", caps_key: "!", dom: document.createElement("div"), ispressed: 0},
+		{key: "q", caps_key: "Q", dom: document.createElement("div"), ispressed: 0},
+		{key: "2", caps_key: "@", dom: document.createElement("div"), ispressed: 0},
+		{key: "w", caps_key: "W", dom: document.createElement("div"), ispressed: 0},
+		{key: "3", caps_key: "#", dom: document.createElement("div"), ispressed: 0},
+		{key: "e", caps_key: "E", dom: document.createElement("div"), ispressed: 0},
+		{key: "r", caps_key: "R", dom: document.createElement("div"), ispressed: 0},
+		{key: "5", caps_key: "%", dom: document.createElement("div"), ispressed: 0},
+		{key: "t", caps_key: "T", dom: document.createElement("div"), ispressed: 0},
+		{key: "6", caps_key: "^", dom: document.createElement("div"), ispressed: 0},
+		{key: "y", caps_key: "Y", dom: document.createElement("div"), ispressed: 0},
+		{key: "u", caps_key: "U", dom: document.createElement("div"), ispressed: 0},
+		{key: "8", caps_key: "*", dom: document.createElement("div"), ispressed: 0},
+		{key: "i", caps_key: "I", dom: document.createElement("div"), ispressed: 0},
+		{key: "9", caps_key: "(", dom: document.createElement("div"), ispressed: 0},
+		{key: "o", caps_key: "O", dom: document.createElement("div"), ispressed: 0},
+		{key: "0", caps_key: ")", dom: document.createElement("div"), ispressed: 0},
+		{key: "p", caps_key: "P", dom: document.createElement("div"), ispressed: 0},
+		{key: "[", caps_key: "{", dom: document.createElement("div"), ispressed: 0},
+		{key: "=", caps_key: "+", dom: document.createElement("div"), ispressed: 0},
+		{key: "]", caps_key: "}", dom: document.createElement("div"), ispressed: 0},
+		{key: "Backspace", caps_key: "Backspace", dom: document.createElement("div"), ispressed: 0},
+		{key: "\\", caps_key: "|", dom: document.createElement("div"), ispressed: 0},
+		{key: "ShiftLeft", caps_key: "ShiftLeft", dom: document.createElement("div"), ispressed: 0},
+		{key: "a", caps_key: "A", dom: document.createElement("div"), ispressed: 0},
+		{key: "z", caps_key: "Z", dom: document.createElement("div"), ispressed: 0},
+		{key: "s", caps_key: "S", dom: document.createElement("div"), ispressed: 0},
+		{key: "x", caps_key: "X", dom: document.createElement("div"), ispressed: 0},
+		{key: "d", caps_key: "D", dom: document.createElement("div"), ispressed: 0},
+		{key: "c", caps_key: "C", dom: document.createElement("div"), ispressed: 0},
+		{key: "v", caps_key: "V", dom: document.createElement("div"), ispressed: 0},
+		{key: "g", caps_key: "G", dom: document.createElement("div"), ispressed: 0},
+		{key: "b", caps_key: "B", dom: document.createElement("div"), ispressed: 0},
+		{key: "h", caps_key: "H", dom: document.createElement("div"), ispressed: 0},
+		{key: "n", caps_key: "N", dom: document.createElement("div"), ispressed: 0},
+		{key: "m", caps_key: "M", dom: document.createElement("div"), ispressed: 0},
+		{key: "k", caps_key: "K", dom: document.createElement("div"), ispressed: 0},
+		{key: ",", caps_key: "<", dom: document.createElement("div"), ispressed: 0},
+		{key: "l", caps_key: "L", dom: document.createElement("div"), ispressed: 0},
+		{key: ".", caps_key: ">", dom: document.createElement("div"), ispressed: 0},
+		{key: ";", caps_key: ":", dom: document.createElement("div"), ispressed: 0},
+		{key: "/", caps_key: "?", dom: document.createElement("div"), ispressed: 0},
+		{key: "ShiftRight", caps_key: "ShiftRight", dom: document.createElement("div"), ispressed: 0},
+		{key: "Enter", caps_key: "Enter", dom: document.createElement("div"), ispressed: 0}
 	],
-	caps_keymap: [
-		"~", "Tab", "!", "Q", "@", "W", "#", "E", "R", "%", "T", "^", "Y",
-		"U", "*", "I", "(", "O", ")", "P", "{", "+", "}", "Backspace", "|",
-		"ShiftLeft", "A", "Z", "S", "X", "D", "C", "V", "G", "B", "H", "N",
-		"M", "K", "<", "L", ">", ":", "?", "ShiftRight", "Enter"
-	],
-	notemap: function(k) {
-		return piano.keymap.indexOf();
-	},
 	audio: new AudioContext(),
+	wave: "triangle",
 	pitchShift: 36,
 	initialTime: 0,
 	history: [],
@@ -29,7 +63,7 @@ var piano = {
 		vol.connect(piano.audio.destination);
 		var osc = piano.audio.createOscillator();
 		osc.frequency.value = hz < 0 ? 0 : (440 * Math.pow(2, (hz + piano.pitchShift - 72) / 12));
-		osc.type = "triangle";
+		osc.type = piano.wave;
 		osc.connect(vol);
 		osc.start();
 		var secs = 15;
@@ -45,12 +79,6 @@ var piano = {
 	clearHistory: function() {
 		piano.initialTime = piano.audio.currentTime;
 		piano.history = [];
-	},
-	listen: function(e) {
-		alert();
-	},
-	spacebar: function(e) {
-		// swap keyboard rows
 	},
 	record: [
 		[
@@ -92,27 +120,28 @@ var piano = {
 	getHistory: function() {
 		console.log(JSON.stringify(piano.history));
 	},
-	keyispressed: Array(46).fill(0),
 	keyup: function(e) {
 		var keyi = piano.detectkey(e);
-		piano.keyispressed[keyi] = 0;
-		piano.keys[keyi].classList.remove("piano-hit");
+		if (keyi >= 0) {
+			piano.keymap[keyi].ispressed = 0;
+			piano.keymap[keyi].dom.classList.remove("piano-hit");
+		}
 	},
 	detectkey: function(e) {
 		var key = e.key.length == 1 ? e.key : e.code;
-		keyi = piano.keymap.indexOf(key);
-		if (keyi == -1)
-			keyi = piano.caps_keymap.indexOf(key);
+		keyi = piano.keymap.findIndex(e => e.key == key || e.caps_key == key);
 		return keyi;
 	},
 	keydown: function(e) {
 		var keyi = piano.detectkey(e);
-		if (!piano.keyispressed[keyi]) {
-			piano.keyispressed[keyi] = 1;
-			if (keyi > -1) {
-				piano.note(keyi, true);
+		if (keyi >= 0) {
+			if (!piano.keymap[keyi].ispressed) {
+				piano.keymap[keyi].ispressed = 1;
+				if (keyi > -1) {
+					piano.note(keyi, true);
+				}
+				e.preventDefault(); // IMPORTANT
 			}
-			e.preventDefault(); // IMPORTANT
 		}
 	},
 	init_audio: function() {
@@ -128,16 +157,15 @@ var piano = {
 	menuleft: document.createElement("div"),
 	menuright: document.createElement("div"),
 	keyboard: document.createElement("div"),
-	keys: [],
 	hit: function(n) {
-		piano.keys[n].classList.add("piano-hit");
+		piano.keymap[n].dom.classList.add("piano-hit");
 		//setTimeout(e => piano.keys[n].classList.remove("piano-hit"), 100);
 	},
 	newcss: function(tilt) {
 		piano.css.innerHTML = `
 			#piano-ui {
 				background: linear-gradient(transparent, rgba(64, 64, 64, 0.5));
-				font-family: Klee;
+				font-family: Avenir, Klee, Helvetica, Arial, sans-serif;
 				position: fixed;
 				left: 0;
 				bottom: 0;
@@ -159,6 +187,7 @@ var piano = {
 			.piano-menu > input {
 				background: white;
 				font-size: 100%;
+				max-width: 50%;
 				border: 1px solid black;
 				border-radius: 5px;
 				float: none;
@@ -233,19 +262,20 @@ var piano = {
 		`;
 	},
 	newinput: function(e, type, func, title, br) {
-		var input = document.createElement("input");
-		input.type = type;
-		switch (type) {
-			case "number":
-				input.addEventListener("input", func);
-				e.appendChild(document.createElement("label")).innerHTML = title;
-				break;
-			case "button":
-				input.addEventListener("click", func);
-				input.value = title;
-				break;
-			default:
-				break;
+		if (type == "select") {
+			var input = document.createElement("select");
+		}
+		else {
+			var input = document.createElement("input");
+			input.type = type;
+		}
+		if (type == "button") {
+			input.addEventListener("click", func);
+			input.value = title;
+		}
+		else {
+			input.addEventListener("input", func);
+			e.appendChild(document.createElement("label")).innerHTML = title;
 		}
 		e.appendChild(input);
 		if (br) {
@@ -274,7 +304,16 @@ var piano = {
 		piano.menuleft.className = "piano-menu";
 		piano.menuleft.id = "piano-left";
 
-		var pitch = piano.newinput(piano.menuleft, "number", function(e) {
+		var wave = piano.newinput(piano.menuleft, "select", function(e) {
+			piano.wave = this.value;
+		}, "Wave: ", 1);
+		wave.appendChild(document.createElement("option")).innerHTML = "sine";
+		wave.appendChild(document.createElement("option")).innerHTML = "triangle";
+		wave.appendChild(document.createElement("option")).innerHTML = "square";
+		wave.appendChild(document.createElement("option")).innerHTML = "sawtooth";
+		wave.value = "triangle";
+
+		var pitch = piano.newinput(piano.menuleft, "range", function(e) {
 			piano.pitchShift = Number(this.value);
 		}, "Pitch: ", 1);
 		pitch.min = "0";
@@ -282,7 +321,7 @@ var piano = {
 		pitch.max = "84";
 		pitch.value = "36";
 
-		var tilt = piano.newinput(piano.menuleft, "number", function(e) {
+		var tilt = piano.newinput(piano.menuleft, "range", function(e) {
 			piano.newcss(this.value);
 		}, "Tilt: ", 1);
 		tilt.min = "0";
@@ -295,9 +334,10 @@ var piano = {
 		/* place piano */
 		piano.ui.appendChild(piano.keyboard);
 		piano.keyboard.id = "piano-middle";
-		for (var i = 0, k; k = piano.keymap[i]; i++) {
+		for (var i = 0; i < piano.keymap.length; i++) {
 			/* place keys */
-			var key = document.createElement("div");
+			var k = piano.keymap[i].key;
+			var key = piano.keymap[i].dom;
 			if ([0, 2, 4, 5, 7, 9, 11].some(e => (i - 8 - e) % 12 == 0)) {
 				key.className = "piano-key piano-white";
 			}
@@ -307,21 +347,14 @@ var piano = {
 			/* place characters on respective keys */
 			var keychar = document.createElement("span");
 			keychar.className = "piano-keychar";
-			if (["Tab", "Backspace", "ShiftLeft", "ShiftRight", "Enter"].includes(k)) {
+			if (k.length > 1) {
 				keychar.innerHTML = {"Tab": "⇥", "Backspace": "⌫", "ShiftLeft": "⇧L", "ShiftRight": "⇧R", "Enter": "↵"}[k];
 			}
 			else {
 				keychar.innerHTML = k;
 			}
 			key.appendChild(keychar);
-			/* add mouseover event */
-			(function(e) {
-				key.addEventListener("mouseover", function(){
-					piano.note(e, 1);
-				});
-			})(k);
 			piano.keyboard.appendChild(key);
-			piano.keys.push(key);
 		}
 
 		/* place playback settings */
