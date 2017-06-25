@@ -67,7 +67,6 @@ var piano = {
 				keyi: i,
 				wave: wave,
 				time: piano.audio.currentTime - piano.initialTime,
-				pressedtime: 0.1,
 				timeout: null
 			});
 		}
@@ -89,31 +88,31 @@ var piano = {
 		[],
 		/* discs */
 		[
-				{keyi: 44, wave: "triangle", time: 0.0, pressedtime: 0.1, timeout: null},
-				{keyi: 44, wave: "triangle", time: 0.1, pressedtime: 0.1, timeout: null},
-				{keyi: 46, wave: "triangle", time: 0.2, pressedtime: 0.1, timeout: null},
-				{keyi: 44, wave: "triangle", time: 0.3, pressedtime: 0.1, timeout: null},
-				{keyi: 49, wave: "triangle", time: 0.4, pressedtime: 0.1, timeout: null},
-				{keyi: 48, wave: "triangle", time: 0.5, pressedtime: 0.1, timeout: null},
-				{keyi: 44, wave: "triangle", time: 0.6, pressedtime: 0.1, timeout: null},
-				{keyi: 44, wave: "triangle", time: 0.7, pressedtime: 0.1, timeout: null},
-				{keyi: 46, wave: "triangle", time: 0.8, pressedtime: 0.1, timeout: null},
-				{keyi: 44, wave: "triangle", time: 0.9, pressedtime: 0.1, timeout: null},
-				{keyi: 51, wave: "triangle", time: 1.0, pressedtime: 0.1, timeout: null},
-				{keyi: 49, wave: "triangle", time: 1.1, pressedtime: 0.1, timeout: null},
-				{keyi: 44, wave: "triangle", time: 1.2, pressedtime: 0.1, timeout: null},
-				{keyi: 44, wave: "triangle", time: 1.3, pressedtime: 0.1, timeout: null},
-				{keyi: 56, wave: "triangle", time: 1.4, pressedtime: 0.1, timeout: null},
-				{keyi: 53, wave: "triangle", time: 1.5, pressedtime: 0.1, timeout: null},
-				{keyi: 49, wave: "triangle", time: 1.6, pressedtime: 0.1, timeout: null},
-				{keyi: 48, wave: "triangle", time: 1.7, pressedtime: 0.1, timeout: null},
-				{keyi: 46, wave: "triangle", time: 1.8, pressedtime: 0.1, timeout: null},
-				{keyi: 54, wave: "triangle", time: 1.9, pressedtime: 0.1, timeout: null},
-				{keyi: 54, wave: "triangle", time: 2.0, pressedtime: 0.1, timeout: null},
-				{keyi: 53, wave: "triangle", time: 2.1, pressedtime: 0.1, timeout: null},
-				{keyi: 49, wave: "triangle", time: 2.2, pressedtime: 0.1, timeout: null},
-				{keyi: 51, wave: "triangle", time: 2.3, pressedtime: 0.1, timeout: null},
-				{keyi: 49, wave: "triangle", time: 2.4, pressedtime: 0.1, timeout: null}
+				{keyi: 44, wave: "triangle", time: 0.0, timeout: null},
+				{keyi: 44, wave: "triangle", time: 0.1, timeout: null},
+				{keyi: 46, wave: "triangle", time: 0.2, timeout: null},
+				{keyi: 44, wave: "triangle", time: 0.3, timeout: null},
+				{keyi: 49, wave: "triangle", time: 0.4, timeout: null},
+				{keyi: 48, wave: "triangle", time: 0.5, timeout: null},
+				{keyi: 44, wave: "triangle", time: 0.6, timeout: null},
+				{keyi: 44, wave: "triangle", time: 0.7, timeout: null},
+				{keyi: 46, wave: "triangle", time: 0.8, timeout: null},
+				{keyi: 44, wave: "triangle", time: 0.9, timeout: null},
+				{keyi: 51, wave: "triangle", time: 1.0, timeout: null},
+				{keyi: 49, wave: "triangle", time: 1.1, timeout: null},
+				{keyi: 44, wave: "triangle", time: 1.2, timeout: null},
+				{keyi: 44, wave: "triangle", time: 1.3, timeout: null},
+				{keyi: 56, wave: "triangle", time: 1.4, timeout: null},
+				{keyi: 53, wave: "triangle", time: 1.5, timeout: null},
+				{keyi: 49, wave: "triangle", time: 1.6, timeout: null},
+				{keyi: 48, wave: "triangle", time: 1.7, timeout: null},
+				{keyi: 46, wave: "triangle", time: 1.8, timeout: null},
+				{keyi: 54, wave: "triangle", time: 1.9, timeout: null},
+				{keyi: 54, wave: "triangle", time: 2.0, timeout: null},
+				{keyi: 53, wave: "triangle", time: 2.1, timeout: null},
+				{keyi: 49, wave: "triangle", time: 2.2, timeout: null},
+				{keyi: 51, wave: "triangle", time: 2.3, timeout: null},
+				{keyi: 49, wave: "triangle", time: 2.4, timeout: null}
 		]
 	],
 	playDisc: function(i) {
@@ -123,7 +122,7 @@ var piano = {
 				var domi = e.keyi - piano.pitch.value;
 				if (domi > 0 && domi < 46) {
 					piano.keymap[domi].dom.classList.add("piano-hit");
-					setTimeout(abc => piano.keymap[domi].dom.classList.remove("piano-hit"), 1000 * e.pressedtime);
+					setTimeout(o => piano.keymap[domi].dom.classList.remove("piano-hit"), 100);
 				}
 			}, e.time * 1000);
 		});
@@ -326,17 +325,30 @@ var piano = {
 	newbr: function(p) {
 		p.appendChild(document.createElement("br"));
 	},
+	playstop: function(e, i) {
+		var c = i == 0 ? "↻" : i;
+		if (e.target.value == c + " ▶") {
+			piano.playDisc(i);
+			e.target.value = c + " ◼";
+			var lastnote = piano.disc[i].length - 1;
+			setTimeout(o => e.target.value = c + " ▶", 1000 * (piano.disc[i][lastnote].time));
+		}
+		else {
+			piano.stopDisc(i);
+			e.target.value = c + " ▶";
+		}
+	},
 
 	playbackmode: function() {
 		piano.menuright.innerHTML = "";
-		var hist = piano.newbutton(piano.menuright, "↻ ▶", e => piano.playDisc(0));
+		piano.newbutton(piano.menuright, "↻ ▶", e => piano.playstop(e, 0));
 		piano.newbutton(piano.menuright, "⬇", piano.saveDisc);
 		piano.newbutton(piano.menuright, "✖", piano.deletionmode);
 		piano.newbutton(piano.menuright, "︎⬆︎", piano.downloadDiscs);
 		piano.newbr(piano.menuright);
 		piano.disc.forEach(function(e, i) {
 			if (i !== 0) {
-				piano.newbutton(piano.menuright, i + " ▶", o => piano.playDisc(i));
+				piano.newbutton(piano.menuright, i + " ▶", o => piano.playstop(o, i));
 			}
 		});
 	},
