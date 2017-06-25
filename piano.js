@@ -64,7 +64,7 @@ var piano = {
 	note: function(i, wave, hist) {
 		if (hist) {
 			piano.disc[0].push({
-				i: i,
+				keyi: i,
 				wave: wave,
 				time: piano.audio.currentTime - piano.initialTime,
 				pressedtime: 0.1,
@@ -89,38 +89,38 @@ var piano = {
 		[],
 		/* discs */
 		[
-				{hz: 261.6255653005986,  wave: "triangle", time: 0.0, pressedtime: 0.1, timeout: null},
-				{hz: 261.6255653005986,  wave: "triangle", time: 0.1, pressedtime: 0.1, timeout: null},
-				{hz: 293.6647679174076,  wave: "triangle", time: 0.2, pressedtime: 0.1, timeout: null},
-				{hz: 261.6255653005986,  wave: "triangle", time: 0.3, pressedtime: 0.1, timeout: null},
-				{hz: 349.2282314330039,  wave: "triangle", time: 0.4, pressedtime: 0.1, timeout: null},
-				{hz: 329.6275569128699,  wave: "triangle", time: 0.5, pressedtime: 0.1, timeout: null},
-				{hz: 261.6255653005986,  wave: "triangle", time: 0.6, pressedtime: 0.1, timeout: null},
-				{hz: 261.6255653005986,  wave: "triangle", time: 0.7, pressedtime: 0.1, timeout: null},
-				{hz: 293.6647679174076,  wave: "triangle", time: 0.8, pressedtime: 0.1, timeout: null},
-				{hz: 261.6255653005986,  wave: "triangle", time: 0.9, pressedtime: 0.1, timeout: null},
-				{hz: 391.99543598174927, wave: "triangle", time: 1.0, pressedtime: 0.1, timeout: null},
-				{hz: 349.2282314330039,  wave: "triangle", time: 1.1, pressedtime: 0.1, timeout: null},
-				{hz: 261.6255653005986,  wave: "triangle", time: 1.2, pressedtime: 0.1, timeout: null},
-				{hz: 261.6255653005986,  wave: "triangle", time: 1.3, pressedtime: 0.1, timeout: null},
-				{hz: 523.2511306011972,  wave: "triangle", time: 1.4, pressedtime: 0.1, timeout: null},
-				{hz: 440,                wave: "triangle", time: 1.5, pressedtime: 0.1, timeout: null},
-				{hz: 349.2282314330039,  wave: "triangle", time: 1.6, pressedtime: 0.1, timeout: null},
-				{hz: 329.6275569128699,  wave: "triangle", time: 1.7, pressedtime: 0.1, timeout: null},
-				{hz: 293.6647679174076,  wave: "triangle", time: 1.8, pressedtime: 0.1, timeout: null},
-				{hz: 466.1637615180899,  wave: "triangle", time: 1.9, pressedtime: 0.1, timeout: null},
-				{hz: 466.1637615180899,  wave: "triangle", time: 2.0, pressedtime: 0.1, timeout: null},
-				{hz: 440,                wave: "triangle", time: 2.1, pressedtime: 0.1, timeout: null},
-				{hz: 349.2282314330039,  wave: "triangle", time: 2.2, pressedtime: 0.1, timeout: null},
-				{hz: 391.99543598174927, wave: "triangle", time: 2.3, pressedtime: 0.1, timeout: null},
-				{hz: 349.2282314330039,  wave: "triangle", time: 2.4, pressedtime: 0.1, timeout: null}
+				{keyi: 44, wave: "triangle", time: 0.0, pressedtime: 0.1, timeout: null},
+				{keyi: 44, wave: "triangle", time: 0.1, pressedtime: 0.1, timeout: null},
+				{keyi: 46, wave: "triangle", time: 0.2, pressedtime: 0.1, timeout: null},
+				{keyi: 44, wave: "triangle", time: 0.3, pressedtime: 0.1, timeout: null},
+				{keyi: 49, wave: "triangle", time: 0.4, pressedtime: 0.1, timeout: null},
+				{keyi: 48, wave: "triangle", time: 0.5, pressedtime: 0.1, timeout: null},
+				{keyi: 44, wave: "triangle", time: 0.6, pressedtime: 0.1, timeout: null},
+				{keyi: 44, wave: "triangle", time: 0.7, pressedtime: 0.1, timeout: null},
+				{keyi: 46, wave: "triangle", time: 0.8, pressedtime: 0.1, timeout: null},
+				{keyi: 44, wave: "triangle", time: 0.9, pressedtime: 0.1, timeout: null},
+				{keyi: 51, wave: "triangle", time: 1.0, pressedtime: 0.1, timeout: null},
+				{keyi: 49, wave: "triangle", time: 1.1, pressedtime: 0.1, timeout: null},
+				{keyi: 44, wave: "triangle", time: 1.2, pressedtime: 0.1, timeout: null},
+				{keyi: 44, wave: "triangle", time: 1.3, pressedtime: 0.1, timeout: null},
+				{keyi: 56, wave: "triangle", time: 1.4, pressedtime: 0.1, timeout: null},
+				{keyi: 53, wave: "triangle", time: 1.5, pressedtime: 0.1, timeout: null},
+				{keyi: 49, wave: "triangle", time: 1.6, pressedtime: 0.1, timeout: null},
+				{keyi: 48, wave: "triangle", time: 1.7, pressedtime: 0.1, timeout: null},
+				{keyi: 46, wave: "triangle", time: 1.8, pressedtime: 0.1, timeout: null},
+				{keyi: 54, wave: "triangle", time: 1.9, pressedtime: 0.1, timeout: null},
+				{keyi: 54, wave: "triangle", time: 2.0, pressedtime: 0.1, timeout: null},
+				{keyi: 53, wave: "triangle", time: 2.1, pressedtime: 0.1, timeout: null},
+				{keyi: 49, wave: "triangle", time: 2.2, pressedtime: 0.1, timeout: null},
+				{keyi: 51, wave: "triangle", time: 2.3, pressedtime: 0.1, timeout: null},
+				{keyi: 49, wave: "triangle", time: 2.4, pressedtime: 0.1, timeout: null}
 		]
 	],
 	playDisc: function(i) {
 		piano.disc[i].forEach(function(e) {
 			e.timeout = setTimeout(function() {
-				piano.note(e.i, e.wave, false);
-				var domi = e.i - piano.pitch.value;
+				piano.note(e.keyi, e.wave, false);
+				var domi = e.keyi - piano.pitch.value;
 				if (domi > 0 && domi < 46) {
 					piano.keymap[domi].dom.classList.add("piano-hit");
 					setTimeout(abc => piano.keymap[domi].dom.classList.remove("piano-hit"), 1000 * e.pressedtime);
@@ -132,15 +132,20 @@ var piano = {
 		piano.disc[i].forEach(e => clearTimeout(e.timeout));
 	},
 	saveDisc: function() {
-		piano.disc.push(piano.disc[0]);
+		if (piano.disc[0].length > 0) {
+			piano.disc.push(piano.disc[0]);
+			piano.deleteDisc(0);
+		}
 	},
 	deleteDisc: function(i) {
-		piano.initialTime = piano.audio.currentTime;
-		piano.disc[0] = {};
-	},
-	deleteHistory: function() {
-		piano.initialTime = piano.audio.currentTime;
-		piano.disc[0] = [];
+		if (i == 0) {
+			piano.disc[i] = [];
+			piano.initialTime = piano.audio.currentTime;
+		}
+		else {
+			piano.disc = piano.disc.slice(0, i).concat(piano.disc.slice(i + 1));
+		}
+		piano.playbackmode();
 	},
 
 	keyindex: function(e) {
@@ -148,19 +153,19 @@ var piano = {
 		return piano.keymap.findIndex(e => e.key == key || e.caps_key == key);
 	},
 	keyup: function(e) {
-		var k = piano.keyindex(e);
-		if (k >= 0) {
-			piano.keymap[k].pressed = 0;
-			piano.keymap[k].dom.classList.remove("piano-hit");
+		var keyi = piano.keyindex(e);
+		if (keyi >= 0) {
+			piano.keymap[keyi].pressed = 0;
+			piano.keymap[keyi].dom.classList.remove("piano-hit");
 		}
 	},
 	keydown: function(e) {
 		e.preventDefault();
-		var k = piano.keyindex(e);
-		if (k >= 0 && piano.keymap[k].pressed == 0) {
-			piano.keymap[k].pressed = 1;
-			piano.note(k + Number(piano.pitch.value), piano.wave.value, true);
-			piano.keymap[k].dom.classList.add("piano-hit");
+		var keyi = piano.keyindex(e);
+		if (keyi >= 0 && piano.keymap[keyi].pressed == 0) {
+			piano.keymap[keyi].pressed = 1;
+			piano.note(keyi + Number(piano.pitch.value), piano.wave.value, true);
+			piano.keymap[keyi].dom.classList.add("piano-hit");
 		}
 		/* control pitch and tilt too */
 		else if (e.key == "ArrowLeft") {
@@ -331,13 +336,16 @@ var piano = {
 		piano.newbr(piano.menuright);
 		piano.disc.forEach(function(e, i) {
 			if (i !== 0) {
-				piano.newbutton(piano.menuright, i + " ▶");
+				piano.newbutton(piano.menuright, i + " ▶", o => piano.playDisc(i));
 			}
-		}, e => piano.playDisc(i));
+		});
 	},
 	deletionmode: function() {
+		for (var i = 0; i < piano.disc.length; i++) {
+			piano.stopDisc(i);
+		}
 		piano.menuright.innerHTML = "";
-		piano.newbutton(piano.menuright, "↻ ✖", piano.deleteHistory);
+		piano.newbutton(piano.menuright, "↻ ✖", e => piano.deleteDisc(0));
 		var d1 = piano.newbutton(piano.menuright, "⬇", piano.saveDisc);
 		d1.setAttribute("disabled", 1);
 		piano.newbutton(piano.menuright, "✖", piano.playbackmode);
@@ -346,9 +354,9 @@ var piano = {
 		piano.newbr(piano.menuright);
 		piano.disc.forEach(function(e, i) {
 			if (i !== 0) {
-				piano.newbutton(piano.menuright, i + " ▶");
+				piano.newbutton(piano.menuright, i + " ✖", o => piano.deleteDisc(i));
 			}
-		}, e => piano.deleteDisc(i));
+		});
 	},
 
 	quit: function() {
