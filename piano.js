@@ -61,18 +61,7 @@ var piano = {
 	],
 
 	/* audio functions */
-	note: function(i, wave, hist) {
-		if (hist) {
-			if (piano.disc[0].length == 0) {
-				piano.initialTime = piano.audio.currentTime;
-			}
-			piano.disc[0].push({
-				keyi: i,
-				wave: wave,
-				time: piano.audio.currentTime - piano.initialTime,
-				timeout: null
-			});
-		}
+	note: function(i, wave) {
 		var vol = piano.audio.createGain();
 		vol.connect(piano.audio.destination);
 		var osc = piano.audio.createOscillator();
@@ -121,7 +110,7 @@ var piano = {
 	playDisc: function(i) {
 		piano.disc[i].forEach(function(e) {
 			e.timeout = setTimeout(function() {
-				piano.note(e.keyi, e.wave, false);
+				piano.note(e.keyi, e.wave);
 				var domi = e.keyi - piano.pitch.value;
 				if (domi > 0 && domi < 46) {
 					piano.keymap[domi].dom.classList.add("piano-hit");
@@ -137,10 +126,8 @@ var piano = {
 		piano.disc.forEach(e => e.forEach(o => clearTimeout(o.timeout)));
 	},
 	saveDisc: function() {
-		if (piano.disc[0].length > 0) {
-			piano.disc.push(piano.disc[0]);
-			piano.deleteDisc(0);
-		}
+		piano.disc.push(piano.disc[0]);
+		piano.deleteDisc(0);
 	},
 	deleteDisc: function(i) {
 		if (i == 0) {
@@ -171,12 +158,31 @@ var piano = {
 	keydown: function(e) {
 		e.preventDefault();
 		var keyi = piano.keyindex(e);
+		/* play notes */
 		if (keyi >= 0 && piano.keymap[keyi].pressed == 0) {
 			piano.keymap[keyi].pressed = 1;
-			piano.note(keyi + Number(piano.pitch.value), piano.wave.value, true);
+			var i = keyi + Number(piano.pitch.value);
+			piano.note(i, piano.wave.value);
 			piano.keymap[keyi].dom.classList.add("piano-hit");
+			/* store history */
+			if (piano.disc[0].length == 0) {
+				piano.initialTime = piano.audio.currentTime;
+			}
+			piano.disc[0].push({
+				keyi: i,
+				wave: piano.wave.value,
+				time: piano.audio.currentTime - piano.initialTime,
+				timeout: null
+			});
+			if (piano.disc[0].length == 1) {
+				piano.playbackmode();
+			}
 		}
-		/* control pitch and tilt too */
+		/* reset history */
+		else if (e.key == " ") {
+			piano.deleteDisc(0);
+		}
+		/* control pitch and tilt */
 		else if (e.key == "ArrowLeft") {
 			piano.pitch.value = Number(piano.pitch.value) - 12;
 		}
@@ -353,10 +359,20 @@ var piano = {
 
 	playbackmode: function() {
 		piano.menuright.innerHTML = "";
-		piano.newbutton(piano.menuright, "↻ ▶", e => piano.playstop(e, 0));
-		piano.newbutton(piano.menuright, "⬇", piano.saveDisc);
-		piano.newbutton(piano.menuright, "✖", piano.deletionmode);
-		piano.newbutton(piano.menuright, "︎⬆︎", piano.exportDiscs);
+		var d1 = piano.newbutton(piano.menuright, "↻ ▶", e => piano.playstop(e, 0));
+		var d2 = piano.newbutton(piano.menuright, "⬇", piano.saveDisc);
+		if (piano.disc[0].length == 0) {
+			d1.setAttribute("disabled", 1);
+			d2.setAttribute("disabled", 1);
+		}
+		var d3 = piano.newbutton(piano.menuright, "✖", piano.deletionmode);
+		if (piano.disc.length == 1 && piano.disc[0].length == 0) {
+			d3.setAttribute("disabled", 1);
+		}
+		var d4 = piano.newbutton(piano.menuright, "︎⬆︎", piano.exportDiscs);
+		if (piano.disc.length == 1) {
+			d4.setAttribute("disabled", 1);
+		}
 		piano.newbr(piano.menuright);
 		piano.disc.forEach(function(e, i) {
 			if (i !== 0) {
@@ -367,12 +383,15 @@ var piano = {
 	deletionmode: function() {
 		piano.stopDiscs();
 		piano.menuright.innerHTML = "";
-		piano.newbutton(piano.menuright, "↻ ✖", e => piano.deleteDisc(0));
-		var d1 = piano.newbutton(piano.menuright, "⬇", piano.saveDisc);
-		d1.setAttribute("disabled", 1);
-		piano.newbutton(piano.menuright, "✖", piano.playbackmode);
-		var d2 = piano.newbutton(piano.menuright, "︎⬆︎", piano.exportDiscs);
+		var d1 = piano.newbutton(piano.menuright, "↻ ✖", e => piano.deleteDisc(0));
+		if (piano.disc[0].length == 0) {
+			d1.setAttribute("disabled", 1);
+		}
+		var d2 = piano.newbutton(piano.menuright, "⬇", piano.saveDisc);
 		d2.setAttribute("disabled", 1);
+		piano.newbutton(piano.menuright, "✖", piano.playbackmode);
+		var d3 = piano.newbutton(piano.menuright, "︎⬆︎", piano.exportDiscs);
+		d3.setAttribute("disabled", 1);
 		piano.newbr(piano.menuright);
 		piano.disc.forEach(function(e, i) {
 			if (i !== 0) {
