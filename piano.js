@@ -63,6 +63,9 @@ var piano = {
 	/* audio functions */
 	note: function(i, wave, hist) {
 		if (hist) {
+			if (piano.disc[0].length == 0) {
+				piano.initialTime = piano.audio.currentTime;
+			}
 			piano.disc[0].push({
 				keyi: i,
 				wave: wave,
@@ -145,6 +148,10 @@ var piano = {
 			piano.disc = piano.disc.slice(0, i).concat(piano.disc.slice(i + 1));
 		}
 		piano.playbackmode();
+	},
+	exportDiscs: function() {
+		var d = JSON.stringify(piano.discs);
+		console.log();
 	},
 
 	keyindex: function(e) {
@@ -326,16 +333,18 @@ var piano = {
 		p.appendChild(document.createElement("br"));
 	},
 	playstop: function(e, i) {
-		var c = i == 0 ? "↻" : i;
-		if (e.target.value == c + " ▶") {
-			piano.playDisc(i);
-			e.target.value = c + " ◼";
-			var lastnote = piano.disc[i].length - 1;
-			setTimeout(o => e.target.value = c + " ▶", 1000 * (piano.disc[i][lastnote].time));
-		}
-		else {
-			piano.stopDisc(i);
-			e.target.value = c + " ▶";
+		if (piano.disc[i].length > 0) {
+			var c = i == 0 ? "↻" : i;
+			if (e.target.value == c + " ▶") {
+				piano.playDisc(i);
+				e.target.value = c + " ◼";
+				var lastnote = piano.disc[i].length - 1;
+				setTimeout(o => e.target.value = c + " ▶", 1000 * (piano.disc[i][lastnote].time));
+			}
+			else {
+				piano.stopDisc(i);
+				e.target.value = c + " ▶";
+			}
 		}
 	},
 
