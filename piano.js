@@ -1,4 +1,4 @@
-//(function() {
+(function() {
 var piano = {
 	/* initialization */
 	css: document.createElement("style"),
@@ -450,4 +450,4 @@ var piano = {
 	}
 };
 piano.init();
-//})();
+})();
