@@ -152,8 +152,9 @@ var piano = {
 		piano.playbackmode();
 	},
 	exportDiscs: function() {
-		var d = JSON.stringify(piano.discs);
-		console.log();
+		var d = JSON.stringify(piano.disc);
+		console.log(d);
+		prompt("disc data:", d);
 	},
 
 	keyindex: function(e) {
@@ -355,7 +356,7 @@ var piano = {
 		piano.newbutton(piano.menuright, "↻ ▶", e => piano.playstop(e, 0));
 		piano.newbutton(piano.menuright, "⬇", piano.saveDisc);
 		piano.newbutton(piano.menuright, "✖", piano.deletionmode);
-		piano.newbutton(piano.menuright, "︎⬆︎", piano.downloadDiscs);
+		piano.newbutton(piano.menuright, "︎⬆︎", piano.exportDiscs);
 		piano.newbr(piano.menuright);
 		piano.disc.forEach(function(e, i) {
 			if (i !== 0) {
@@ -370,7 +371,7 @@ var piano = {
 		var d1 = piano.newbutton(piano.menuright, "⬇", piano.saveDisc);
 		d1.setAttribute("disabled", 1);
 		piano.newbutton(piano.menuright, "✖", piano.playbackmode);
-		var d2 = piano.newbutton(piano.menuright, "︎⬆︎", piano.downloadDiscs);
+		var d2 = piano.newbutton(piano.menuright, "︎⬆︎", piano.exportDiscs);
 		d2.setAttribute("disabled", 1);
 		piano.newbr(piano.menuright);
 		piano.disc.forEach(function(e, i) {
