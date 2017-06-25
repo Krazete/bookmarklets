@@ -133,6 +133,9 @@ var piano = {
 	stopDisc: function(i) {
 		piano.disc[i].forEach(e => clearTimeout(e.timeout));
 	},
+	stopDiscs: function(i) {
+		piano.disc.forEach(e => e.forEach(o => clearTimeout(o.timeout)));
+	},
 	saveDisc: function() {
 		if (piano.disc[0].length > 0) {
 			piano.disc.push(piano.disc[0]);
@@ -361,9 +364,7 @@ var piano = {
 		});
 	},
 	deletionmode: function() {
-		for (var i = 0; i < piano.disc.length; i++) {
-			piano.stopDisc(i);
-		}
+		piano.stopDiscs();
 		piano.menuright.innerHTML = "";
 		piano.newbutton(piano.menuright, "↻ ✖", e => piano.deleteDisc(0));
 		var d1 = piano.newbutton(piano.menuright, "⬇", piano.saveDisc);
@@ -382,6 +383,7 @@ var piano = {
 	quit: function() {
 		piano.ui.remove();
 		piano.css.remove();
+		piano.stopDiscs();
 		piano.audio.close();
 		document.removeEventListener("keydown", piano.keydown);
 		document.removeEventListener("keyup", piano.keyup);
