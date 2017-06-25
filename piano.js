@@ -142,7 +142,6 @@ var piano = {
 	deleteDisc: function(i) {
 		if (i == 0) {
 			piano.disc[i] = [];
-			piano.initialTime = piano.audio.currentTime;
 		}
 		else {
 			piano.disc = piano.disc.slice(0, i).concat(piano.disc.slice(i + 1));
