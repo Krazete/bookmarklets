@@ -355,7 +355,7 @@ var piano = {
 			e.timeout = setTimeout(function() {
 				piano.note(e.keyi, e.wave);
 				var domi = e.keyi - piano.pitch.value;
-				if (domi > 0 && domi < 46) {
+				if (domi >= 0 && domi < 46) {
 					piano.keymap[domi].dom.classList.add("piano-hit");
 					setTimeout(o => piano.keymap[domi].dom.classList.remove("piano-hit"), 100);
 				}
