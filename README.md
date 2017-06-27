@@ -5,7 +5,7 @@ Open the bookmark to activate.
 View a website in 3D layers.
 #### Code
 ```javascript
-javascript:(e=>document.body.appendChild(document.createElement("script")).src=e)("https://rawgit.com/Krazete/bookmarklets/master/3D.js");
+javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/3D.js"})();
 ```
 #### Usage
 After activating, view the menu in the top left corner.
@@ -13,7 +13,7 @@ After activating, view the menu in the top left corner.
 A piano on any website with a click of a button (with basic recording functionality).
 #### Code
 ```javascript
-javascript:(e=>document.body.appendChild(document.createElement("script")).src=e)("https://rawgit.com/Krazete/bookmarklets/master/piano.js");
+javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/piano.js"})();
 ```
 #### Usage
 Control the wave type, octave level, and axis tilt in the left menu.
@@ -33,7 +33,7 @@ Control playback in the right menu.
 Allows the user to watch and read comments simultaneously.
 #### Bookmarklet Code
 ```javascript
-javascript:(e=>document.body.appendChild(document.createElement("script")).src=e})("https://rawgit.com/Krazete/bookmarklets/master/ytscroller.js");
+javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/ytscroller.js"})();
 ```
 #### UserScript Code
 ```javascript
