@@ -1,4 +1,4 @@
-//(function() {
+(function() {
 var d3 = {
 	menu: document.createElement("div"),
 	limit: document.createElement("input"),
@@ -156,4 +156,4 @@ html, html:hover, #d3-menu, #d3-menu > *, #d3-menu > *:hover {
 	}
 };
 d3.init();
-//})();
+})();
