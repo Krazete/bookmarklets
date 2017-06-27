@@ -1,6 +1,7 @@
 # Basic Usage
 Select and drag (or copy and paste) the bookmarklet code into your bookmarks.  
-Open the bookmark to activate.
+Open the bookmark to activate.  
+If you want to use a bookmark on secure websites like Facebook or Gmail, you must use the source code available above (prepended with `javascript:`).
 ## 3D.js
 View a website in 3D layers.
 #### Code
