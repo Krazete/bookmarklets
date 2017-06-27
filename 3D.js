@@ -18,7 +18,7 @@ var d3 = {
 		d3.mouse.y = e.clientY;
 		d3.updateBody();
 	},
-	onScroll: function(e) {
+	updateOrigin: function(e) {
 		document.body.style.transformOrigin = (innerWidth / 2 + pageXOffset) + "px " + (innerHeight / 2 + pageYOffset) + "px";
 	},
 	updateBody: function() {
@@ -60,7 +60,8 @@ var d3 = {
 	},
 	quit: function() {
 		window.removeEventListener("mousemove", d3.mouseMove);
-		window.removeEventListener("scroll", d3.onScroll);
+		window.removeEventListener("scroll", d3.updateOrigin);
+		window.addEventListener("resize", d3.updateOrigin);
 		d3.menu.remove();
 		d3.cssStatic.remove();
 		d3.cssDynamic.remove();
@@ -151,7 +152,8 @@ html, html:hover, #d3-menu, #d3-menu > *, #d3-menu > *:hover {
 		document.head.appendChild(d3.cssDynamic);
 		d3.updateCSS();
 		window.addEventListener("mousemove", d3.mouseMove);
-		window.addEventListener("scroll", d3.onScroll);
+		window.addEventListener("scroll", d3.updateOrigin);
+		window.addEventListener("resize", d3.updateOrigin);
 		window.scrollBy(0, 1);
 	}
 };
