@@ -1,4 +1,4 @@
-(function() {
+//(function() {
 var d3 = {
 	menu: document.createElement("div"),
 	limit: document.createElement("input"),
@@ -9,6 +9,7 @@ var d3 = {
 	off: document.createElement("input"),
 	non: document.createElement("input"),
 	end: document.createElement("input"),
+	tgl: document.createElement("input"),
 	cssStatic: document.createElement("style"),
 	cssDynamic: document.createElement("style"),
 	mouse: {"x": 0, "y": 0},
@@ -49,6 +50,14 @@ var d3 = {
 `;
 		}
 	},
+	toggle: function() {
+		if (d3.menu.className == "active") {
+			d3.menu.removeAttribute("class");
+		}
+		else {
+			d3.menu.className = "active";
+		}
+	},
 	quit: function() {
 		window.removeEventListener("mousemove", d3.mouseMove);
 		window.removeEventListener("scroll", d3.onScroll);
@@ -58,7 +67,6 @@ var d3 = {
 		document.body.removeAttribute("style");
 	},
 	newRange: function(e, label, min, step, max, value, f) {
-		d3.menu.appendChild(document.createElement("span")).innerHTML = label;
 		d3.menu.appendChild(e);
 		e.type = "range";
 		e.min = min;
@@ -66,21 +74,24 @@ var d3 = {
 		e.step = step;
 		e.value = value;
 		e.addEventListener("input", f);
+		d3.menu.appendChild(document.createElement("span")).innerHTML = label;
+		d3.menu.appendChild(document.createElement("br"));
 	},
 	newCheckbox: function(e, label, f) {
-		d3.menu.appendChild(document.createElement("span")).innerHTML = label;
 		d3.menu.appendChild(e);
 		e.type = "checkbox";
 		e.addEventListener("click", f);
+		d3.menu.appendChild(document.createElement("span")).innerHTML = label;
+		d3.menu.appendChild(document.createElement("br"));
 	},
 	newButton: function(e, label, f) {
-		e.value = label;
 		d3.menu.appendChild(e);
 		e.type = "button";
+		e.value = label;
 		e.addEventListener("click", f);
 	},
 	init: function() {
-		document.body.parentNode.appendChild(d3.menu).className = "d3Nav";
+		document.body.parentNode.appendChild(d3.menu).id = "d3-menu";
 		d3.newRange(d3.limit, "limit", 0, 0.03125, 1, 0.125, d3.updateBody);
 		d3.newRange(d3.gap, "gap / distance", 0, 32, 512, 128, function() {
 			d3.updateCSS();
@@ -93,38 +104,48 @@ var d3 = {
 		d3.newCheckbox(d3.off, "flatten tiles", d3.updateCSS);
 		d3.newCheckbox(d3.non, "flatten everything", d3.updateCSS);
 		d3.newButton(d3.end, "Quit", d3.quit);
-		document.head.appendChild(document.createElement("style")).innerHTML = `
+		d3.newButton(d3.tgl, "≡", d3.toggle);
+		d3.tgl.id = "d3-toggle";
+		document.head.appendChild(d3.cssStatic).innerHTML = `
 html, body {
 	transition-property: none;
 	height: 100%;
 	width: 100%;
 }
-html, html:hover, .d3Nav, .d3Nav:hover, .d3Nav>*, .d3Nav>*:hover {
+html, html:hover, #d3-menu, #d3-menu > *, #d3-menu > *:hover {
 	transform: none;
 	outline: none;
 	overflow: auto !important;
+	float: none;
 }
-.d3Nav {
+#d3-menu {
 	position: fixed;
 	top: 0;
 	left: 0;
 	background: rgba(0, 0, 0, 0.5);
-	color: #ffffff;
+	color: white;
+	border: 1px solid rgba(255, 255, 255, 0.5);;
 	border-radius: 0 0 16px 0;
-	padding: 0 8px 8px 0;
+	padding: 8px;
 	transform: translate(-100%, -100%) translate(32px, 32px);
 }
-.d3Nav:after {
-	content: '\\2261';
-	position: absolute;
-	bottom: 8px;
-	right: 8px;
-}
-.d3Nav:hover {
+#d3-menu.active {
 	transform: none;
 }
-.d3Nav>* {
-	display: block;
+#d3-toggle {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	height: 32px;
+	width: 32px;
+	background: transparent;
+	color: white;
+	border: none;
+}
+#d3-menu.active > #d3-toggle {
+	background: white;
+	color: black;
+	border-radius: 8px 0 0 0;
 }
 `;
 		document.head.appendChild(d3.cssDynamic);
@@ -135,4 +156,4 @@ html, html:hover, .d3Nav, .d3Nav:hover, .d3Nav>*, .d3Nav>*:hover {
 	}
 };
 d3.init();
-})();
+//})();
