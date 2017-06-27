@@ -1,28 +1,43 @@
-# 3D.js
+# Basic Usage
+Select and drag (or copy and paste) the bookmarklet code into your bookmarks.
+Open the bookmark to activate.
+
+## 3D.js
 View a website in 3D layers.
-## Use
-1. Select and drag (or copy and paste) the following code into your bookmarks.
+### Code
 ```javascript
 javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/3D.js"})();
 ```
-# Piano.js
+### Usage
+After activating, view the menu in the top left corner.
+
+## Piano.js
 A piano on any website with a click of a button (with basic recording functionality).
-## Use
-1. Select and drag (or copy and paste) the following code into your bookmarks.
+### Code
 ```javascript
 javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/piano.js"})();
 ```
-2. Go on another website that doesn't have shortcut keys (e.g. not GitHub, Youtube, nor Facebook).
-3. Click the bookmark.
-4. Turn up the volume and press some keys.
-# YTScroller.js
+### Usage
+Control the wave type, octave level, and axis tilt in the left menu.
+- can also control pitch with left and right keyboard arrows
+- can also control tilt with up and down keyboard arrows
+Control playback in the right menu.
+- "# ▶" is a play button
+- "# ◼" is a stop button
+- "↻ #" is the history playback button
+- "✖" is to delete a disc or clear history
+  - can also clear history with spacebar
+- "⬇" is to save history as a a disc
+- "⬆︎" is to export all saved discs
+  - only useful with full code at hand
+
+## YTScroller.js
 Allows the user to watch and read comments simultaneously.
-## Use
-Option 1: Select and drag (or copy and paste) the following code into your bookmarks.
+### Bookmarklet Code
 ```javascript
 javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/ytscroller.js"})();
 ```
-Option 2: Download a JavaScript Injector browser extension and paste in this code:
+### UserScript Code
 ```javascript
 javascript:
 function ytscroller() {
@@ -50,3 +65,6 @@ function ytscroller() {
 document.body.onscroll = ytscroller;
 document.body.onresize = ytscroller;
 ```
+### Usage
+To use the bookmarklet code, just open upon visiting YouTube.
+To use the userscript code, download a userscript browser extension and copy the code above into that app.
