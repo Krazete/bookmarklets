@@ -142,6 +142,7 @@ html, html:hover, #d3-menu, #d3-menu > *, #d3-menu > *:hover {
 	background: transparent;
 	color: white;
 	border: none;
+	cursor: pointer;
 }
 #d3-menu.active > #d3-toggle {
 	background: white;
