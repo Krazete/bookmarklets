@@ -6,7 +6,7 @@ If you want to use a bookmark on secure websites like Facebook or Gmail, you mus
 View a website in 3D layers.
 #### Code
 ```javascript
-javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/3D.js"})();
+javascript:(function(){var js=document.createElement("script");js.src="https://rawgit.com/Krazete/bookmarklets/master/3D.js";js.onerror=e=>alert("Sorry; "+location.host+" does not allow external scripts.");document.body.appendChild(js)};)();
 ```
 #### Usage
 After activating, view the menu in the top left corner.
@@ -14,7 +14,7 @@ After activating, view the menu in the top left corner.
 A piano on any website with a click of a button (with basic recording functionality).
 #### Code
 ```javascript
-javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/piano.js"})();
+javascript:(function(){var js=document.createElement("script");js.src="https://rawgit.com/Krazete/bookmarklets/master/piano.js";js.onerror=e=>alert("Sorry; "+location.host+" does not allow external scripts.");document.body.appendChild(js)};)();
 ```
 #### Usage
 Control the wave type, octave level, and axis tilt in the left menu.
@@ -38,7 +38,6 @@ javascript:(function(){document.body.appendChild(document.createElement("script"
 ```
 #### UserScript Code
 ```javascript
-javascript:
 function ytscroller() {
 	var theater = document.getElementById("theater-background").getBoundingClientRect();
 	var masthead = document.getElementById("masthead-positioner");
