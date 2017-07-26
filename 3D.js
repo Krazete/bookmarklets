@@ -1,3 +1,4 @@
+javascript:
 (function() {
 var d3 = {
 	menu: document.createElement("div"),
@@ -12,19 +13,29 @@ var d3 = {
 	tgl: document.createElement("input"),
 	cssStatic: document.createElement("style"),
 	cssDynamic: document.createElement("style"),
-	mouse: {"x": 0, "y": 0},
+	orientation: {"yaw": 0, "pitch": 0, "roll": 0},
 	mouseMove: function(e) {
-		d3.mouse.x = e.clientX;
-		d3.mouse.y = e.clientY;
+		d3.orientation.yaw = -Math.cos(Math.PI * e.clientX / innerWidth) * 180 * d3.limit.value;
+		d3.orientation.pitch = Math.cos(Math.PI * e.clientY / innerHeight) * 180 * d3.limit.value;
+		d3.updateBody();
+	},
+	gyroMove: function(e) {
+		var landscape = innerWidth > innerHeight;
+		if (landscape) {
+			d3.orientation.yaw = -(e.alpha + e.beta);
+			d3.orientation.pitch = e.gamma - Math.sign(90 - Math.abs(e.beta)) * 90;
+		}
+		else {
+			d3.orientation.yaw = -(e.alpha + e.gamma);
+			d3.orientation.pitch = e.beta - 90;
+		}
 		d3.updateBody();
 	},
 	updateOrigin: function(e) {
 		document.body.style.transformOrigin = (innerWidth / 2 + pageXOffset) + "px " + (innerHeight / 2 + pageYOffset) + "px";
 	},
 	updateBody: function() {
-		var x = Math.cos(Math.PI * d3.mouse.y / innerHeight) * Math.PI * d3.limit.value;
-		var y = -Math.cos(Math.PI * d3.mouse.x / innerWidth) * Math.PI * d3.limit.value;
-		document.body.style.transform = "perspective(" + Math.pow(2, d3.fov.value) + "px) translateZ(-" + d3.gap.value + "px) rotateX(" + x + "rad) rotateY(" + y + "rad)";
+		document.body.style.transform = "perspective(" + Math.pow(2, d3.fov.value) + "px) translateZ(-" + d3.gap.value + "px) rotateX(" + d3.orientation.pitch + "deg) rotateY(" + d3.orientation.yaw + "deg)";
 	},
 	updateCSS: function() {
 		if (d3.non.checked)
@@ -59,6 +70,7 @@ var d3 = {
 		}
 	},
 	quit: function() {
+		window.removeEventListener("deviceorientation", d3.gyroMove);
 		window.removeEventListener("mousemove", d3.mouseMove);
 		window.removeEventListener("scroll", d3.updateOrigin);
 		window.addEventListener("resize", d3.updateOrigin);
@@ -152,6 +164,7 @@ html, html:hover, #d3-menu, #d3-menu > *, #d3-menu > *:hover {
 `;
 		document.head.appendChild(d3.cssDynamic);
 		d3.updateCSS();
+		window.addEventListener("deviceorientation", d3.gyroMove);
 		window.addEventListener("mousemove", d3.mouseMove);
 		window.addEventListener("scroll", d3.updateOrigin);
 		window.addEventListener("resize", d3.updateOrigin);
