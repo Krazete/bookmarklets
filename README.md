@@ -45,7 +45,7 @@ function ytscroller() {
 	/* reset styles to accurately compute theater height */
 	masthead.removeAttribute("style");
 	video.removeAttribute("style");
-	if (document.body.scrollTop > theater.height) {
+	if (document.body.scrollTop > theater.height || document.documentElement.scrollTop > theater.height) {
 		var sidebar = document.getElementById("watch7-sidebar").getBoundingClientRect();
 		var masthead_box = masthead.getBoundingClientRect();
 		var video_box = video.getBoundingClientRect();
