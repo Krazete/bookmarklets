@@ -29,3 +29,20 @@ Control playback in the right menu.
 - "⬇" is to save history as a a disc
 - "⬆︎" is to export all saved discs
   - only useful with a local copy of the full code
+## YTScroller.js
+Watch a video and read comments simultaneously.
+#### Bookmarklet Code
+```javascript
+javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/ytscroller.js"})();
+```
+#### Usage
+Active this bookmarklet upon first loading YouTube.  
+You can also use the source code with a userscript app like TamperMonkey to make this automatic.
+## YTSentiment.js
+Check multiple videos' like statuses all at once (to avoid clickbait and such).
+#### Bookmarklet Code
+```javascript
+javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/ytsentiment.js"})();
+```
+#### Usage
+Activate this bookmarklet on any YouTube page with multiple video links.
