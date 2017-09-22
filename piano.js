@@ -253,7 +253,7 @@ var piano = {
 				border-radius: 0 0 5px 5px;
 				display: inline-block;
 			}
-			.piano-key:after {
+			.piano-key:before {
 				content: "";
 				background: #808080;
 				position: absolute;
