@@ -46,3 +46,6 @@ javascript:(function(){document.body.appendChild(document.createElement("script"
 ```
 #### Usage
 Activate this bookmarklet on any YouTube page with multiple video links.
+- green: #(likes) > #(dislikes)
+- murky green: #(likes) == #(dislikes)
+- red: #(likes) < #(dislikes)
