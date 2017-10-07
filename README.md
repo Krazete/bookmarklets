@@ -7,10 +7,6 @@ View a website in 3D layers.
 ```javascript
 javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/3D.js"})();
 ```
-#### Code without Spaces
-```javascript
-(function(){var%20js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry,%20the%20script%20could%20not%20be%20loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/3D.js"})();
-```
 #### Usage
 After activating, view the menu in the top left corner.
 ## Piano.js
