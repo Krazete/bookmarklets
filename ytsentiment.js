@@ -7,7 +7,7 @@ Array.from(document.getElementsByTagName("ytd-video-renderer"))
 	xhr.open("GET", link, true);
 	xhr.onload = function() {
 		var match = this.responseText.match(/"percentIfIndifferent":(\d+),/);
-		var rating = parseInt(match[1] / 100 * 256);
+		var rating = parseInt(Math.pow(match[1] / 100, Math.E) * 256);
 		e.style.background = "rgb(" + (256 - rating) + ", " + rating + ", 0)";
 		setTimeout(function() {
 			e.style.transition = "background 1s";
