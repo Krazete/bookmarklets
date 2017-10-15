@@ -268,7 +268,7 @@ var piano = {
 	exportDiscs: function() {
 		piano.disc.forEach(function(e, i) {
 			var d = JSON.stringify(e)
-			console.log("Disc 1\n" + d);
+			console.log("Disc " + i + "\n" + d);
 		});
 		alert("Check the console.");
 	},
