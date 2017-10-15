@@ -266,11 +266,11 @@ var piano = {
 		piano.playbackmode();
 	},
 	exportDiscs: function() {
-		var d = JSON.stringify(piano.disc);
-		alert("Check the console.");
-		d.forEach(function(e) {
-			console.log(e);
+		piano.disc.forEach(function(e) {
+			var d = JSON.stringify(e)
+			console.log(d);
 		});
+		alert("Check the console.");
 	},
 
 	keyup: function(e) {
