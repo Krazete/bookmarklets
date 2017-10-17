@@ -29,6 +29,22 @@ Control playback in the right menu.
 - "⬇" is to save history as a a disc
 - "⬆︎" is to export all saved discs
   - only useful with a local copy of the full code
+## Tic.js
+A game of ultimate tic-tac-toe.
+#### Code
+```javascript
+javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/tic.js"})();
+```
+#### Usage
+The rules are explained [here](https://mathwithbaddrawings.com/2013/06/16/ultimate-tic-tac-toe/).
+## Lupire.js
+A replicated Lumosity game.
+#### Code
+```javascript
+javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/lupire.js"})();
+```
+#### Usage
+See Lumosity's [pinball recall game](https://www.lumosity.com/brain-games/pinball-recall).
 ## YTScroller.js
 Watch a video and read comments simultaneously.
 #### Bookmarklet Code
