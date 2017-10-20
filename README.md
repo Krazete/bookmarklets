@@ -42,6 +42,11 @@ javascript:(function(){var js=document.body.appendChild(document.createElement("
 ```
 #### Usage
 The rules are explained [here](https://mathwithbaddrawings.com/2013/06/16/ultimate-tic-tac-toe/).
+
+### Screenshot
+
+![](http://g.recordit.co/KQGSIcNjb8.gif)
+
 ## Lupire.js
 A replicated Lumosity game.
 #### Code
