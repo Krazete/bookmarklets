@@ -29,6 +29,11 @@ Control playback in the right menu.
 - "⬇" is to save history as a a disc
 - "⬆︎" is to export all saved discs
   - only useful with a local copy of the full code
+  
+### Screenshot
+
+![](http://g.recordit.co/2UesqAFJDi.gif)
+
 ## Tic.js
 A game of ultimate tic-tac-toe.
 #### Code
