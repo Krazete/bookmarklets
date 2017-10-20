@@ -3,6 +3,7 @@ Copy and paste the bookmarklet code into your bookmarks. Open the bookmark to ac
 If you want to use a bookmark on secure websites like Facebook or Gmail, you must use the source code available above (prepended with `javascript:`).
 ## 3D.js
 View a website in 3D layers.
+![3D](/screenshots/3d.png)
 #### Code
 ```javascript
 javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/3D.js"})();
@@ -11,6 +12,7 @@ javascript:(function(){var js=document.body.appendChild(document.createElement("
 After activating, view the menu in the top left corner.
 ## Piano.js
 Add a piano to any website.
+![Piano](/screenshots/piano.png)
 #### Code
 ```javascript
 javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/piano.js"})();
@@ -31,6 +33,7 @@ Control playback in the right menu.
   - only useful with a local copy of the full code
 ## Tic.js
 A game of ultimate tic-tac-toe.
+![Tic](/screenshots/tic.png)
 #### Code
 ```javascript
 javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/tic.js"})();
@@ -39,6 +42,7 @@ javascript:(function(){var js=document.body.appendChild(document.createElement("
 The rules are explained [here](https://mathwithbaddrawings.com/2013/06/16/ultimate-tic-tac-toe/).
 ## Lupire.js
 A replicated Lumosity game.
+![Lupire](/screenshots/lupire.png)
 #### Code
 ```javascript
 javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/lupire.js"})();
@@ -47,6 +51,7 @@ javascript:(function(){var js=document.body.appendChild(document.createElement("
 See Lumosity's [pinball recall game](https://www.lumosity.com/brain-games/pinball-recall).
 ## YTScroller.js
 Watch a video and read comments simultaneously.
+![YTScroller](/screenshots/ytscroller.png)
 #### Bookmarklet Code
 ```javascript
 javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/ytscroller.js"})();
@@ -56,6 +61,7 @@ Active this bookmarklet upon first loading YouTube.
 You can also use the source code with a userscript app like TamperMonkey to make this automatic.
 ## YTSentiment.js
 Check multiple videos' like statuses all at once (to avoid clickbait and such).
+![YTSentiment](/screenshots/ytsentiment.png)
 #### Bookmarklet Code
 ```javascript
 javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/ytsentiment.js"})();
