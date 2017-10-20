@@ -31,6 +31,11 @@ Control playback in the right menu.
 - "⬇" is to save history as a a disc
 - "⬆︎" is to export all saved discs
   - only useful with a local copy of the full code
+  
+### Screenshot
+
+![](http://g.recordit.co/2UesqAFJDi.gif)
+
 ## Tic.js
 A game of ultimate tic-tac-toe.
 ![Tic](/screenshots/tic.png)
@@ -40,6 +45,11 @@ javascript:(function(){var js=document.body.appendChild(document.createElement("
 ```
 #### Usage
 The rules are explained [here](https://mathwithbaddrawings.com/2013/06/16/ultimate-tic-tac-toe/).
+
+### Screenshot
+
+![](http://g.recordit.co/KQGSIcNjb8.gif)
+
 ## Lupire.js
 A replicated Lumosity game.
 ![Lupire](/screenshots/lupire.png)
