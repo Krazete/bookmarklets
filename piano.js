@@ -88,7 +88,7 @@ var piano = {
                 left: 0;
                 bottom: 0;
                 perspective: 1024px;
-                z-index: 999;
+                z-index: 9999;
             }
             #piano-quit {
                 background: rgba(255, 255, 255, 0.5);
