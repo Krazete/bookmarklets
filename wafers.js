@@ -118,7 +118,7 @@
 			wafers.newButton(wafers.end, "Quit", wafers.quit);
 			wafers.newButton(wafers.tgl, "≡", wafers.toggle);
 			wafers.tgl.id = "wafers-toggle";
-			document.head.appendChild(wafers.cssStatic).innerHTML = `
+			wafers.menu.appendChild(wafers.cssStatic).innerHTML = `
 html, body {
 	transition-property: none;
 	height: 100%;
@@ -161,7 +161,7 @@ html, html:hover, #wafers-menu, #wafers-menu > *, #wafers-menu > *:hover {
 	border-radius: 8px 0 0 0;
 }
 `;
-			document.head.appendChild(wafers.cssDynamic);
+			wafers.menu.appendChild(wafers.cssDynamic);
 			wafers.updateCSS();
 			window.addEventListener("deviceorientation", wafers.gyroMove);
 			window.addEventListener("mousemove", wafers.mouseMove);
