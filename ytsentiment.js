@@ -18,7 +18,7 @@ function empath() {
 				}
 				else {
 					var logRating = parseInt(Math.pow(linRating / 100, Math.E) * 256);
-					e.style.border = "1px solid rgb(" + (256 - logRating) + ", " + logRating + ", 0)";
+					e.style.border = "5px solid rgb(" + (256 - logRating) + ", " + logRating + ", 0)";
 				}
 		    };
 			xhr.send();
