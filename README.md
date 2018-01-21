@@ -1,7 +1,6 @@
 # Usage
 Copy and paste the corresponding code into your bookmarks and open the bookmark to activate it.  
 To use a bookmark on secure websites (e.g. Facebook, GitHub, and Gmail), you must use the source code available above (prepended with `javascript:`).  
-The YT bookmarklets are more useful with code-injector browser extensions such as TamperMonkey.
 
 # Wafers.js
 View a webpage in 3D layers.  
@@ -48,18 +47,15 @@ javascript:(function(){var js=document.body.appendChild(document.createElement("
 
 # YTScroller.js
 Watch a video and read comments simultaneously.  
-Active this bookmarklet upon first loading YouTube.  
-You can also use the source code with a userscript app like TamperMonkey to make this automatic.
+This is more useful with a userscript manager like TamperMonkey.
 ```javascript
 javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/ytscroller.js"})();
 ```
 
 # YTSentiment.js
-Check multiple videos' like statuses all at once (to avoid clickbait and such).  
-Activate this bookmarklet on any YouTube page with multiple video links.
-- green: #(likes) > #(dislikes)
-- murky green: #(likes) == #(dislikes)
-- red: #(likes) < #(dislikes)
+Check multiple videos' like statuses all at once.  
+The ratings are scaled logarithmically, with green meaning more "likes" and red meaning more "dislikes".  
+This is more useful with a userscript manager like TamperMonkey.
 ```javascript
 javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/ytsentiment.js"})();
 ```
