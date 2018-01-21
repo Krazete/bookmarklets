@@ -7,6 +7,7 @@ function empath() {
 		if (oldLink != newLink) {
 			e.setAttribute("value", newLink);
 			e.style.border = "";
+			e.style.boxSizing = "";
 
 			var xhr = new XMLHttpRequest();
 			xhr.open("GET", newLink, true);
@@ -19,6 +20,7 @@ function empath() {
 				else {
 					var logRating = parseInt(Math.pow(linRating / 100, Math.E) * 256);
 					e.style.border = "5px solid rgb(" + (256 - logRating) + ", " + logRating + ", 0)";
+					e.style.boxSizing = "border-box";
 				}
 		    };
 			xhr.send();
