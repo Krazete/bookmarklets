@@ -20,11 +20,11 @@ function empath() {
 				var logRating = parseInt(Math.pow(linRating / 100, Math.E) * 256);
 				var likes = "rgb(" + (256 - logRating) + ", " + parseInt(logRating / 2) + ", " + logRating + ")" + linRating + "%";
 				var dislikes = "#88888866 " + linRating + "%";
-				e.style.borderBottom = "6px solid";
+				e.style.borderBottom = "3px solid";
 				e.style.borderImage = "linear-gradient(to right, " + likes + ", " + dislikes + ")";
 				e.style.borderImageSlice = "1";
-				e.style.paddingBottom = "4px";
-				e.style.marginTop = "-2px";
+				e.style.paddingBottom = "2px";
+				e.style.marginTop = "-1px";
 		    };
 			xhr.send();
 		}
