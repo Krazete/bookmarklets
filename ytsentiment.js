@@ -6,22 +6,25 @@ function empath() {
 		var newLink = e.children[0].href;
 		if (oldLink != newLink) {
 			e.setAttribute("value", newLink);
-			e.style.border = "";
-			e.style.boxSizing = "";
+			e.style.borderBottom = "";
+			e.style.borderImage = "";
+			e.style.borderImageSlice = "";
+			e.style.paddingBottom = "";
+			e.style.marginTop = "";
 
 			var xhr = new XMLHttpRequest();
 			xhr.open("GET", newLink, true);
 			xhr.onload = function() {
 				var match = this.responseText.match(/"percentIfIndifferent":(\d+)/);
 				var linRating = parseInt(match[1]);
-				if (linRating == 0) {
-					e.style.border = "5px solid gray";
-				}
-				else {
-					var logRating = parseInt(Math.pow(linRating / 100, Math.E) * 256);
-					e.style.border = "5px solid rgb(" + (256 - logRating) + ", " + logRating + ", 0)";
-				}
-				e.style.boxSizing = "border-box";
+				var logRating = parseInt(Math.pow(linRating / 100, Math.E) * 256);
+				var likes = "rgb(" + (256 - logRating) + ", " + parseInt(logRating / 2) + ", " + logRating + ")" + linRating + "%";
+				var dislikes = "#88888866 " + linRating + "%";
+				e.style.borderBottom = "6px solid";
+				e.style.borderImage = "linear-gradient(to right, " + likes + ", " + dislikes + ")";
+				e.style.borderImageSlice = "1";
+				e.style.paddingBottom = "4px";
+				e.style.marginTop = "-2px";
 		    };
 			xhr.send();
 		}
