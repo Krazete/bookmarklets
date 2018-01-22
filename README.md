@@ -54,7 +54,6 @@ javascript:(function(){document.body.appendChild(document.createElement("script"
 
 # YTSentiment.js
 Check multiple videos' like statuses all at once.  
-The ratings are scaled logarithmically, with green meaning more "likes" and red meaning more "dislikes".  
 This is more useful with a userscript manager like TamperMonkey.
 ```javascript
 javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/ytsentiment.js"})();
