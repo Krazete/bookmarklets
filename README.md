@@ -6,9 +6,9 @@ To use a bookmark on secure websites (e.g. Facebook, GitHub, and Gmail), you mus
 View a webpage in 3D layers.  
 Includes a settings menu in the top left corner.
 ```javascript
-javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/layers.js"})();
+javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/tri.js"})();
 ```
-![layers](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/layers.gif)
+![tri](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/tri.gif)
 
 # Piano.js
 Add a piano to any webpage.  
