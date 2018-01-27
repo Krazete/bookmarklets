@@ -2,13 +2,13 @@
 Copy and paste the corresponding code into your bookmarks and open the bookmark to activate it.  
 To use a bookmark on secure websites (e.g. Facebook, GitHub, and Gmail), you must use the source code available above (prepended with `javascript:`).  
 
-# Wafers.js
+# Layers.js
 View a webpage in 3D layers.  
 Includes a settings menu in the top left corner.
 ```javascript
-javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/wafers.js"})();
+javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/layers.js"})();
 ```
-![wafers](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/wafers.gif)
+![layers](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/layers.gif)
 
 # Piano.js
 Add a piano to any webpage.  
