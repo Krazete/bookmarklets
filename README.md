@@ -8,6 +8,7 @@ Includes a settings menu in the top left corner.
 ```javascript
 javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/wafers.js"})();
 ```
+![wafers](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/wafers.gif)
 
 # Piano.js
 Add a piano to any webpage.  
@@ -30,6 +31,7 @@ The right menu has the following buttons:
 ```javascript
 javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/piano.js"})();
 ```
+![piano](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/piano.gif)
 
 # Tic.js
 A game of ultimate tic-tac-toe.  
@@ -37,6 +39,7 @@ The rules are explained [here](https://mathwithbaddrawings.com/2013/06/16/ultima
 ```javascript
 javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/tic.js"})();
 ```
+![tic](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/tic.gif)
 
 # Lupire.js
 A replicated Lumosity game.  
@@ -44,6 +47,7 @@ See Lumosity's [pinball recall](https://www.lumosity.com/brain-games/pinball-rec
 ```javascript
 javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/lupire.js"})();
 ```
+![lupire](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/lupire.gif)
 
 # YTScroller.js
 Watch a video and read comments simultaneously.  
@@ -51,6 +55,7 @@ This is more useful with a userscript manager like TamperMonkey.
 ```javascript
 javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/ytscroller.js"})();
 ```
+![ytscroller](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/ytscroller.gif)
 
 # YTSentiment.js
 Check multiple videos' like statuses all at once.  
@@ -58,3 +63,4 @@ This is more useful with a userscript manager like TamperMonkey.
 ```javascript
 javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/ytsentiment.js"})();
 ```
+![ytsentiment](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/ytsentiment.gif)
