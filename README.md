@@ -58,7 +58,7 @@ javascript:(function(){document.body.appendChild(document.createElement("script"
 ![ytscroller](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/ytscroller.gif)
 
 # YTSentiment.js
-Check multiple videos' like statuses all at once.  
+Preview multiple videos' like statuses all at once.  
 This is more useful with a userscript manager like TamperMonkey.
 ```javascript
 javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/ytsentiment.js"})();
