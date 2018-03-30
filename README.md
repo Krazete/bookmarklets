@@ -33,6 +33,13 @@ javascript:(function(){var js=document.body.appendChild(document.createElement("
 ```
 ![piano](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/piano.gif)
 
+# MouseLight.js
+Simulate a flashlight. Works best on websites whose HTML elements are deeply nested.
+```javascript
+javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/mouselight.js"})();
+```
+![mouselight](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/mouselight.gif)
+
 # Tic.js
 A game of ultimate tic-tac-toe.  
 The rules are explained [here](https://mathwithbaddrawings.com/2013/06/16/ultimate-tic-tac-toe/).
