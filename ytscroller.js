@@ -1,38 +1,38 @@
-function ytscroller() {
-	var masthead = document.getElementById("masthead-container").getBoundingClientRect();
-	var theater = document.getElementById("player-container").getBoundingClientRect();
-	var player = document.getElementById("movie_player");
-	var video = document.getElementsByTagName("video")[0];
-	var controls = document.getElementsByClassName("ytp-chrome-bottom")[0];
-	/* reset style to accurately compute theater height */
-	player.removeAttribute("style");
-	if (theater.bottom < masthead.height) {
-							var sidebar = document.getElementById("related").getBoundingClientRect();
-							var player_box = player.getBoundingClientRect();
-							var video_box = video.getBoundingClientRect();
-							/* get maximum possible video size without overlapping comments (unless window is too small) */
-							var widthRatio = Math.max(sidebar.width, innerWidth - sidebar.left) / video_box.width;
-							var flushRight = (innerWidth - video_box.right) / widthRatio;
-		player.style.position = "fixed";
-		player.style.top = masthead.height + "px";
-		player.style.right = "0px";
-		player.style.width = video_box.width + "px";
-		player.style.height = video_box.height + "px";
-							video.style.left = "0px";
-		controls.style.left = "12px";
-		controls.style.width = (video_box.width - 24) + "px";
-							player.style.transform = "scale(" + widthRatio + ")";
-							player.style.transformOrigin = "100% 0";
-							player.style.zIndex = 1000;
+(function () {
+	/* keep video on top right when scrolling */
+	function videoAnchor() {
+		var mastRect = document.getElementById("masthead-container").getBoundingClientRect();
+		var theaterRect = document.getElementById("player-container").getBoundingClientRect();
+		var player = document.getElementById("movie_player");
+		var video = document.getElementsByTagName("video")[0];
+		player.removeAttribute("style"); /* reset for theaterRect height */
+		if (theaterRect.bottom < mastRect.height) {
+			var commentRect = document.getElementById("contents").getBoundingClientRect();
+			var sideRect = document.getElementById("related").getBoundingClientRect();
+			var videoRect = video.getBoundingClientRect();
+			var widthRatio = Math.max(
+				window.innerWidth - commentRect.right,
+				window.innerWidth - sideRect.left
+			) / videoRect.width;
+			player.style.position = "fixed";
+			player.style.right = 0;
+			player.style.top = mastRect.height + "px";
+			player.style.width = videoRect.width + "px";
+			player.style.height = videoRect.height + "px";
+			player.style.transformOrigin = "right top";
+			player.style.transform = "scale(" + widthRatio + ")";
+			player.style.zIndex = 1;
+		}
 	}
-}
-function returnToSender(e) { /* prevent scroll reset on timestamp click */
-	var x = window.scrollX;
-	var y = window.scrollY;
-	requestAnimationFrame(function () {
-		window.scrollTo(x, y);
-    });
-}
-window.addEventListener("scroll", ytscroller);
-window.addEventListener("resize", ytscroller);
-window.addEventListener("click", returnToSender);
+	/* keep scroll position on timestamp click */
+	function scrollAnchor() {
+		var x = window.scrollX;
+		var y = window.scrollY;
+		requestAnimationFrame(function () {
+			window.scrollTo(x, y);
+		});
+	}
+	window.addEventListener("scroll", videoAnchor);
+	window.addEventListener("resize", videoAnchor);
+	window.addEventListener("click", scrollAnchor);
+})();
