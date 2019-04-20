@@ -7,7 +7,7 @@
 		var video = document.getElementsByTagName("video")[0];
 		player.removeAttribute("style"); /* reset for theaterRect height */
 		if (theaterRect.bottom < mastRect.height) {
-			var commentRect = document.getElementById("contents").getBoundingClientRect();
+			var commentRect = document.getElementById("main").getBoundingClientRect();
 			var sideRect = document.getElementById("related").getBoundingClientRect();
 			var videoRect = video.getBoundingClientRect();
 			var widthRatio = Math.max(
