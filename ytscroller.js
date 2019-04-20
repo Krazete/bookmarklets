@@ -1,15 +1,25 @@
 (function () {
 	/* keep video on top right when scrolling */
 	function videoAnchor() {
-		var mastRect = document.getElementById("masthead-container").getBoundingClientRect();
-		var theaterRect = document.getElementById("player-container").getBoundingClientRect();
 		var player = document.getElementById("movie_player");
 		var video = document.getElementsByTagName("video")[0];
+		var control = document.getElementsByClassName("ytp-chrome-bottom")[0];
+		var mastRect = document.getElementById("masthead-container").getBoundingClientRect();
+		var theaterRect = document.getElementById("player-container").getBoundingClientRect();
 		player.removeAttribute("style"); /* reset for theaterRect height */
+		var playerRect = player.getBoundingClientRect();
+		var videoRect = video.getBoundingClientRect();
 		if (theaterRect.bottom < mastRect.height) {
-			var commentRect = document.getElementById("main").getBoundingClientRect();
+			var comment = (
+				document.getElementById("main") ||
+				document.getElementById("contents") ||
+				document.getElementById("comments") ||
+				document.getElementById("info") ||
+				document.getElementById("primary-inner") ||
+				document.getElementById("primary")
+			);
+			var commentRect = comment.getBoundingClientRect();
 			var sideRect = document.getElementById("related").getBoundingClientRect();
-			var videoRect = video.getBoundingClientRect();
 			var widthRatio = Math.max(
 				window.innerWidth - commentRect.right,
 				window.innerWidth - sideRect.left
@@ -22,6 +32,14 @@
 			player.style.transformOrigin = "right top";
 			player.style.transform = "scale(" + widthRatio + ")";
 			player.style.zIndex = 1;
+			control.style.left = "12px";
+			control.style.width = (videoRect.width - 24) + "px";
+			video.style.left = 0;
+		}
+		else {
+			control.style.left = "12px";
+			control.style.width = (playerRect.width - 24) + "px";
+			video.style.left = (playerRect.width - videoRect.width) / 2 + "px";
 		}
 	}
 	/* keep scroll position on timestamp click */
