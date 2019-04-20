@@ -26,5 +26,13 @@ function ytscroller() {
 							player.style.zIndex = 1000;
 	}
 }
+function returnToSender(e) { /* prevent scroll reset on timestamp click */
+	var x = window.scrollX;
+	var y = window.scrollY;
+	requestAnimationFrame(function () {
+		window.scrollTo(x, y);
+    });
+}
 window.addEventListener("scroll", ytscroller);
 window.addEventListener("resize", ytscroller);
+window.addEventListener("click", returnToSender);
