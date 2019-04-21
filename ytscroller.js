@@ -1,6 +1,10 @@
 (function () {
 	/* keep video on top right when scrolling */
 	function videoAnchor() {
+		var miniplayer = document.getElementsByClassName("miniplayer")[0];
+		if (miniplayer.parentElement.active) {
+			return;
+		}
 		var player = document.getElementById("movie_player");
 		var video = document.getElementsByTagName("video")[0];
 		var control = document.getElementsByClassName("ytp-chrome-bottom")[0];
