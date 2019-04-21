@@ -11,10 +11,6 @@
 		var videoRect = video.getBoundingClientRect();
 		if (theaterRect.bottom < mastRect.height) {
 			var comment = (
-				document.getElementById("main") ||
-				document.getElementById("contents") ||
-				document.getElementById("comments") ||
-				document.getElementById("info") ||
 				document.getElementById("primary-inner") ||
 				document.getElementById("primary")
 			);
