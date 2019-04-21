@@ -19,7 +19,6 @@
 				document.getElementById("primary")
 			);
 			var commentRect = comment.getBoundingClientRect();
-			var sideRect = document.getElementById("related").getBoundingClientRect();
 			var widthRatio = (window.innerWidth - commentRect.right) / videoRect.width;
 			var heightRatio = window.innerHeight / videoRect.height;
 			player.style.position = "fixed";
