@@ -15,8 +15,13 @@ function empath() {
 			var xhr = new XMLHttpRequest();
 			xhr.open("GET", newLink, true);
 			xhr.onload = function() {
-				var match = this.responseText.match(/"percentIfIndifferent":(\d+)/);
-				var linRating = parseInt(match[1]);
+				var biasNone = this.responseText.match(/"percentIfIndifferent":(\d+)/);
+				var biasLike = this.responseText.match(/"percentIfLiked":(\d+)/);
+				var biasDislike = this.responseText.match(/"percentIfDisliked":(\d+)/);
+				var linRating = parseInt(biasNone[1]);
+				if (parseInt(biasLike[1]) == 100 && parseInt(biasDislike[1]) == 0) {
+					linRating = 0;
+				}
 				var logRating = parseInt(Math.pow(linRating / 100, Math.E) * 256);
 				var likes = "rgb(" + (256 - logRating) + ", " + parseInt(logRating / 2) + ", " + logRating + ")" + linRating + "%";
 				var dislikes = "#88888866 " + linRating + "%";
