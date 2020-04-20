@@ -1,16 +1,12 @@
 # Usage
-Copy and paste the corresponding code into your bookmarks and open the bookmark to activate it.  
-To use a bookmark on secure websites (e.g. Facebook, GitHub, and Gmail), you must use the source code available above (prepended with `javascript:`).  
+Copy and paste the source code (linked in the titles) into your bookmarks and open the bookmark to activate it.
 
-# Tri.js
+# [Tri.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/tri.js)
 View a webpage in 3D layers.  
 Includes a settings menu in the top left corner.
-```javascript
-javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://raw.githubusercontent.com/Krazete/bookmarklets/master/tri.js"})();
-```
 ![tri](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/tri.gif)
 
-# Piano.js
+# [Piano.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/piano.js)
 Add a piano to any webpage.  
 The left menu allows you to adjust:
 - wave type
@@ -28,53 +24,32 @@ The right menu has the following buttons:
 - \[⬇\]: save history as a a disc
 - \[⬆︎\]: export all saved discs
   - only useful with a local copy of the source code (e.g. me and pull requesters)
-```javascript
-javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://raw.githubusercontent.com/Krazete/bookmarklets/master/piano.js"})();
-```
 ![piano](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/piano.gif)
 
-# MouseLight.js
+# [MouseLight.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/.js)
 Simulate a flashlight. Works best on websites whose HTML elements are deeply nested.
-```javascript
-javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://raw.githubusercontent.com/Krazete/bookmarklets/master/mouselight.js"})();
-```
 ![mouselight](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/mouselight.gif)
 
-# Tic.js
+# [Tic.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/tic.js)
 A game of ultimate tic-tac-toe.  
 The rules are explained [here](https://mathwithbaddrawings.com/2013/06/16/ultimate-tic-tac-toe/).
-```javascript
-javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://raw.githubusercontent.com/Krazete/bookmarklets/master/tic.js"})();
-```
 ![tic](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/tic.gif)
 
-# Lupire.js
+# [Lupire.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/lupire.js)
 A replicated Lumosity game.  
 See Lumosity's [pinball recall](https://www.lumosity.com/brain-games/pinball-recall).
-```javascript
-javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://raw.githubusercontent.com/Krazete/bookmarklets/master/lupire.js"})();
-```
 ![lupire](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/lupire.gif)
 
-# YTSentiment.js
+# [YTSentiment.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytsentiment.js)
 Preview multiple videos' like statuses all at once.  
 This is more useful with a userscript manager like TamperMonkey.
-```javascript
-javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytsentiment.js"})();
-```
 ![ytsentiment](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/ytsentiment.gif)
 
-# YTScroller.js
+# [YTScroller.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytscroller.js)
 Watch a video and read comments simultaneously.  
 This is more useful with a userscript manager like TamperMonkey.
-```javascript
-javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytscroller.js"})();
-```
 ![ytscroller](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/ytscroller.gif)
 
-# YTStamp.js
+# [YTStamp.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytstamp.js)
 Keep a time history so you can return to normal viewing after clicking a timestamp.  
 Recommended to pair with YTScroller.js due to its scrollAnchor function.
-```javascript
-javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytstamp.js"})();
-```
