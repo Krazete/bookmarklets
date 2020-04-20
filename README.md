@@ -76,5 +76,5 @@ javascript:(function(){document.body.appendChild(document.createElement("script"
 Keep a time history so you can return to normal viewing after clicking a timestamp.  
 Recommended to pair with YTScroller.js due to its scrollAnchor function.
 ```javascript
-javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/ytscroller.js"})();
+javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/ytstamp.js"})();
 ```
