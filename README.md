@@ -56,6 +56,14 @@ javascript:(function(){var js=document.body.appendChild(document.createElement("
 ```
 ![lupire](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/lupire.gif)
 
+# YTSentiment.js
+Preview multiple videos' like statuses all at once.  
+This is more useful with a userscript manager like TamperMonkey.
+```javascript
+javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/ytsentiment.js"})();
+```
+![ytsentiment](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/ytsentiment.gif)
+
 # YTScroller.js
 Watch a video and read comments simultaneously.  
 This is more useful with a userscript manager like TamperMonkey.
@@ -64,10 +72,9 @@ javascript:(function(){document.body.appendChild(document.createElement("script"
 ```
 ![ytscroller](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/ytscroller.gif)
 
-# YTSentiment.js
-Preview multiple videos' like statuses all at once.  
-This is more useful with a userscript manager like TamperMonkey.
+# YTStamp.js
+Keep a time history so you can return to normal viewing after clicking a timestamp.  
+Recommended to pair with YTScroller.js due to its scrollAnchor function.
 ```javascript
-javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/ytsentiment.js"})();
+javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/ytscroller.js"})();
 ```
-![ytsentiment](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/ytsentiment.gif)
