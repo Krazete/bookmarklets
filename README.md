@@ -27,7 +27,7 @@ The right menu has the following buttons:
   - only useful with a local copy of the source code (e.g. me and pull requesters)
 ![piano](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/piano.gif)
 
-# [MouseLight.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/.js)
+# [MouseLight.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/mouselight.js)
 Simulate a flashlight. Works best on websites whose HTML elements are deeply nested.
 ![mouselight](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/mouselight.gif)
 
