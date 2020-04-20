@@ -6,7 +6,7 @@ To use a bookmark on secure websites (e.g. Facebook, GitHub, and Gmail), you mus
 View a webpage in 3D layers.  
 Includes a settings menu in the top left corner.
 ```javascript
-javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/tri.js"})();
+javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://raw.githubusercontent.com/Krazete/bookmarklets/master/tri.js"})();
 ```
 ![tri](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/tri.gif)
 
@@ -29,14 +29,14 @@ The right menu has the following buttons:
 - \[⬆︎\]: export all saved discs
   - only useful with a local copy of the source code (e.g. me and pull requesters)
 ```javascript
-javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/piano.js"})();
+javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://raw.githubusercontent.com/Krazete/bookmarklets/master/piano.js"})();
 ```
 ![piano](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/piano.gif)
 
 # MouseLight.js
 Simulate a flashlight. Works best on websites whose HTML elements are deeply nested.
 ```javascript
-javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/mouselight.js"})();
+javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://raw.githubusercontent.com/Krazete/bookmarklets/master/mouselight.js"})();
 ```
 ![mouselight](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/mouselight.gif)
 
@@ -44,7 +44,7 @@ javascript:(function(){var js=document.body.appendChild(document.createElement("
 A game of ultimate tic-tac-toe.  
 The rules are explained [here](https://mathwithbaddrawings.com/2013/06/16/ultimate-tic-tac-toe/).
 ```javascript
-javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/tic.js"})();
+javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://raw.githubusercontent.com/Krazete/bookmarklets/master/tic.js"})();
 ```
 ![tic](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/tic.gif)
 
@@ -52,7 +52,7 @@ javascript:(function(){var js=document.body.appendChild(document.createElement("
 A replicated Lumosity game.  
 See Lumosity's [pinball recall](https://www.lumosity.com/brain-games/pinball-recall).
 ```javascript
-javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/lupire.js"})();
+javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://raw.githubusercontent.com/Krazete/bookmarklets/master/lupire.js"})();
 ```
 ![lupire](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/lupire.gif)
 
@@ -60,7 +60,7 @@ javascript:(function(){var js=document.body.appendChild(document.createElement("
 Preview multiple videos' like statuses all at once.  
 This is more useful with a userscript manager like TamperMonkey.
 ```javascript
-javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/ytsentiment.js"})();
+javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytsentiment.js"})();
 ```
 ![ytsentiment](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/ytsentiment.gif)
 
@@ -68,7 +68,7 @@ javascript:(function(){document.body.appendChild(document.createElement("script"
 Watch a video and read comments simultaneously.  
 This is more useful with a userscript manager like TamperMonkey.
 ```javascript
-javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/ytscroller.js"})();
+javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytscroller.js"})();
 ```
 ![ytscroller](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/ytscroller.gif)
 
@@ -76,5 +76,5 @@ javascript:(function(){document.body.appendChild(document.createElement("script"
 Keep a time history so you can return to normal viewing after clicking a timestamp.  
 Recommended to pair with YTScroller.js due to its scrollAnchor function.
 ```javascript
-javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://rawgit.com/Krazete/bookmarklets/master/ytstamp.js"})();
+javascript:(function(){document.body.appendChild(document.createElement("script")).src="https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytstamp.js"})();
 ```
