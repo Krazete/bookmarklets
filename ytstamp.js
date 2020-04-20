@@ -21,15 +21,13 @@ function saveTimestamp(e) {
 			var video = document.getElementsByTagName("video")[0];
 			video.currentTime = e.target.dataset.t;
 		}
-		else {
-			var v = location.search.match(/v=([^&]+)/)[1];
-			var a = document.createElement("a");
-			a.href = "/watch?v=" + v + "&t=" + time;
-			a.dataset.t = time;
-			a.innerHTML = formatTime(time);
-			timestamps.appendChild(a);
-			timestamps.scrollTo(0, 0);
-		}
+		var v = location.search.match(/v=([^&]+)/)[1];
+		var a = document.createElement("a");
+		a.href = "/watch?v=" + v + "&t=" + time;
+		a.dataset.t = time;
+		a.innerHTML = formatTime(time);
+		timestamps.appendChild(a);
+		timestamps.scrollTo(0, 0);
 	}
 }
 
