@@ -28,7 +28,7 @@
 			player.style.height = videoRect.height + "px";
 			player.style.transformOrigin = "right top";
 			player.style.transform = "scale(" + Math.min(widthRatio, heightRatio) + ")";
-			player.style.zIndex = 2147483647;
+			player.style.zIndex = 1500;
 			control.style.left = "12px";
 			control.style.width = (videoRect.width - 24) + "px";
 			video.style.left = 0;
