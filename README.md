@@ -64,5 +64,5 @@ Keep a time history so you can return to normal viewing after clicking a timesta
 Recommended to pair with YTScroller.js due to its scrollAnchor function.
 
 # [Pop.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/pop.js)
-Toggle picture-in-picture mode with one click.
+Toggle picture-in-picture mode with one click.  
 Useful for pages with a single video element (e.g. YouTube) but not for pages with multiple (e.g. Reddit).
