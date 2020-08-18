@@ -62,3 +62,7 @@ This is more useful with a userscript manager like TamperMonkey.
 # [YTStamp.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytstamp.js)
 Keep a time history so you can return to normal viewing after clicking a timestamp.  
 Recommended to pair with YTScroller.js due to its scrollAnchor function.
+
+# [Pop.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/pop.js)
+Toggle picture-in-picture mode with one click.
+Useful for pages with a single video element (e.g. YouTube) but not for pages with multiple (e.g. Reddit).
