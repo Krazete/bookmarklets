@@ -1,7 +1,7 @@
 # Usage
 Copy and paste the source code (linked in the titles) prepended with `javascript:` into your bookmarks and open the bookmark to activate it.  
 For example, the source code `function example() {};` should look like `javascript: function example() {};` when saving it as a bookmark.  
-You may need something like [JSCompress](https://jscompress.com/) if character limit is an issue.
+You may need something like [JSCompress](https://jscompress.com/) or [JSObfuscate](https://www.cleancss.com/javascript-obfuscate/) if character limit is an issue.
 
 # [Tri.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/tri.js)
 View a webpage in 3D layers.  
@@ -61,7 +61,36 @@ This is more useful with a userscript manager like TamperMonkey.
 
 # [YTStamp.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytstamp.js)
 Keep a time history so you can return to normal viewing after clicking a timestamp.  
-Recommended to pair with YTScroller.js due to its scrollAnchor function.
+Recommended to pair with YTScroller.js due to its scrollAnchor function.  
+Not recommended to pair with YTLiveStamper.js due to overlap.
+
+# [YTLiveStamper.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytlivestamper.js)
+Record timestamps during a livestream.  
+Here's an explanation of the parts of the YTLiveStamper panel:
+
+Stamplist
+  - the left side has clickable timestamps with copyable urls
+  - the right side is for notes and comments
+  - "End of Video" Timestamp
+    - always at the bottom of the stamplist
+    - it's there to return to real time after checking a past timestamp
+    - it's usually useless since most live streams don't allow backtracking in the first place
+    
+Textbox
+  - for copying the current stamplist or importing a new stamplist
+
+"Import List" Button
+  - parses textbox text into a new stamplist
+  - useful if you need to refresh the page
+  - *warning: this overwrites the current stamplist*
+
+"Add Timestamp" Button
+  - adds the current time (minus 5 seconds) to the stamplist
+
+"Copy List" Button
+  - copies the stamplist to your clipboard
+  - basically, it does ctrl+v on the textbox
+  - *warning: this overwrites your clipboard*
 
 # [Pop.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/pop.js)
 Toggle picture-in-picture mode with one click.  
