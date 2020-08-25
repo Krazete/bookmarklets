@@ -68,29 +68,23 @@ Not recommended to pair with YTLiveStamper.js due to overlap.
 Record timestamps during a livestream.  
 Here's an explanation of the parts of the YTLiveStamper panel:
 
-Stamplist
-  - the left side has clickable timestamps with copyable urls
-  - the right side is for notes and comments
-  - "End of Video" Timestamp
-    - always at the bottom of the stamplist
-    - it's there to return to real time after checking a past timestamp
-    - it's usually useless since most live streams don't allow backtracking in the first place
-    
-Textbox
-  - for copying the current stamplist or importing a new stamplist
-
-"Import List" Button
-  - parses textbox text into a new stamplist
-  - useful if you need to refresh the page
-  - *warning: this overwrites the current stamplist*
-
-"Add Timestamp" Button
-  - adds the current time (minus 5 seconds) to the stamplist
-
-"Copy List" Button
-  - copies the stamplist to your clipboard
-  - basically, it does ctrl+v on the textbox
-  - *warning: this overwrites your clipboard*
+- Stamplist
+  - left side has clickable timestamps with copyable urls
+  - right side is for notes and comments
+- "End of Video" Timestamp
+  - always at the bottom of the stamplist
+  - it's there so you can return to real time after checking a past timestamp
+  - usually useless since most live streams don't allow backtracking in the first place
+- "Import List" Button
+  - reads textbox to create new stamplist
+  - useful if you need to refresh the page or adjust timestamp times
+  - *note: overwrites stamplist*
+- "Add Timestamp" Button
+  - adds current time (minus 5 seconds) to stamplist
+- "Copy List" Button
+  - writes stamplist to textbox
+  - copies textbox to clipboard
+  - *note: overwrites clipboard*
 
 # [Pop.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/pop.js)
 Toggle picture-in-picture mode with one click.  
