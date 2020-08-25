@@ -145,6 +145,10 @@ style.innerHTML = `
 		bottom: 0;
 		padding: 5px;
 		z-index: 356;
+		opacity: 0.6;
+	}
+	#ytstamper-panel:hover {
+		opacity: 1;
 	}
 	#ytstamper-list {
 		text-align: right;
