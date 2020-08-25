@@ -179,6 +179,7 @@ style.innerHTML = `
 		display: block;
 		padding: 0;
 		border: none;
+		resize: none;
 	}
 `;
 panel.appendChild(style);
