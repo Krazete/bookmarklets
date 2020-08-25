@@ -139,12 +139,11 @@ panel.appendChild(buttonCopy);
 
 style.innerHTML = `
 	#ytstamper-panel {
-		background: maroon;
+		background: #0004;
 		position: fixed;
 		left: 0;
 		bottom: 0;
 		padding: 5px;
-		outline: 1px solid white;
 		z-index: 356;
 	}
 	#ytstamper-list {
@@ -161,8 +160,7 @@ style.innerHTML = `
 		color: white;
 		font-family: inherit;
 		font-size: initial;
-		border-color: white;
-		border-width: 0 0 1px 0;
+		border: none;
 		outline: none;
 	}
 	#ytstamper-list input:focus {
