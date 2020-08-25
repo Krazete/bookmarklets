@@ -1,4 +1,8 @@
 (function () {
+if (document.getElementById("ytstamper-panel")) {
+	return;
+}
+
 var panel = document.createElement("div");
 var list = document.createElement("ul");
 var nowli = document.createElement("li");
@@ -139,7 +143,7 @@ panel.appendChild(buttonCopy);
 
 style.innerHTML = `
 	#ytstamper-panel {
-		background: #0004;
+		background: #0006;
 		position: fixed;
 		left: 0;
 		bottom: 0;
