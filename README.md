@@ -87,5 +87,4 @@ Here's an explanation of the parts of the YTLiveStamper panel:
   - *note: overwrites clipboard*
 
 # [Pop.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/pop.js)
-Toggle picture-in-picture mode with one click.  
-Useful for pages with a single video element (e.g. YouTube) but not for pages with multiple (e.g. Reddit).
+Toggle picture-in-picture mode with one click.
