@@ -171,9 +171,6 @@ style.innerHTML = `
 		border: none;
 		outline: none;
 	}
-	#ytstamper-list input:focus {
-		border-color: pink;
-	}
 	#ytstamper-textarea {
 		width: 100%;
 		display: block;
