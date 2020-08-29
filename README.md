@@ -1,7 +1,8 @@
 # Usage
 Copy and paste the source code (linked in the titles) prepended with `javascript:` into your bookmarks and open the bookmark to activate it.  
 For example, the source code `function example() {};` should look like `javascript: function example() {};` when saving it as a bookmark.  
-You may need something like [JSCompress](https://jscompress.com/) or [JSObfuscate](https://www.cleancss.com/javascript-obfuscate/) if character limit is an issue.
+Note that character limit, comments, and special characters may be an issue when creating a bookmarklet.  
+If there is an issue, try running it through [JSCompress](https://jscompress.com/) or [JSObfuscate](https://www.cleancss.com/javascript-obfuscate/) first.
 
 # [Tri.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/tri.js)
 View a webpage in 3D layers.  
