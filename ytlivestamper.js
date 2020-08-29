@@ -5,6 +5,7 @@ var exit = document.createElement("span");
 var list = document.createElement("ul");
 var nowli = document.createElement("li");
 var nowa = document.createElement("a");
+var nowid;
 var nowtext = document.createElement("input");
 var box = document.createElement("textarea");
 var paster = document.createElement("button");
@@ -15,6 +16,8 @@ var style = document.createElement("style");
 function closePane() {
 	if (confirm("Close timestamp tool?")) {
 		pane.remove();
+		cancelAnimationFrame(nowid);
+		window.addEventListener("beforeunload", warn);
 	}
 }
 
@@ -32,7 +35,7 @@ function watchTime() {
 		nowa.href = "https://youtu.be/" + location.search.split(/=|&/)[1] + "?t=" + time;
 		nowa.dataset.time = time;
 	} catch (e) {}
-	requestAnimationFrame(e => setTimeout(watchTime, 1000));
+	nowid = requestAnimationFrame(watchTime);
 }
 
 function unformatTime(stamp) {
