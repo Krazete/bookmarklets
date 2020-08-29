@@ -102,9 +102,9 @@ function copyList() {
 }
 
 function warn(e) {
-    e.preventDefault();
-    e.returnValue = "Close timestamp tool?";
-    return e.returnValue;
+	e.preventDefault();
+	e.returnValue = "Close timestamp tool?";
+	return e.returnValue;
 }
 
 pane.id = "ytls-pane";
