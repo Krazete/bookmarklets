@@ -26,10 +26,12 @@ function clickStamp(e) {
 }
 
 function watchTime() {
-	var time = Math.floor(document.querySelector("video").duration);
-	nowa.innerHTML = formatTime(time);
-	nowa.href = "https://youtu.be/" + location.search.split(/=|&/)[1] + "?t=" + time;
-	nowa.dataset.time = time;
+	try {
+		var time = Math.floor(document.querySelector("video").duration);
+		nowa.innerHTML = formatTime(time);
+		nowa.href = "https://youtu.be/" + location.search.split(/=|&/)[1] + "?t=" + time;
+		nowa.dataset.time = time;
+	} catch (e) {}
 	requestAnimationFrame(e => setTimeout(watchTime, 1000));
 }
 
