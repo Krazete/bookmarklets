@@ -103,7 +103,7 @@ function warn(e) {
 }
 
 pane.id = "ytls-pane";
-exit.innerHTML = "x";
+exit.innerHTML = "&times;";
 watchTime();
 nowtext.disabled = true;
 nowtext.value = "End of Video";
