@@ -1,194 +1,167 @@
 (function () {
-if (document.getElementById("ytstamper-panel")) {
-	return;
-}
-
-var panel = document.createElement("div");
+if (!document.querySelector("#ytls-pane")) {
+var pane = document.createElement("div");
+var exit = document.createElement("span");
 var list = document.createElement("ul");
 var nowli = document.createElement("li");
 var nowa = document.createElement("a");
 var nowtext = document.createElement("input");
-var textarea = document.createElement("textarea");
-var buttonImport = document.createElement("input");
-var buttonAdd = document.createElement("input");
-var buttonCopy = document.createElement("input");
+var box = document.createElement("textarea");
+var paster = document.createElement("button");
+var adder = document.createElement("button");
+var copier = document.createElement("button");
 var style = document.createElement("style");
 
+function closePane() {
+	if (confirm("Close timestamp tool?")) {
+		pane.remove();
+	}
+}
+
 function clickStamp(e) {
-	if (typeof e.target.dataset.time != "undefined") {
+	if (e.target.dataset.time) {
 		e.preventDefault();
-		var video = document.querySelector("video");
-		video.currentTime = e.target.dataset.time;
+		document.querySelector("video").currentTime = e.target.dataset.time;
 	}
 }
 
 function watchTime() {
-	var video = document.querySelector("video");
-	var time = Math.floor(video.getDuration());
-
+	var time = Math.floor(document.querySelector("video").duration);
+	nowa.innerHTML = formatTime(time);
 	nowa.href = "https://youtu.be/" + location.search.split(/=|&/)[1] + "?t=" + time;
 	nowa.dataset.time = time;
-	nowa.innerHTML = formatTime(time);
-
-	setTimeout(e => requestAnimationFrame(watchTime), 500);
+	requestAnimationFrame(e => setTimeout(watchTime, 1000));
 }
 
 function unformatTime(stamp) {
 	var hms = stamp.split(":").map(e => parseInt(e));
-	if (hms.length == 3) {
-		return 3600 * hms[0] + 60 * hms[1] + hms[2];
+	if (hms.length < 3) {
+		return 60 * hms[0] + hms[1];
 	}
-	return 60 * hms[0] + hms[1];
+	return 3600 * hms[0] + 60 * hms[1] + hms[2];
 }
 
-function importList() {
-	var lines = textarea.value.split("\n");
+function pasteList() {
+	var lines = box.value.split("\n");
 	list.innerHTML = "";
 	for (var i = 0; i < lines.length; i++) {
 		var stamp = lines[i].split(" ", 1)[0];
 		var time = unformatTime(stamp);
 		var note = lines[i].slice(stamp.length + 1);
-
 		var li = document.createElement("li");
-
 		var a = document.createElement("a");
-		a.href = "https://youtu.be/" + location.search.split(/=|&/)[1] + "?t=" + time;
-		a.dataset.time = time;
-		a.innerHTML = stamp;
-		li.appendChild(a);
-
 		var text = document.createElement("input");
-		text.type = "text";
+		a.innerHTML = stamp;
+		a.dataset.time = time;
+		a.href = "https://youtu.be/" + location.search.split(/.+v=|&/)[1] + "?t=" + time;
 		text.value = note;
+		li.appendChild(a);
 		li.appendChild(text);
-
 		list.appendChild(li);
 	}
 	list.appendChild(nowli);
 }
 
-function formatTime(t) {
-	var h = Math.floor(t / 3600);
-	var m = Math.floor(t / 60) % 60;
-	var s = Math.floor(t) % 60;
+function formatTime(time) {
+	var h = Math.floor(time / 3600);
+	var m = Math.floor(time / 60) % 60;
+	var s = Math.floor(time) % 60;
 	return (h ? (h + ":" + String(m).padStart(2, 0)) : m) + ":" + String(s).padStart(2, 0);
 }
 
 function addStamp() {
-	var video = document.querySelector("video");
-	var time = Math.max(0, Math.floor(video.getCurrentTime()) - 5);
-
+	var time = Math.max(0, Math.floor(document.querySelector("video").currentTime - 5));
 	var li = document.createElement("li");
-
 	var a = document.createElement("a");
-	a.href = "https://youtu.be/" + location.search.split(/=|&/)[1] + "?t=" + time;
-	a.dataset.time = time;
-	a.innerHTML = formatTime(time);
-	li.appendChild(a);
-
 	var text = document.createElement("input");
-	text.type = "text";
+	a.innerHTML = formatTime(time);
+	a.dataset.time = time;
+	a.href = "https://youtu.be/" + location.search.split(/.+v=|&/)[1] + "?t=" + time;
+	li.appendChild(a);
 	li.appendChild(text);
-
 	list.appendChild(li);
 	list.appendChild(nowli);
-
 	text.focus();
 }
 
 function copyList() {
 	var string = "";
 	for (var i = 0; i < list.children.length - 1; i++) {
-		var child = list.children[i];
-		var stamp = child.children[0].innerHTML;
-		var note = child.children[1].value;
+		var stamp = list.children[i].children[0].innerHTML;
+		var note = list.children[i].children[1].value;
 		string += (i > 0 ? "\n" : "") + stamp + " " + note;
 	}
-	textarea.value = string;
-	textarea.select();
+	box.value = string;
+	box.select();
 	document.execCommand("copy");
 }
 
-panel.id = "ytstamper-panel";
+function warn(e) {
+    e.preventDefault();
+    e.returnValue = "Close timestamp tool?";
+    return e.returnValue;
+}
 
-list.id = "ytstamper-list";
-list.addEventListener("click", clickStamp);
-panel.appendChild(list);
-
+pane.id = "ytls-pane";
+exit.innerHTML = "x";
 watchTime();
-nowli.appendChild(nowa);
-nowli.appendChild(nowtext);
-nowtext.type = "text";
 nowtext.disabled = true;
 nowtext.value = "End of Video";
-list.appendChild(nowli);
-
-textarea.id = "ytstamper-textarea";
-panel.appendChild(textarea);
-
-buttonImport.type = "button";
-buttonImport.value = "Import List";
-buttonImport.addEventListener("click", importList);
-panel.appendChild(buttonImport);
-
-buttonAdd.type = "button";
-buttonAdd.value = "Add Timestamp";
-buttonAdd.addEventListener("click", addStamp);
-panel.appendChild(buttonAdd);
-
-buttonCopy.type = "button";
-buttonCopy.value = "Copy List";
-buttonCopy.addEventListener("click", copyList);
-panel.appendChild(buttonCopy);
-
+box.id = "ytls-box";
+paster.innerHTML = "Import List";
+adder.innerHTML = "Add Timestamp";
+copier.innerHTML = "Copy List";
 style.innerHTML = `
-	#ytstamper-panel {
-		background: #0006;
+	#ytls-pane {
+		background: rgba(0,0,0,.5);
+		text-align: right;
 		position: fixed;
-		left: 0;
 		bottom: 0;
 		padding: 5px;
-		z-index: 356;
-		opacity: 0.6;
+		opacity: .5;
+		z-index: 500;
 	}
-	#ytstamper-panel:hover {
+	#ytls-pane:hover {
 		opacity: 1;
 	}
-	#ytstamper-list {
-		text-align: right;
+	#ytls-pane span {
+		cursor: pointer;
 	}
-	#ytstamper-list a {
-		color: white;
-		font-family: inherit;
-		font-size: initial;
-		text-decoration: none;
-	}
-	#ytstamper-list input {
+	#ytls-pane span, #ytls-pane a, #ytls-pane input {
 		background: none;
 		color: white;
 		font-family: inherit;
 		font-size: initial;
+		text-decoration: none;
 		border: none;
 		outline: none;
 	}
-	#ytstamper-textarea {
+	#ytls-box {
 		width: 100%;
 		display: block;
 		padding: 0;
 		border: none;
+		outline: none;
 		resize: none;
 	}
 `;
-panel.appendChild(style);
 
-document.body.appendChild(panel);
+exit.addEventListener("click", closePane);
+list.addEventListener("click", clickStamp);
+paster.addEventListener("click", pasteList);
+adder.addEventListener("click", addStamp);
+copier.addEventListener("click", copyList);
+window.addEventListener("beforeunload", warn);
 
-function holup(e) {
-    e.preventDefault();
-    e.returnValue = "Be sure to copy your timestamp list before leaving.";
-    return e.returnValue;
-}
-
-window.addEventListener("beforeunload", holup);
-})();
-
+pane.appendChild(exit);
+nowli.appendChild(nowa);
+nowli.appendChild(nowtext);
+list.appendChild(nowli);
+pane.appendChild(list);
+pane.appendChild(box);
+pane.appendChild(paster);
+pane.appendChild(adder);
+pane.appendChild(copier);
+pane.appendChild(style);
+document.body.appendChild(pane);
+}})();
