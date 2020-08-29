@@ -117,7 +117,7 @@ style.innerHTML = `
 		text-align: right;
 		position: fixed;
 		bottom: 0;
-		padding: 5px;
+		padding: 0 5px;
 		opacity: .5;
 		z-index: 500;
 	}
