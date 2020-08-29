@@ -2,7 +2,7 @@
 Copy and paste the source code (linked in the titles) prepended with `javascript:` into your bookmarks and open the bookmark to activate it.  
 For example, the source code `function example() {};` should look like `javascript: function example() {};` when saving it as a bookmark.  
 Note that character limit, comments, and special characters may be an issue when creating a bookmarklet.  
-If there is an issue, try running it through [JSCompress](https://jscompress.com/) or [JSObfuscate](https://www.cleancss.com/javascript-obfuscate/) first.
+If there is an issue, try running it through [JSObfuscate](https://www.cleancss.com/javascript-obfuscate/) first.
 
 # [Tri.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/tri.js)
 View a webpage in 3D layers.  
@@ -28,7 +28,7 @@ The right menu has the following buttons:
 - \[⬇\]: save history as a a disc
 - \[⬆︎\]: export all saved discs
   - only useful with a local copy of the source code (e.g. me and pull requesters)
-  
+
 ![piano](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/piano.gif)
 
 # [MouseLight.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/mouselight.js)
