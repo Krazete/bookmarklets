@@ -17,7 +17,7 @@ function closePane() {
 	if (confirm("Close timestamp tool?")) {
 		pane.remove();
 		cancelAnimationFrame(nowid);
-		window.addEventListener("beforeunload", warn);
+		window.removeEventListener("beforeunload", warn);
 	}
 }
 
