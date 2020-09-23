@@ -124,7 +124,7 @@ style.innerHTML = `
 		bottom: 0;
 		padding: 0 5px;
 		opacity: .5;
-		z-index: 500;
+		z-index: 5000;
 	}
 	#ytls-pane:hover {
 		opacity: 1;
