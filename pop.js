@@ -5,7 +5,7 @@ function popout() {
 	video.requestPictureInPicture();
 }
 function popin() {
-	video.exitPictureInPicture();
+	document.exitPictureInPicture();
 }
 video.addEventListener("enterpictureinpicture", e => pop = popin);
 video.addEventListener("leavepictureinpicture", e => pop = popout);
