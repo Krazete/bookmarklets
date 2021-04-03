@@ -42,9 +42,17 @@ function videoAnchor() {
 function scrollAnchor() {
 	var x = window.scrollX;
 	var y = window.scrollY;
-	setTimeout(function () {
+	var t0;
+	function scrollToXY(t1) {
 		window.scrollTo(x, y);
-	}, 1);
+		if (typeof t0 == "undefined") {
+			t0 = t1;
+		}
+		if (t1 - t0 < 1) {
+			requestAnimationFrame(scrollToXY);
+		}
+	}
+	requestAnimationFrame(plpl);
 }
 window.addEventListener("scroll", videoAnchor);
 window.addEventListener("resize", videoAnchor);
