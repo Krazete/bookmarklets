@@ -52,7 +52,7 @@ function scrollAnchor() {
 			requestAnimationFrame(scrollToXY);
 		}
 	}
-	requestAnimationFrame(plpl);
+	requestAnimationFrame(scrollToXY);
 }
 window.addEventListener("scroll", videoAnchor);
 window.addEventListener("resize", videoAnchor);
