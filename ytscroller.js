@@ -42,10 +42,10 @@ function videoAnchor() {
 function scrollAnchor() {
 	var x = window.scrollX;
 	var y = window.scrollY;
-	requestAnimationFrame(function () {
+	setTimeout(function () {
 		window.scrollTo(x, y);
-	});
+	}, 1);
 }
 window.addEventListener("scroll", videoAnchor);
 window.addEventListener("resize", videoAnchor);
-window.addEventListener("click", scrollAnchor);
+window.addEventListener("mouseup", scrollAnchor);
