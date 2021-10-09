@@ -1,21 +1,21 @@
 /* keep video on top right when scrolling */
 function videoAnchor() {
-	var miniplayer = document.querySelector(".miniplayer");
+	var miniplayer = document.getElementsByClassName("miniplayer")[0];
 	if (miniplayer.parentElement.active) {
 		return;
 	}
-	var player = document.querySelector("#movie_player");
-	var video = document.querySelector("video");
-	var control = document.querySelector(".ytp-chrome-bottom");
-	var mastRect = document.querySelector("#masthead-container").getBoundingClientRect();
+	var player = document.getElementById("movie_player");
+	var video = document.getElementsByTagName("video")[0];
+	var control = document.getElementsByClassName("ytp-chrome-bottom")[0];
+	var mastRect = document.getElementById("masthead-container").getBoundingClientRect();
 	var theaterRect = document.querySelector("#player-container.ytd-watch-flexy").getBoundingClientRect();
 	player.removeAttribute("style"); /* reset for theaterRect height */
 	var playerRect = player.getBoundingClientRect();
 	var videoRect = video.getBoundingClientRect();
 	if (theaterRect.bottom < mastRect.height) {
 		var comment = (
-			document.querySelector("#primary-inner") ||
-			document.querySelector("#primary")
+			document.getElementById("primary-inner") ||
+			document.getElementById("primary")
 		);
 		var commentRect = comment.getBoundingClientRect();
 		var widthRatio = (window.innerWidth - commentRect.right) / videoRect.width;
