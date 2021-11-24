@@ -48,11 +48,11 @@ See Lumosity's [pinball recall](https://www.lumosity.com/brain-games/pinball-rec
 
 ![lupire](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/lupire.gif)
 
-# [YTSentiment.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytsentiment.js)
-Preview multiple videos' like statuses all at once.  
+# [YTEngagement.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytengagement.js)
+Preview the likes-to-views ratio of YouTube videos.  
 This is more useful with a userscript manager like TamperMonkey.
 
-![ytsentiment](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/ytsentiment.gif)
+![ytengagement](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/ytsentiment.gif)
 
 # [YTScroller.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytscroller.js)
 Watch a video and read comments simultaneously.  
