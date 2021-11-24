@@ -48,13 +48,6 @@ See Lumosity's [pinball recall](https://www.lumosity.com/brain-games/pinball-rec
 
 ![lupire](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/lupire.gif)
 
-# [YTEngagement.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytengagement.js)
-Preview the likes-to-views ratio of YouTube videos.  
-For easier visibility, the ratio bar is displayed as log(likes) / log(views).  
-This is more useful with a userscript manager like TamperMonkey.
-
-![ytengagement](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/ytsentiment.gif)
-
 # [YTScroller.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytscroller.js)
 Watch a video and read comments simultaneously.  
 This is more useful with a userscript manager like TamperMonkey.
