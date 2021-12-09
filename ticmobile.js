@@ -1,14 +1,14 @@
-// Randomize the first marker.
+/* Randomize the first marker. */
 var turn=Math.random()<1/2 ? 0 : 1;
 
-// Set unit size.
+/* Set unit size. */
 var unit=(innerWidth<innerHeight ? innerWidth : innerHeight)/11;
 
 function newUnit(){
 	unit=(innerWidth<innerHeight ? innerWidth : innerHeight)/11;
 }
 
-// Create menu.
+/* Create menu. */
 var menu=document.createElement('div');
 window.addEventListener('resize',function(){ newUnit();menu.style.height=9*unit+'px';menu.style.width=9*unit+'px'; });
 menu.style.position='fixed';
@@ -22,7 +22,7 @@ menu.style.zIndex=9999;
 menu.innerHTML='<a style=\'background:white;position:absolute;left:100%;cursor:pointer\' onClick=\'menu.remove()\'>exit</a>';
 document.body.appendChild(menu);
 
-// Create board.
+/* Create board. */
 var board=document.createElement('div');
 board.style.background='rgba(255,255,255,0.9)';
 board.style.position='absolute';
@@ -33,11 +33,11 @@ board.style.width='100%';
 board.mark=null;
 menu.appendChild(board);
 
-// Create macro and micro maps.
+/* Create macro and micro maps. */
 BOXES=[];
 boxes=[[],[],[],[],[],[],[],[],[]];
 
-// Fill the board.
+/* Fill the board. */
 for(var i=0;i<3;i++){
 	for(var j=0;j<3;j++){
 		var BOX=document.createElement('div');				
@@ -92,7 +92,7 @@ for(var i=0;i<3;i++){
 +---+---+---+
 */
 
-// Check for victories.
+/* Check for victories. */
 function check(m){
 	var checkmark=0;
 	if(m[0].mark!=null){
@@ -121,17 +121,17 @@ function check(m){
 	}
 }
 
-// Place a tied marker.
+/* Place a tied marker. */
 function draw(obj){
-	// Disable the tied box.
+	/* Disable the tied box. */
 	obj.mark=2;
 	disable(obj);
 	obj.style.pointerEvents='none';
 }
 
-// Place a marker.
+/* Place a marker. */
 function marker(obj){
-	// Place an O.
+	/* Place an O. */
 	if(turn==0){
 		var o=document.createElement('div');
 		o.style.boxSizing='border-box';
@@ -140,7 +140,7 @@ function marker(obj){
 		o.style.left='10%';
 		o.style.height='80%';
 		o.style.width='80%';
-		// Set O border size based on nested box level, because for some reason percentage isn't supported.
+		/* Set O border size based on nested box level, because for some reason percentage isn't supported. */
 		var inBOXES=0;
 		for(var i=0;i<9;i++){
 			if(obj==BOXES[i]){
@@ -153,7 +153,7 @@ function marker(obj){
 		o.style.borderRadius='50%';
 		obj.appendChild(o);
 	}
-	// Place an X.
+	/* Place an X. */
 	else{
 		var x1=document.createElement('div');
 		x1.style.boxSizing='border-box';
@@ -171,56 +171,56 @@ function marker(obj){
 		x2.style.webkitTransform='rotate(-45deg)';
 		obj.appendChild(x2);
 	}
-	// Mark the map and disable the marked box.
+	/* Mark the map and disable the marked box. */
 	obj.mark=turn;
 	disable(obj);
 	obj.style.pointerEvents='none';
 }
 
-// Do stuff to a box upon click.
+/* Do stuff to a box upon click. */
 function pick(b){
-	// Mark box.
+	/* Mark box. */
 	marker(b);
 	
-	// Check victories.
+	/* Check victories. */
 	check(boxes[b.macro]);
 	check(BOXES);
 	
-	// Pass turn to other player.
+	/* Pass turn to other player. */
 	turn>0 ? turn=0 : turn=1;
 	
-	// Enable next macro box if it isn't won.
+	/* Enable next macro box if it isn't won. */
 	if(BOXES[b.micro].mark==null){
-		// Disable all boxes.
+		/* Disable all boxes. */
 		for(i=0;i<9;i++){
 			for(var j=0;j<9;j++){
 				disable(boxes[i][j]);
 			}
 		}
-		// Enable next macro box.
+		/* Enable next macro box. */
 		for(i=0;i<9;i++){
-			// Forces won macro boxes to stay disabled.
+			/* Forces won macro boxes to stay disabled. */
 			if(board.mark==null){
 				enable(boxes[b.micro][i]);
 			}
 		}
 	}
-	// Enable all macro boxes if it's won.
+	/* Enable all macro boxes if it's won. */
 	else{
 		for(i=0;i<9;i++){
 			for(var j=0;j<9;j++){
-				// Forces won macro boxes to stay disabled.
+				/* Forces won macro boxes to stay disabled. */
 				if(board.mark==null){
 					enable(boxes[i][j]);
 				}
 			}
 		}
 	}
-	// Forces won micro boxes to stay disabled.
+	/* Forces won micro boxes to stay disabled. */
 	disable(b);
 }
 
-// Disables a box.
+/* Disables a box. */
 function disable(b){
 	b.style.background='rgba(0,0,0,0.25)';
 	b.setAttribute('onMouseOver','');
@@ -228,9 +228,9 @@ function disable(b){
 	b.setAttribute('onClick','');
 }
 
-// Enables a box.
+/* Enables a box. */
 function enable(b){
-	// Forces won boxes to stay disabled.
+	/* Forces won boxes to stay disabled. */
 	if(b.mark==null){
 		b.style.background='transparent';
 	}

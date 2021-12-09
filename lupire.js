@@ -1,10 +1,10 @@
 /* FUNCTIONS */
-// Choose random item from list.
+/* Choose random item from list. */
 function choose(n){
 	return n[Math.floor(Math.random()*(n.length))];
 }
 
-// Choose random hex color, brightness range optional.
+/* Choose random hex color, brightness range optional. */
 function newHex(a,b){
 	if(typeof a=='undefined'){a=0;}
 	if(typeof b=='undefined'){b=16;}
@@ -16,7 +16,7 @@ function newHex(a,b){
 	return hex;
 }
 
-// Choose random rgba color with given opacity, brightness range optional.
+/* Choose random rgba color with given opacity, brightness range optional. */
 function newByte(o,a,b){
 	if(typeof a=='undefined'){a=0;}
 	if(typeof b=='undefined'){b=256;}
@@ -32,9 +32,9 @@ function newByte(o,a,b){
 	return byte;
 }
 
-// Generate an obstacle with a specified distribution.
+/* Generate an obstacle with a specified distribution. */
 function newBlock(p){
-	// Group group[i] has blocks[i].
+	/* Group group[i] has blocks[i]. */
 	var group=[0,1,2,2,3,3,3,3,4,4,5,5];
 	var sample=[];
 	for(var i=0;i<blocks.length;i++){
@@ -66,7 +66,7 @@ var blocks=[
 	cw={img:0, goto:[3,0,1,2]}
 ];
 
-// Stylesheet for spinners.
+/* Stylesheet for spinners. */
 var spinster=document.createElement('style');
 spinster.innerHTML='@keyframes cwise{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }';
 spinster.innerHTML+='@keyframes ccwise{ from{transform:rotate(360deg);} to{transform:rotate(0deg);} }';
@@ -118,7 +118,7 @@ document.body.appendChild(board);
 
 var tab=' &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; ';
 
-// Refreshes game with new settings.
+/* Refreshes game with new settings. */
 function newGame(s,d,z,v){
 	if(typeof s=='undefined'){s=span;}
 	span=s;
@@ -130,7 +130,7 @@ function newGame(s,d,z,v){
 	if(typeof v=='undefined'){v=speed;}
 	speed=v;
 	
-	// Updates board.
+	/* Updates board. */
 	board.style.opacity=1;
 	board.innerHTML='Lives: '+hp+tab+'Points: '+pts+tab+'Level: '+(span-2)+tab+'Sublevel: '+lvl+'/'+(span-2)+'</br>';
 	
@@ -142,7 +142,7 @@ function newGame(s,d,z,v){
 		return 0;
 	}
 	
-	// Updates gameboard.
+	/* Updates gameboard. */
 	while(game.lastChild){
 		game.removeChild(game.lastChild);
 	}
@@ -167,7 +167,7 @@ function newGame(s,d,z,v){
 	setTimeout(setUp,10000*speed*(1+span/10));
 }
 
-// Starts game.
+/* Starts game. */
 function setUp(){
 	goal=newGoal();
 	ball=newBall(goal.x,goal.y);
@@ -175,7 +175,7 @@ function setUp(){
 	enable();
 }
 
-// Creates a new randomized gameboard.
+/* Creates a new randomized gameboard. */
 function newBoard(){
 	var rcolor=newHex(0,8);
 	var boxes=[];
@@ -184,7 +184,7 @@ function newBoard(){
 		boxes[i]=[];
 		map[i]=[];
 		for(var j=0;j<span;j++){
-			// Creates background grid.
+			/* Creates background grid. */
 			var grid=document.createElement('div');
 			grid.style.height=unit+'vmin';
 			grid.style.width=unit+'vmin';
@@ -195,7 +195,7 @@ function newBoard(){
 			grid.style.boxShadow='inset 0 0 3vmin '+game.style.backgroundColor;
 			game.appendChild(grid);
 			
-			// Creates obstacles.
+			/* Creates obstacles. */
 			var box=document.createElement('div');
 			box.x=i;
 			box.y=j;
@@ -204,7 +204,7 @@ function newBoard(){
 			box.style.left=j*unit+'vmin';
 			box.style.boxSizing='border-box';
 			if((i==0 && j==0) || (i==0 && j==span-1) || (i==span-1 && j==span-1) || (i==span-1 && j==0)){
-				// Removes corner grids.
+				/* Removes corner grids. */
 				grid.remove();
 				
 				boxes[i][j]=blocks[0];
@@ -212,7 +212,7 @@ function newBoard(){
 				box.className='cornerBox';
 				box.style.transition=speed+'s border-radius';
 				
-				//Specifies function of each corner block.
+				/* Specifies function of each corner block. */
 				if(i==0 && j==0){
 					box.style.borderTopLeftRadius='50%';
 					box.setAttribute('onMouseOver','this.style.borderTopLeftRadius=\'25%\'');
@@ -253,7 +253,7 @@ function newBoard(){
 				}
 			}
 			else if(i==0 || i==span-1 || j==0 || j==span-1){
-				// Sets up edges.
+				/* Sets up edges. */
 				if(i==0 || i==span-1){
 					boxes[i][j]=blocks[8];
 					map[i][j]=(i==0 ? [3,3,3,3] : [1,1,1,1]);
@@ -267,7 +267,7 @@ function newBoard(){
 				box.style.transition=2*speed+'s background';
 			}
 			else{
-				// Sets up inner obstacles.
+				/* Sets up inner obstacles. */
 				boxes[i][j]=newBlock(distribution);
 				map[i][j]=boxes[i][j].goto;
 				box.className='innerBox';
@@ -275,11 +275,11 @@ function newBoard(){
 				box.style.transition=2*speed+'s opacity';
 			}
 			
-			// Sets shorthand for boxes[i][j].
+			/* Sets shorthand for boxes[i][j]. */
 			var b=boxes[i][j];
 			var color=box.className=='innerBox' ? 'white' : rcolor;
 			
-			// Sets style for each type of block.
+			/* Sets style for each type of block. */
 			if(b==full || b==empty){
 				box.style.background=(b.img ? color : 'transparent');
 				box.style.height=unit+'vmin';
@@ -321,11 +321,11 @@ function newBoard(){
 			game.appendChild(box);
 		}
 	}
-	// Returns course directions for each block.
+	/* Returns course directions for each block. */
 	return map;
 }
 
-// Gives all edges their path information.
+/* Gives all edges their path information. */
 function newPath(x,y,z,steps){
 	if(typeof z=='undefined'){z=compass[x][y][0];}
 	if(typeof steps=='undefined'){steps=0;}
@@ -342,7 +342,7 @@ function newPath(x,y,z,steps){
 }
 
 /* BALL */
-// Creates a new ball at given coordinates.
+/* Creates a new ball at given coordinates. */
 function newBall(x,y){
 	var ball=document.createElement('div');
 	ball.style.background='white';
@@ -360,7 +360,7 @@ function newBall(x,y){
 	return ball;
 }
 
-// Moves the ball to its path end, where it decides settings for the new gameboard.
+/* Moves the ball to its path end, where it decides settings for the new gameboard. */
 function move(h,k,x,y,z){
 	if(typeof z=='undefined'){z=compass[x][y][0];}
 	
@@ -378,14 +378,14 @@ function move(h,k,x,y,z){
 		setTimeout(function(){ move(h,k,x,y,(to+2)%4); },1000*speed);
 	}
 	else{
-		// If correct.
+		/* If correct. */
 		if(goal.end.x==h && goal.end.y==k){
-			// Make green.
+			/* Make green. */
 			for(var i=0;i<edges.length;i++){
 				edges[i].style.background='rgba(0,128,0,0.5)';
 			}
 			ball.style.background='green';
-			// Heighten hp and lvl.
+			/* Heighten hp and lvl. */
 			pts+=goal.end.steps;
 			if(lvl==span-2){
 				span++;
@@ -395,14 +395,14 @@ function move(h,k,x,y,z){
 				lvl++;
 			}
 		}
-		// If incorrect.
+		/* If incorrect. */
 		else{
-			// Make red.
+			/* Make red. */
 			for(var i=0;i<edges.length;i++){
 				edges[i].style.background='rgba(128,0,0,0.5)';
 			}
 			ball.style.background='red';
-			// Lower hp and lvl.
+			/* Lower hp and lvl. */
 			hp--;
 			if(span>3){
 				if(lvl==1){
@@ -414,13 +414,13 @@ function move(h,k,x,y,z){
 				}
 			}
 		}
-		// End current gameboard.
+		/* End current gameboard. */
 		setTimeout(show,10000*speed);
 		setTimeout(newGame,20000*speed);
 	}
 }
 
-// Retrieves an inner block by its (x,y) coordinates.
+/* Retrieves an inner block by its (x,y) coordinates. */
 function getByXY(x,y){
 for(var i=0;i<inners.length;i++){
 	if(inners[i].x==x && inners[i].y==y){
@@ -429,21 +429,21 @@ for(var i=0;i<inners.length;i++){
 }
 }
 
-// Hides all inner blocks.
+/* Hides all inner blocks. */
 function hide(){
 	for(var i=0;i<inners.length;i++){
 		inners[i].style.opacity=0;
 	}
 }
 
-// Shows all inner blocks.
+/* Shows all inner blocks. */
 function show(){
 	for(var i=0;i<inners.length;i++){
 		inners[i].style.opacity=1;
 	}
 }
 
-// Picks the ball starting point based on path length.
+/* Picks the ball starting point based on path length. */
 function newGoal(){
 	var goals={};
 	for(var i=0;i<edges.length;i++){
@@ -461,10 +461,10 @@ function newGoal(){
 	}
 	key=Object.keys(goals);
 	return choose(goals[key[key.length-1]]);
-	//return choose(goals[key[Math.floor(key.length*lvl/(span-1))]]);
+	/* return choose(goals[key[Math.floor(key.length*lvl/(span-1))]]); */
 }
 
-// Make edges clickable.
+/* Make edges clickable. */
 function enable(){
 	for(var i=0;i<edges.length;i++){
 		edges[i].style.background='transparent';
@@ -474,7 +474,7 @@ function enable(){
 	}
 }
 
-// Remove edge clickability.
+/* Remove edge clickability. */
 function disable(){
 	for(var i=0;i<edges.length;i++){
 		edges[i].style.background='rgba(0,0,0,0.25)';
@@ -484,11 +484,11 @@ function disable(){
 	}
 }
 
-// Start the ball with your prospective destination.
+/* Start the ball with your prospective destination. */
 function guess(x,y,h,k){
 	disable();
 	move(h,k,x,y);
 }
 
-// Begin.
+/* Begin. */
 newGame();
