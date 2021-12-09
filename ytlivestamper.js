@@ -8,6 +8,7 @@ var nowa = document.createElement("a");
 var nowid;
 var nowtext = document.createElement("input");
 var box = document.createElement("textarea");
+var buttons = document.createElement("div");
 var paster = document.createElement("button");
 var adder = document.createElement("button");
 var copier = document.createElement("button");
@@ -113,6 +114,7 @@ watchTime();
 nowtext.disabled = true;
 nowtext.value = "End of Video";
 box.id = "ytls-box";
+buttons.id = "ytls-buttons";
 paster.innerHTML = "Import List";
 adder.innerHTML = "Add Timestamp";
 copier.innerHTML = "Copy List";
@@ -132,6 +134,9 @@ style.innerHTML = `
 	#ytls-pane span {
 		cursor: pointer;
 	}
+	#ytls-pane ul {
+		list-style: none;
+	}
 	#ytls-pane span, #ytls-pane a, #ytls-pane input {
 		background: none;
 		color: white;
@@ -142,6 +147,7 @@ style.innerHTML = `
 		outline: none;
 	}
 	#ytls-box {
+		font-family: monospace;
 		width: 100%;
 		display: block;
 		padding: 0;
@@ -149,10 +155,18 @@ style.innerHTML = `
 		outline: none;
 		resize: none;
 	}
+	#ytls-buttons {
+		display: flex;
+	}
+	#ytls-buttons button {
+		flex: auto;
+		border: 1px solid white;
+	}
 `;
 
 exit.addEventListener("click", closePane);
 list.addEventListener("click", clickStamp);
+list.addEventListener("touchstart", clickStamp);
 paster.addEventListener("click", pasteList);
 adder.addEventListener("click", addStamp);
 copier.addEventListener("click", copyList);
@@ -164,9 +178,10 @@ nowli.appendChild(nowtext);
 list.appendChild(nowli);
 pane.appendChild(list);
 pane.appendChild(box);
-pane.appendChild(paster);
-pane.appendChild(adder);
-pane.appendChild(copier);
+buttons.appendChild(paster);
+buttons.appendChild(adder);
+buttons.appendChild(copier);
+pane.appendChild(buttons);
 pane.appendChild(style);
 document.body.appendChild(pane);
 }})();
