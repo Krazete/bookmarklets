@@ -51,9 +51,10 @@ function pasteList() {
 	var lines = box.value.split("\n");
 	list.innerHTML = "";
 	for (var i = 0; i < lines.length; i++) {
-		var stamp = lines[i].split(" ", 1)[0];
+		var line = lines[i].trim();
+		var stamp = line.split(/\s+/, 1)[0];
 		var time = unformatTime(stamp);
-		var note = lines[i].slice(stamp.length + 1);
+		var note = line.slice(stamp.length + 1);
 		var li = document.createElement("li");
 		var a = document.createElement("a");
 		var text = document.createElement("input");
