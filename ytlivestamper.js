@@ -185,4 +185,6 @@ buttons.appendChild(copier);
 pane.appendChild(buttons);
 pane.appendChild(style);
 document.body.appendChild(pane);
+
+box.focus();
 }})();
