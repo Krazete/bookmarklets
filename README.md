@@ -86,6 +86,7 @@ Here's an explanation of the parts of the YTLiveStamper panel:
 - "Copy List" Button
   - writes stamplist to textbox
   - copies textbox to clipboard
+  - double-click to copy stamplist as list of urls (cannot be imported)
   - *note: overwrites clipboard*
 
 # [Pop.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/pop.js)
