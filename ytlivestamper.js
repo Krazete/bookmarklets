@@ -11,6 +11,7 @@ var box = document.createElement("textarea");
 var buttons = document.createElement("div");
 var paster = document.createElement("button");
 var adder = document.createElement("button");
+var firstcopy = true;
 var copier = document.createElement("button");
 var style = document.createElement("style");
 
@@ -91,12 +92,30 @@ function addStamp() {
 	text.focus();
 }
 
+function resetCopier() {
+	firstcopy = true;
+	copier.innerHTML = "Copy List";
+}
+
 function copyList() {
 	var string = "";
-	for (var i = 0; i < list.children.length - 1; i++) {
-		var stamp = list.children[i].children[0].innerHTML;
-		var note = list.children[i].children[1].value;
-		string += (i > 0 ? "\n" : "") + stamp + " " + note;
+	if (firstcopy) {
+		firstcopy = false;
+		copier.innerHTML = "Copy Links";
+		setTimeout(resetCopier, 500);
+		for (var i = 0; i < list.children.length - 1; i++) {
+			var stamp = list.children[i].children[0].innerHTML;
+			var note = list.children[i].children[1].value;
+			string += (i > 0 ? "\n" : "") + (stamp + " " + note).trim();
+		}
+	}
+	else {
+		resetCopier();
+		for (var i = 0; i < list.children.length - 1; i++) {
+			var stamp = list.children[i].children[0].href;
+			var note = list.children[i].children[1].value;
+			string += (i > 0 ? "\n" : "") + (note + " " + stamp).trim();
+		}
 	}
 	box.value = string;
 	box.select();
