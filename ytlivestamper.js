@@ -35,6 +35,7 @@ function clickStamp(e) {
 		document.querySelector("video").currentTime = e.target.dataset.time;
 	}
 	else if (e.target.dataset.increment) {
+		e.preventDefault();
 		var li = e.target.parentElement;
 		var a = li.children[2];
 		var time = parseInt(a.dataset.time) + parseInt(e.target.dataset.increment);
