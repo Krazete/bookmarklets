@@ -182,6 +182,7 @@ style.innerHTML = `
 		color: white;
 		font-size: 12px;
 		flex: auto;
+		padding: 2px;
 		border: 1px solid white;
 	}
 `;
