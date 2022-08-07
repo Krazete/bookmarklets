@@ -23,19 +23,29 @@ function closePane() {
 	}
 }
 
+function updateStamp(stamp, time) {
+	stamp.innerHTML = formatTime(time);
+	stamp.dataset.time = time;
+	stamp.href = "https://youtu.be/" + location.search.split(/.+v=|&/)[1] + "?t=" + time;
+}
+
 function clickStamp(e) {
 	if (e.target.dataset.time) {
 		e.preventDefault();
 		document.querySelector("video").currentTime = e.target.dataset.time;
+	}
+	else if (e.target.dataset.increment) {
+		var li = e.target.parentElement;
+		var a = li.children[2];
+		var time = parseInt(a.dataset.time) + parseInt(e.target.dataset.increment);
+		updateStamp(a, time);
 	}
 }
 
 function watchTime() {
 	try {
 		var time = Math.floor(document.querySelector("video").duration);
-		nowa.innerHTML = formatTime(time);
-		nowa.href = "https://youtu.be/" + location.search.split(/=|&/)[1] + "?t=" + time;
-		nowa.dataset.time = time;
+		updateStamp(nowa, time);
 	} catch (e) {}
 	nowid = requestAnimationFrame(watchTime);
 }
@@ -47,6 +57,25 @@ function unformatTime(stamp) {
 	}
 	return 3600 * hms[0] + 60 * hms[1] + hms[2];
 }
+	
+function newLi(time, note) {
+	var li = document.createElement("li");
+	var minus = document.createElement("span");
+	var plus = document.createElement("span");
+	var a = document.createElement("a");
+	var text = document.createElement("input");
+	minus.innerHTML = "➖";
+	minus.dataset.increment = -1;
+	plus.innerHTML = "➕";
+	plus.dataset.increment = 1;
+	updateStamp(a, time);
+	li.appendChild(minus);
+	li.appendChild(plus);
+	li.appendChild(a);
+	li.appendChild(text);
+	list.appendChild(li);
+	return text;
+}
 
 function pasteList() {
 	var lines = box.value.split("\n");
@@ -56,16 +85,8 @@ function pasteList() {
 		var stamp = line.split(/\s+/, 1)[0];
 		var time = unformatTime(stamp);
 		var note = line.slice(stamp.length + 1);
-		var li = document.createElement("li");
-		var a = document.createElement("a");
-		var text = document.createElement("input");
-		a.innerHTML = stamp;
-		a.dataset.time = time;
-		a.href = "https://youtu.be/" + location.search.split(/.+v=|&/)[1] + "?t=" + time;
+		var text = newLi(time, note);
 		text.value = note;
-		li.appendChild(a);
-		li.appendChild(text);
-		list.appendChild(li);
 	}
 	list.appendChild(nowli);
 }
@@ -79,15 +100,7 @@ function formatTime(time) {
 
 function addStamp() {
 	var time = Math.max(0, Math.floor(document.querySelector("video").currentTime - 5));
-	var li = document.createElement("li");
-	var a = document.createElement("a");
-	var text = document.createElement("input");
-	a.innerHTML = formatTime(time);
-	a.dataset.time = time;
-	a.href = "https://youtu.be/" + location.search.split(/.+v=|&/)[1] + "?t=" + time;
-	li.appendChild(a);
-	li.appendChild(text);
-	list.appendChild(li);
+	var text = newLi(time);
 	list.appendChild(nowli);
 	text.focus();
 }
@@ -104,16 +117,16 @@ function copyList() {
 		copier.innerHTML = "Copy Links";
 		setTimeout(resetCopier, 500);
 		for (var i = 0; i < list.children.length - 1; i++) {
-			var stamp = list.children[i].children[0].innerHTML;
-			var note = list.children[i].children[1].value;
+			var stamp = list.children[i].children[2].innerHTML;
+			var note = list.children[i].children[3].value;
 			string += (i > 0 ? "\n" : "") + (stamp + " " + note).trim();
 		}
 	}
 	else {
 		resetCopier();
 		for (var i = 0; i < list.children.length - 1; i++) {
-			var stamp = list.children[i].children[0].href;
-			var note = list.children[i].children[1].value;
+			var stamp = list.children[i].children[2].href;
+			var note = list.children[i].children[3].value;
 			string += (i > 0 ? "\n" : "") + (note + " " + stamp).trim();
 		}
 	}
