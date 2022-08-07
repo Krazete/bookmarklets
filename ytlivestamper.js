@@ -179,6 +179,7 @@ style.innerHTML = `
 		display: flex;
 	}
 	#ytls-buttons button {
+		background: transparent;
 		color: white;
 		font-size: 12px;
 		flex: auto;
