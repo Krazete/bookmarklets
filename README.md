@@ -89,5 +89,8 @@ Here's an explanation of the parts of the YTLiveStamper panel:
   - double-click to copy stamplist as list of urls (cannot be imported)
   - *note: overwrites clipboard*
 
+Note that YouTube hides comments with an unusually large amount of timestamps relative to regular text.  
+Having a note for every timestamp will usually ensure your comment remains visible to others.
+
 # [Pop.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/pop.js)
 Toggle picture-in-picture mode with one click.
