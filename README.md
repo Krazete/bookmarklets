@@ -71,8 +71,9 @@ Record timestamps during a livestream.
 Here's an explanation of the parts of the YTLiveStamper panel:
 
 - Stamplist
-  - left side has clickable timestamps with copyable urls
-  - right side is for notes and comments
+  - the minus and plus buttons increment the timestamp accordingly
+  - timestamps are clickable and have copyable urls
+  - text input is for notes and comments
 - "End of Video" Timestamp
   - always at the bottom of the stamplist
   - it's there so you can return to real time after checking a past timestamp
