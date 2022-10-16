@@ -95,3 +95,6 @@ Having a note for every timestamp will usually ensure your comment remains visib
 
 # [Pop.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/pop.js)
 Toggle picture-in-picture mode with one click.
+
+# [Background Color Changer](https://raw.githubusercontent.com/Krazete/bookmarklets/master/randombackgroundcolor.js)
+Change the background color to be a random color.
