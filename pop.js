@@ -1,4 +1,3 @@
-javascript:
 var video = document.getElementsByTagName("video")[0];
 var pop;
 function popout() {
