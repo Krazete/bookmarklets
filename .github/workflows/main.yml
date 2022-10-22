@@ -9,7 +9,6 @@ jobs:
       uses: nizarmah/auto-minify@v2.1
       with:
         output: min
-        js_engine: uglify-js # removes "javascript:" label unlike babel
     - name: Delete Newlines
       uses: jacobtomlinson/gha-find-replace@v2
       with:
