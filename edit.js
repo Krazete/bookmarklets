@@ -1,2 +1,3 @@
-document.body.contentEditable = document.body.contentEditable == "true" ? "false" : "true";
-void 0;
+(function(){
+    document.body.contentEditable = document.body.contentEditable == "true" ? "false" : "true";
+})();

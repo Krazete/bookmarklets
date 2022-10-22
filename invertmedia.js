@@ -1,7 +1,7 @@
 if (typeof(invertimg) == "undefined") {
-	var invertimg = document.body.appendChild(document.createElement("style"));
+	var invertimg = document.createElement("style");
 	invertimg.innerHTML = "img,video,embed,object{filter:invert(100%)}";
-	void(0);
+	document.body.appendChild(invertimg);
 }
 else {
 	invertimg.remove();

@@ -1,7 +1,7 @@
 if (typeof(inverthtml) == "undefined") {
-	var inverthtml = document.body.appendChild(document.createElement("style"));
+	var inverthtml = document.createElement("style");
 	inverthtml.innerHTML = "html{background:black;filter:invert(100%)}";
-	void(0);
+	document.body.appendChild(inverthtml);
 }
 else {
 	inverthtml.remove();
