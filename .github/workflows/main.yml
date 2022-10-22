@@ -1,0 +1,36 @@
+name: Convert Scripts to Bookmarklets
+on: push
+jobs:
+  bookmarkletify:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Minify Scripts
+      uses: nizarmah/auto-minify@v2.1
+      with:
+        output: min
+        js_engine: uglify-js # removes "javascript:" label unlike babel
+    - name: Delete Newlines
+      uses: jacobtomlinson/gha-find-replace@v2
+      with:
+        find: "\\n\\s*"
+        replace: " "
+        include: min/**
+    - name: Percent-Encode Percents
+      uses: jacobtomlinson/gha-find-replace@v2
+      with:
+        find: "%"
+        replace: "%25"
+        include: min/**
+        regex: false
+    - name: Prepend Labels
+      uses: jacobtomlinson/gha-find-replace@v2
+      with:
+        find: "(.*)"
+        replace: "javascript:krazete:$1"
+        include: min/**
+    - name: Commit Bookmarklets
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: "Github Action: Convert Scripts to Bookmarklets"
+        branch: ${{ github.ref }}
