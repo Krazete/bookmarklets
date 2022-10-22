@@ -111,19 +111,19 @@ Many of these are more useful with a userscript manager like TamperMonkey. Use t
 
 ## [YTEngagement.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytengagement.min.js)
 
-Preview the likes-to-views ratio of YouTube videos. For easier visibility, the ratio bar is displayed as `log(likes + 1) / log(views + 1)`.
+Preview the likes-to-views ratio of YouTube videos. For easier visibility, the ratio bar is displayed as `log(likes + 1) / log(views + 1)`. [[full script](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytengagement.js)]
 
 ![ytengagement](https://github.com/Krazete/bookmarklets/blob/master/gif/ytsentiment.gif)
 
 ## [YTScroller.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytscroller.min.js)
 
-Keep the video in view while scrolling down the comment section.
+Keep the video in view while scrolling down the comment section. [[full script](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytscroller.js)]
 
 ![ytscroller](https://github.com/Krazete/bookmarklets/blob/master/gif/ytscroller.gif)
 
 ## [YTLiveStamper.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytlivestamper.min.js)
 
-Record timestamps for a video even during a livestream.
+Record timestamps for a video even during a livestream. [[full script](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytlivestamper.js)]
 
 Panel Parts:
 
@@ -150,7 +150,7 @@ Having a note for every timestamp will help ensure your comment remains visible 
 
 ## [YTSpeed.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytspeed.min.js)
 
-Speed up the video even more. Also has a slider to dim the video because why not?
+Speed up the video even more. Also has a slider to dim the video because why not? [[full script](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytspeed.js)]
 
 Note: At x10 speed, the video usually plays faster than it can load.
 
