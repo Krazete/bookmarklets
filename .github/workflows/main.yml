@@ -27,7 +27,7 @@ jobs:
       uses: jacobtomlinson/gha-find-replace@v2
       with:
         find: "(.*)"
-        replace: "javascript:krazete:$1"
+        replace: "javascript:krazete:$1" # credit
         include: min/**
     - name: Commit Bookmarklets
       uses: stefanzweifel/git-auto-commit-action@v4
