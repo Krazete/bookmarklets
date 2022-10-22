@@ -1,74 +1,125 @@
+# Bookmarklets
+
+A collection of JavaScript bookmarklets I wrote.
+
+<details>
+<summary>Contents</summary>
+
+- [Usage](#usage)
+- [Novelties](#novelties)
+  - [Tri.js](#trijs)
+  - [Piano.js](#pianojs)
+  - [Mouselight.js](#mouselightjs)
+  - [Tic.js](#ticjs)
+  - [Lupire.js](#lupirejs)
+- [YouTube Tools](#youtube-tools)
+  - [YTEngagement.js](#ytengagementjs)
+  - [YTScroller.js](#ytscrollerjs)
+  - [YTLiveStamper.js](#ytlivestamperjs)
+  - [YTStamp.js](#ytstampjs)
+  - [YTSpeed.js](#ytspeedjs)
+  - [YTThumb.js](#ytthumbjs)
+- [Toggles](#toggles)
+  - [Pop.js](#popjs)
+  - [Edit.js](#editjs)
+  - [Invert.js](#invertjs)
+  - [InvertMedia.js](#invertmediajs)
+
+</details>
+
 # Usage
-Copy and paste the source code (linked in the titles) prepended with `javascript:` into your bookmarks and open the bookmark to activate it.  
-For example, the source code `function example() {};` should look like `javascript: function example() {};` when saving it as a bookmark.  
-Note that character limit, comments, and special characters may be an issue when creating a bookmarklet.  
-If there is an issue, try running it through [JSObfuscate](https://www.cleancss.com/javascript-obfuscate/) first.
 
-# [Tri.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/tri.js)
-View a webpage in 3D layers.  
-Includes a settings menu in the top left corner.
+Copy and paste the **minified** script (linked in the titles) into your bookmarks and open the bookmark to activate it.
 
-![tri](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/tri.gif)
+Note:
 
-# [Piano.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/piano.js)
-Add a piano to any webpage.  
-The left menu allows you to adjust:
-- wave type
-- octave level
+- The **full** script may not work in bookmarklet format due to comments (`//`) or certain characters (`%`). Use the **minified** script.
+- You can alternatively use the following script, replacing `[SCRIPT_NAME]` with `tri` or `piano` or `lupire` etc.
+  - `javascript:void(document.head.appendChild(document.createElement("script")).src="https://cdn.jsdelivr.net/gh/Krazete/bookmarklets/[SCRIPT_NAME].js")`
+  - This type of bookmarklet retrieves the script from this repository every time. This has pros and cons.
+    - It is always up-to-date.
+    - It may take longer to load depending on your internet and the servers of GitHub and jsDelivr.
+    - It may not work on some websites due to CORB or other security measures.
+- Bookmarklets must have `javascript:` at the beginning to work.  Some browsers automatically delete this label when pasting, so make sure it's there.
+
+# Novelties
+
+These bookmarklets are toys or games. I spent the most time crafting these.
+
+## [Tri.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/tri.min.js)
+
+View a webpage in 3D layers. Includes a settings menu in the top left corner to control various dimensional aspects.
+
+![tri](https://github.com/Krazete/bookmarklets/blob/master/gif/tri.gif)
+
+## [Piano.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/piano.min.js)
+
+Add a piano to any webpage.
+
+Left Menu:
+
+- Wave: waveform type
+- Pitch: octave level
   - can also use left and right keyboard arrows
-- axis tilt
-  - can also use  up and down keyboard arrows
+- Tilt: piano angle
+  - can also use up and down keyboard arrows
 
-The right menu has the following buttons:
-- \[# ▶\]: play button
-- \[# ◼\]: stop button
-- \[↻ #\]: history playback button
-- \[✖\]: delete a disc or clear history
-  - can also clear history with spacebar
-- \[⬇\]: save history as a a disc
-- \[⬆︎\]: export all saved discs
+Right Menu:
+
+- `↻ ▶`/`↻ ◼`: play/stop recording
+  - recording starts automatically from the first note you play
+- `⬇`: save recording as a track
+- `✖`: toggle deletion mode
+  - after entering deletion mode, click `↻ ✖` or `n ✖` to reset recording or delete track #n
+  - can also reset recording with spacebar
+- `n ▶`/`n ◼`: play/stop track #n
+- `⬆︎`: export all tracks
+  - search console output for the track (disc) you want to save and paste it at the end of `piano.disc` list in the script
   - only useful with a local copy of the source code (e.g. me and pull requesters)
 
-![piano](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/piano.gif)
+![piano](https://github.com/Krazete/bookmarklets/blob/master/gif/piano.gif)
 
-# [MouseLight.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/mouselight.js)
-Simulate a flashlight. Works best on websites whose HTML elements are deeply nested.
+## [Mouselight.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/mouselight.min.js)
 
-![mouselight](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/mouselight.gif)
+Simulate a flashlight. Works best on websites with deeply nested HTML elements.
 
-# [Tic.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/tic.js)
-A game of ultimate tic-tac-toe.  
-The rules are explained [here](https://mathwithbaddrawings.com/2013/06/16/ultimate-tic-tac-toe/).
+![mouselight](https://github.com/Krazete/bookmarklets/blob/master/gif/mouselight.gif)
 
-![tic](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/tic.gif)
+## [Tic.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/tic.min.js)
 
-# [Lupire.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/lupire.js)
-A replicated Lumosity game.  
-See Lumosity's [pinball recall](https://www.lumosity.com/brain-games/pinball-recall).
+A game of ultimate tic-tac-toe. The rules are explained [here](https://mathwithbaddrawings.com/2013/06/16/ultimate-tic-tac-toe/).
 
-![lupire](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/lupire.gif)
+![tic](https://github.com/Krazete/bookmarklets/blob/master/gif/tic.gif)
 
-# [YTEngagement.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytengagement.js)
-Preview the likes-to-views ratio of YouTube videos.  
-For easier visibility, the ratio bar is displayed as `log(likes + 1) / log(views + 1)`.  
-This is more useful with a userscript manager like TamperMonkey.
+## [Lupire.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/lupire.min.js)
 
-![ytengagement](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/ytsentiment.gif)
+A replicated memory game. See **Lu**mosity's [**pi**nball **re**call](https://lumosity.com/brain-games/pinball-recall).
 
-# [YTScroller.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytscroller.js)
-Watch a video and read comments simultaneously.  
-This is more useful with a userscript manager like TamperMonkey.
+![lupire](https://github.com/Krazete/bookmarklets/blob/master/gif/lupire.gif)
 
-![ytscroller](https://github.com/Krazete/bookmarklets/blob/master/gif/dithered/ytscroller.gif)
+# YouTube Tools
 
-# [YTStamp.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytstamp.js)
-Keep a time history so you can return to normal viewing after clicking a timestamp.  
-Recommended to pair with YTScroller.js due to its scrollAnchor function.  
-Not recommended to pair with YTLiveStamper.js due to overlap.
+These bookmarklets are specifically for YouTube. They're written for desktop, but they should work on the mobile website too.
 
-# [YTLiveStamper.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytlivestamper.js)
-Record timestamps during a livestream.  
-Here's an explanation of the parts of the YTLiveStamper panel:
+Many of these are more useful with a userscript manager like TamperMonkey.
+
+## [YTEngagement.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytengagement.min.js)
+
+Preview the likes-to-views ratio of YouTube videos. For easier visibility, the ratio bar is displayed as `log(likes + 1) / log(views + 1)`.
+
+![ytengagement](https://github.com/Krazete/bookmarklets/blob/master/gif/ytsentiment.gif)
+
+## [YTScroller.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytscroller.min.js)
+
+Keep the video in view while scrolling down the comment section.
+
+![ytscroller](https://github.com/Krazete/bookmarklets/blob/master/gif/ytscroller.gif)
+
+## [YTLiveStamper.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytlivestamper.min.js)
+
+Record timestamps for a video even during a livestream.
+
+Panel Parts:
 
 - Stamplist
   - the minus and plus buttons increment the timestamp accordingly
@@ -79,19 +130,54 @@ Here's an explanation of the parts of the YTLiveStamper panel:
   - it's there so you can return to real time after checking a past timestamp
   - usually useless since most live streams don't allow backtracking in the first place
 - "Import List" Button
-  - reads textbox to create new stamplist
-  - useful if you need to refresh the page or adjust timestamp times
-  - *note: overwrites stamplist*
+  - overwrites current stamplist with textbox contents
+  - useful if you need to refresh the page or delete individual timestamps
 - "Add Timestamp" Button
   - adds current time (minus 5 seconds) to stamplist
 - "Copy List" Button
-  - writes stamplist to textbox
-  - copies textbox to clipboard
-  - double-click to copy stamplist as list of urls (cannot be imported)
-  - *note: overwrites clipboard*
+  - writes stamplist to textbox and copies textbox to clipboard
+  - double-click to copy stamplist as list of urls instead (cannot be imported)
 
-Note that YouTube hides comments with an unusually large amount of timestamps relative to regular text.  
-Having a note for every timestamp will usually ensure your comment remains visible to others.
+Note that YouTube will hide a comment if it has an unusually large amount of timestamps relative to normal text.
 
-# [Pop.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/pop.js)
-Toggle picture-in-picture mode with one click.
+Having a note for every timestamp will help ensure your comment remains visible to others.
+
+## [YTStamp.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytstamp.min.js)
+
+Keep a time history so you can return to normal viewing after clicking a timestamp.
+
+Recommended to pair with YTScroller.js due to its `scrollAnchor` function.
+
+Not recommended to pair with YTLiveStamper.js due to overlap.
+
+## [YTSpeed.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytspeed.min.js)
+
+Speed up the video even more. Also has a slider to dim the video because why not?
+
+Note: At x10 speed, the video usually plays faster than it can load.
+
+This bookmarklet works for videos on other websites too.
+
+## [YTThumb.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytthumb.min.js)
+
+Get the maximum resolution thumbnail of the current video.
+
+# Toggles
+
+These bookmarklets are simple tools and have no UI. Click the bookmarklet to turn it on or off.
+
+## [Pop.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/pop.min.js)
+
+Toggle picture-in-picture mode for the first video on the page.
+
+## [Edit.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/edit.min.js)
+
+Make the entire webpage editable.
+
+## [Invert.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/invert.min.js)
+
+Invert the webpage. Useful with InvertMedia.js to create a dark mode for bright websites.
+
+## [InvertMedia.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/invertmedia.min.js)
+
+Invert image and video elements.
