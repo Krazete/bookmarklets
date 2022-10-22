@@ -40,6 +40,7 @@ Note:
     - It may take longer to load depending on your internet and the servers of GitHub and jsDelivr.
     - It may not work on some websites due to CORB or other security measures.
 - Bookmarklets must have `javascript:` at the beginning to work.  Some browsers automatically delete this label when pasting, so make sure it's there.
+- If pasted into the developer console or used within a userscript, the minified script may not work. This is because I replaced all `%`s with `%25` in the minified scripts to make them bookmarklet-compatible. Use the full script for userscript purposes.
 
 # Novelties
 
@@ -54,6 +55,8 @@ View a webpage in 3D layers. Includes a settings menu in the top left corner to 
 ## [Piano.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/piano.min.js)
 
 Add a piano to any webpage.
+
+If you want shorter code for some reason, replace the big `disc:[[],[{ ... timeout:null}]]` block with `disc:[[]]`. This deletes the sample tracks.
 
 Left Menu:
 
