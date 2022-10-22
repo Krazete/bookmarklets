@@ -89,11 +89,15 @@ Simulate a flashlight. Works best on websites with deeply nested HTML elements.
 
 A game of ultimate tic-tac-toe. The rules are explained [here](https://mathwithbaddrawings.com/2013/06/16/ultimate-tic-tac-toe/).
 
+[TicMobile.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ticmobile.min.js) is optimized for mobile devices.
+
 ![tic](https://github.com/Krazete/bookmarklets/blob/master/gif/tic.gif)
 
 ## [Lupire.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/lupire.min.js)
 
 A replicated memory game. See **Lu**mosity's [**pi**nball **re**call](https://lumosity.com/brain-games/pinball-recall).
+
+[LupireMobile.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/lupiremobile.min.js) is optimized for mobile devices.
 
 ![lupire](https://github.com/Krazete/bookmarklets/blob/master/gif/lupire.gif)
 
