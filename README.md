@@ -107,7 +107,7 @@ A replicated memory game. See **Lu**mosity's [**pi**nball **re**call](https://lu
 
 These bookmarklets are specifically for YouTube. They're written for desktop, but they should work on the mobile website too.
 
-Many of these are more useful with a userscript manager like TamperMonkey.
+Many of these are more useful with a userscript manager like TamperMonkey. Use the full script in these cases.
 
 ## [YTEngagement.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytengagement.min.js)
 
