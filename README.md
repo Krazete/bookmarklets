@@ -16,7 +16,6 @@ A collection of JavaScript bookmarklets I wrote.
   - [YTEngagement.js](#ytengagementjs)
   - [YTScroller.js](#ytscrollerjs)
   - [YTLiveStamper.js](#ytlivestamperjs)
-  - [YTStamp.js](#ytstampjs)
   - [YTSpeed.js](#ytspeedjs)
   - [YTThumb.js](#ytthumbjs)
 - [Toggles](#toggles)
@@ -145,14 +144,6 @@ Panel Parts:
 Note that YouTube will hide a comment if it has an unusually large amount of timestamps relative to normal text.
 
 Having a note for every timestamp will help ensure your comment remains visible to others.
-
-## [YTStamp.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytstamp.min.js)
-
-Keep a time history so you can return to normal viewing after clicking a timestamp.
-
-Recommended to pair with YTScroller.js due to its `scrollAnchor` function.
-
-Not recommended to pair with YTLiveStamper.js due to overlap.
 
 ## [YTSpeed.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytspeed.min.js)
 
