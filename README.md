@@ -18,6 +18,7 @@ A collection of JavaScript bookmarklets I wrote.
   - [YTLiveStamper.js](#ytlivestamperjs)
   - [YTSpeed.js](#ytspeedjs)
   - [YTThumb.js](#ytthumbjs)
+  - [YTGlow.js](#ytglowjs)
 - [Toggles](#toggles)
   - [Pop.js](#popjs)
   - [Edit.js](#editjs)
@@ -159,6 +160,20 @@ This bookmarklet works for videos on other websites too.
 ## [YTThumb.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytthumb.min.js)
 
 Get the maximum resolution thumbnail of the current video.
+
+## [YTGlow.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytglow.min.js)
+
+An alternative to YouTube's ambient mode. This bookmarklet is togglable.
+
+| Ambient Mode | YTGlow.js |
+|---|---|
+| Works by slowly radiating the video's colors outward. | Works by adding a simple blur effect behind the video. |
+| If the video suddenly turns dark, the glow will linger for a while. |  If the video suddenly turns dark, the glow will disappear instantly. |
+| Not available for live or unprocessed videos. | Works on all videos. |
+
+It also kinda works with the light theme if you remove the `canvas.style.mixBlendMode = "lighten"` line.
+
+Darkness isn't supposed to glow though, so it'll looks strange.
 
 # Toggles
 
