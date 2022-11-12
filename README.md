@@ -163,7 +163,7 @@ Get the maximum resolution thumbnail of the current video.
 
 ## [YTGlow.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytglow.min.js)
 
-An alternative to YouTube's ambient mode. This bookmarklet is togglable.
+An alternative to YouTube's ambient mode.
 
 | Ambient Mode | YTGlow.js |
 |---|---|
@@ -171,9 +171,9 @@ An alternative to YouTube's ambient mode. This bookmarklet is togglable.
 | If the video suddenly turns dark, the glow will linger for a while. |  If the video suddenly turns dark, the glow will disappear instantly. |
 | Not available for live or unprocessed videos. | Works on all videos. |
 
-It also kinda works with the light theme if you remove the `canvas.style.mixBlendMode = "lighten"` line.
+It also kinda works with the light theme if you remove the `canvas.style.mixBlendMode = "lighten"` line. Darkness isn't supposed to glow though, so it'll looks strange.
 
-Darkness isn't supposed to glow though, so it'll looks strange.
+It's a little buggy, especially if using the miniplayer. This bookmarklet is togglable, so you can turn it off easily if it suddenly blurs the entire screen or something.
 
 # Toggles
 

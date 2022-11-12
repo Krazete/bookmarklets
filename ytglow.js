@@ -14,7 +14,7 @@ function togglefog() {
         container.insertBefore(canvas, container.firstChild);
         var context = canvas.getContext("2d");
         function updatefog() {
-            var video = document.querySelector("ytd-watch-flexy video");
+            var video = document.querySelector("ytd-watch-flexy video") || document.querySelector("video");
             var rect = video.getBoundingClientRect();
             canvas.width = rect.width / 8;
             canvas.height = rect.height / 8;
