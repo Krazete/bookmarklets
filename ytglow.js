@@ -10,11 +10,11 @@ function togglefog() {
         canvas.style.transform = "translate(-50%)";
         canvas.style.filter = "blur(100px)";
         canvas.style.mixBlendMode = "lighten";
-        var container = document.querySelector("ytd-player #container");
+        var container = document.querySelector("ytd-watch-flexy ytd-player #container");
         container.insertBefore(canvas, container.firstChild);
         var context = canvas.getContext("2d");
         function updatefog() {
-            var video = document.querySelector("video");
+            var video = document.querySelector("ytd-watch-flexy video");
             var rect = video.getBoundingClientRect();
             canvas.width = rect.width / 8;
             canvas.height = rect.height / 8;
