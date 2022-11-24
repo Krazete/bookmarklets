@@ -8,7 +8,7 @@ function togglefog() {
         canvas.style.position = "absolute";
         canvas.style.left = "50%";
         canvas.style.transform = "translate(-50%)";
-        canvas.style.filter = "blur(100px)";
+        canvas.style.filter = "blur(100px) contrast(1.5)";
         canvas.style.mixBlendMode = "lighten";
         var container = document.querySelector("ytd-watch-flexy ytd-player #container");
         container.insertBefore(canvas, container.firstChild);
