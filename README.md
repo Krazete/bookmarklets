@@ -51,7 +51,7 @@ These bookmarklets are toys or games. I spent the most time crafting these.
 
 View a webpage in 3D layers. Includes a settings menu in the top left corner to control various dimensional aspects.
 
-![tri](https://github.com/Krazete/bookmarklets/blob/master/gif/tri.gif)
+![tri](gif/tri.gif)
 
 ## [Piano.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/piano.min.js)
 
@@ -80,13 +80,13 @@ Right Menu:
   - search console output for the track (disc) you want to save and paste it at the end of `piano.disc` list in the script
   - only useful with a local copy of the source code (e.g. me and pull requesters)
 
-![piano](https://github.com/Krazete/bookmarklets/blob/master/gif/piano.gif)
+![piano](gif/piano.gif)
 
 ## [Mouselight.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/mouselight.min.js)
 
 Simulate a flashlight. Works best on websites with deeply nested HTML elements.
 
-![mouselight](https://github.com/Krazete/bookmarklets/blob/master/gif/mouselight.gif)
+![mouselight](gif/mouselight.gif)
 
 ## [Tic.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/tic.min.js)
 
@@ -94,7 +94,7 @@ A game of ultimate tic-tac-toe. The rules are explained [here](https://mathwithb
 
 [TicMobile.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ticmobile.min.js) is optimized for mobile devices.
 
-![tic](https://github.com/Krazete/bookmarklets/blob/master/gif/tic.gif)
+![tic](gif/tic.gif)
 
 ## [Lupire.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/lupire.min.js)
 
@@ -102,7 +102,7 @@ A replicated memory game. See **Lu**mosity's [**pi**nball **re**call](https://lu
 
 [LupireMobile.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/lupiremobile.min.js) is optimized for mobile devices.
 
-![lupire](https://github.com/Krazete/bookmarklets/blob/master/gif/lupire.gif)
+![lupire](gif/lupire.gif)
 
 # YouTube Tools
 
@@ -114,13 +114,13 @@ Many of these are more useful with a userscript manager like TamperMonkey. Use t
 
 Preview the likes-to-views ratio of YouTube videos. For easier visibility, the ratio bar is displayed as `log(likes + 1) / log(views + 1)`. [[full script](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytengagement.js)]
 
-![ytengagement](https://github.com/Krazete/bookmarklets/blob/master/gif/ytsentiment.gif)
+![ytengagement](gif/ytsentiment.gif)
 
 ## [YTScroller.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytscroller.min.js)
 
 Keep the video in view while scrolling down the comment section. [[full script](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytscroller.js)]
 
-![ytscroller](https://github.com/Krazete/bookmarklets/blob/master/gif/ytscroller.gif)
+![ytscroller](gif/ytscroller.gif)
 
 ## [YTLiveStamper.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytlivestamper.min.js)
 
@@ -194,3 +194,9 @@ Invert the webpage. Useful with InvertMedia.js to create a dark mode for bright 
 ## [InvertMedia.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/invertmedia.min.js)
 
 Invert image and video elements.
+
+## [InvertSelection.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/invertselection.min.js)
+
+Select an area of the page to invert. This works by sampling 100 points within your selection and inverting the topmost common element.
+
+This bookmarklet doesn't really qualify as a Toggle, but the other inverters are here so `¯\_(ツ)_/¯`.
