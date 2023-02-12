@@ -24,6 +24,7 @@ A collection of JavaScript bookmarklets I wrote.
   - [Edit.js](#editjs)
   - [Invert.js](#invertjs)
   - [InvertMedia.js](#invertmediajs)
+  - [InvertSelection.js](#invertselectionjs)
 
 </details>
 
@@ -47,13 +48,13 @@ Note:
 
 These bookmarklets are toys or games. I spent the most time crafting these.
 
-## [Tri.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/tri.min.js)
+## [Tri.js](min/tri.min.js)
 
 View a webpage in 3D layers. Includes a settings menu in the top left corner to control various dimensional aspects.
 
 ![tri](gif/tri.gif)
 
-## [Piano.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/piano.min.js)
+## [Piano.js](min/piano.min.js)
 
 Add a piano to any webpage.
 
@@ -82,25 +83,25 @@ Right Menu:
 
 ![piano](gif/piano.gif)
 
-## [Mouselight.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/mouselight.min.js)
+## [Mouselight.js](min/mouselight.min.js)
 
 Simulate a flashlight. Works best on websites with deeply nested HTML elements.
 
 ![mouselight](gif/mouselight.gif)
 
-## [Tic.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/tic.min.js)
+## [Tic.js](min/tic.min.js)
 
 A game of ultimate tic-tac-toe. The rules are explained [here](https://mathwithbaddrawings.com/2013/06/16/ultimate-tic-tac-toe/).
 
-[TicMobile.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ticmobile.min.js) is optimized for mobile devices.
+[TicMobile.js](min/ticmobile.min.js) is optimized for mobile devices.
 
 ![tic](gif/tic.gif)
 
-## [Lupire.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/lupire.min.js)
+## [Lupire.js](min/lupire.min.js)
 
 A replicated memory game. See **Lu**mosity's [**pi**nball **re**call](https://lumosity.com/brain-games/pinball-recall).
 
-[LupireMobile.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/lupiremobile.min.js) is optimized for mobile devices.
+[LupireMobile.js](min/lupiremobile.min.js) is optimized for mobile devices.
 
 ![lupire](gif/lupire.gif)
 
@@ -110,21 +111,21 @@ These bookmarklets are specifically for YouTube. They're written for desktop, bu
 
 Many of these are more useful with a userscript manager like TamperMonkey. Use the full script in these cases.
 
-## [YTEngagement.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytengagement.min.js)
+## [YTEngagement.js](min/ytengagement.min.js)
 
-Preview the likes-to-views ratio of YouTube videos. For easier visibility, the ratio bar is displayed as `log(likes + 1) / log(views + 1)`. [[full script](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytengagement.js)]
+Preview the likes-to-views ratio of YouTube videos. For easier visibility, the ratio bar is displayed as `log(likes + 1) / log(views + 1)`. [[full script](ytengagement.js)]
 
 ![ytengagement](gif/ytsentiment.gif)
 
-## [YTScroller.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytscroller.min.js)
+## [YTScroller.js](min/ytscroller.min.js)
 
-Keep the video in view while scrolling down the comment section. [[full script](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytscroller.js)]
+Keep the video in view while scrolling down the comment section. [[full script](ytscroller.js)]
 
 ![ytscroller](gif/ytscroller.gif)
 
-## [YTLiveStamper.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytlivestamper.min.js)
+## [YTLiveStamper.js](min/ytlivestamper.min.js)
 
-Record timestamps for a video even during a livestream. [[full script](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytlivestamper.js)]
+Record timestamps for a video even during a livestream. [[full script](ytlivestamper.js)]
 
 Panel Parts:
 
@@ -149,19 +150,19 @@ Note that YouTube will hide a comment if it has an unusually large amount of tim
 
 Having a note for every timestamp will help ensure your comment remains visible to others.
 
-## [YTSpeed.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytspeed.min.js)
+## [YTSpeed.js](min/ytspeed.min.js)
 
-Speed up the video even more. Also has a slider to dim the video because why not? [[full script](https://raw.githubusercontent.com/Krazete/bookmarklets/master/ytspeed.js)]
+Speed up the video even more. Also has a slider to dim the video because why not? [[full script](ytspeed.js)]
 
 Note: At x10 speed, the video usually plays faster than it can load.
 
 This bookmarklet works for videos on other websites too.
 
-## [YTThumb.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytthumb.min.js)
+## [YTThumb.js](min/ytthumb.min.js)
 
 Get the maximum resolution thumbnail of the current video.
 
-## [YTGlow.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/ytglow.min.js)
+## [YTGlow.js](min/ytglow.min.js)
 
 An alternative to YouTube's ambient mode.
 
@@ -179,23 +180,23 @@ It's a little buggy, especially if using the miniplayer. This bookmarklet is tog
 
 These bookmarklets are simple tools and have no UI. Click the bookmarklet to turn it on or off.
 
-## [Pop.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/pop.min.js)
+## [Pop.js](min/pop.min.js)
 
 Toggle picture-in-picture mode for the first video on the page.
 
-## [Edit.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/edit.min.js)
+## [Edit.js](min/edit.min.js)
 
 Make the entire webpage editable.
 
-## [Invert.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/invert.min.js)
+## [Invert.js](min/invert.min.js)
 
 Invert the webpage. Useful with InvertMedia.js to create a dark mode for bright websites.
 
-## [InvertMedia.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/invertmedia.min.js)
+## [InvertMedia.js](min/invertmedia.min.js)
 
 Invert image and video elements.
 
-## [InvertSelection.js](https://raw.githubusercontent.com/Krazete/bookmarklets/master/min/invertselection.min.js)
+## [InvertSelection.js](min/invertselection.min.js)
 
 Select an area of the page to invert. This works by sampling 100 points within your selection and inverting the topmost common element.
 
