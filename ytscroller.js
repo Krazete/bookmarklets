@@ -38,8 +38,11 @@ function videoAnchor() {
 		video.style.left = (playerRect.width - videoRect.width) / 2 + "px";
 	}
 }
+window.addEventListener("scroll", videoAnchor);
+window.addEventListener("resize", videoAnchor);
+
 /* keep scroll position on timestamp click */
-function scrollAnchor() {
+function scrollAnchor(e) {
 	var x = window.scrollX;
 	var y = window.scrollY;
 	var t0;
@@ -48,12 +51,12 @@ function scrollAnchor() {
 		if (typeof t0 == "undefined") {
 			t0 = t1;
 		}
-		if (t1 - t0 < 1) {
+		if (t1 - t0 < 1000) {
 			requestAnimationFrame(scrollToXY);
 		}
 	}
-	requestAnimationFrame(scrollToXY);
+	if (e.target.classList.contains("yt-simple-endpoint")) {
+		requestAnimationFrame(scrollToXY);
+	}
 }
-window.addEventListener("scroll", videoAnchor);
-window.addEventListener("resize", videoAnchor);
 window.addEventListener("mouseup", scrollAnchor);
