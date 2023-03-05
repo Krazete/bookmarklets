@@ -51,11 +51,11 @@ function scrollAnchor(e) {
 		if (typeof t0 == "undefined") {
 			t0 = t1;
 		}
-		if (t1 - t0 < 1000) {
+		if (t1 - t0 < 1) {
 			requestAnimationFrame(scrollToXY);
 		}
 	}
-	if (e.target.classList.contains("yt-simple-endpoint")) {
+	if (e.target.classList.contains("yt-simple-endpoint") && e.button == 0) {
 		requestAnimationFrame(scrollToXY);
 	}
 }
