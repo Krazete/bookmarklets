@@ -21,13 +21,13 @@ function videoAnchor() {
 		var widthRatio = (window.innerWidth - commentRect.right) / videoRect.width;
 		var heightRatio = window.innerHeight / videoRect.height;
 		player.style.position = "fixed";
-		player.style.right = 0;
+		player.style.right = "0";
 		player.style.top = mastRect.height + "px";
 		player.style.width = videoRect.width + "px";
 		player.style.height = videoRect.height + "px";
 		player.style.transformOrigin = "right top";
 		player.style.transform = "scale(" + Math.min(widthRatio, heightRatio) + ")";
-		player.style.zIndex = 1500;
+		player.style.zIndex = "1500";
 		control.style.left = "12px";
 		control.style.width = (videoRect.width - 24) + "px";
 		video.style.left = 0;
@@ -42,21 +42,48 @@ window.addEventListener("scroll", videoAnchor);
 window.addEventListener("resize", videoAnchor);
 
 /* keep scroll position on timestamp click */
-function scrollAnchor(e) {
-	var x = window.scrollX;
-	var y = window.scrollY;
-	var t0;
-	function scrollToXY(t1) {
+/* and add a scroll position return button in case it doesn't work */
+(function () {
+	var x, y;
+	var returner = document.createElement("div");
+	returner.innerHTML = "▼";
+	returner.style.background = "red";
+	returner.style.color = "white";
+	returner.style.fontSize = "24px";
+	returner.style.position = "absolute";
+	returner.style.left = "50%";
+	returner.style.top = "0";
+	returner.style.transform = "translateX(-50%)";
+	returner.style.display = "none";
+	returner.style.borderRadius = "0 0 8px 8px";
+	returner.style.zIndex = "8000";
+	returner.style.cursor = "pointer";
+	document.body.appendChild(returner);
+
+	function returnToStamp() {
+		returner.style.display = "none";
 		window.scrollTo(x, y);
-		if (typeof t0 == "undefined") {
-			t0 = t1;
+	}
+
+	function scrollAnchor(e) {
+		var t0;
+		function scrollToXY(t1) {
+			window.scrollTo(x, y);
+			if (typeof t0 == "undefined") {
+				t0 = t1;
+			}
+			if (t1 - t0 < 1) {
+				requestAnimationFrame(scrollToXY);
+			}
 		}
-		if (t1 - t0 < 1) {
+		if (e.target.classList.contains("yt-simple-endpoint") && e.button == 0) {
+			x = window.scrollX;
+			y = window.scrollY;
+			returner.style.display = "block";
 			requestAnimationFrame(scrollToXY);
 		}
 	}
-	if (e.target.classList.contains("yt-simple-endpoint") && e.button == 0) {
-		requestAnimationFrame(scrollToXY);
-	}
-}
-window.addEventListener("mouseup", scrollAnchor);
+
+	window.addEventListener("mouseup", scrollAnchor);
+	returner.addEventListener("click", returnToStamp);
+})();
