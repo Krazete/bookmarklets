@@ -164,7 +164,7 @@ Get the maximum resolution thumbnail of the current video.
 
 ## [YTGlow.js](min/ytglow.min.js)
 
-An alternative to YouTube's ambient mode.
+An alternative to YouTube's ambient mode. [[full script](ytglow.js)]
 
 | Ambient Mode | YTGlow.js |
 |---|---|

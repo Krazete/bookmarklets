@@ -1,6 +1,5 @@
-javascript:
 var fograf;
-function togglefog() {
+(function() {
     var canvas = document.getElementById("videofog");
     if (!canvas) {
         canvas = document.createElement("canvas");
@@ -10,8 +9,6 @@ function togglefog() {
         canvas.style.transform = "translate(-50%)";
         canvas.style.filter = "blur(100px) contrast(1.5)";
         canvas.style.mixBlendMode = "lighten";
-        var container = document.querySelector("ytd-watch-flexy ytd-player #container");
-        container.insertBefore(canvas, container.firstChild);
         var context = canvas.getContext("2d");
         function updatefog() {
             var video = document.querySelector("ytd-watch-flexy video") || document.querySelector("video");
@@ -23,11 +20,19 @@ function togglefog() {
             context.drawImage(video, 0, 0, canvas.width, canvas.height);
             fograf = requestAnimationFrame(updatefog);
         }
-        updatefog(canvas);
+        function waitForContainer() {
+            try {
+                var container = document.querySelector("ytd-watch-flexy ytd-player #container");
+                container.insertBefore(canvas, container.firstChild);
+                updatefog();
+            } catch (e) {
+                requestAnimationFrame(waitForContainer);
+            }
+        }
+        waitForContainer();
     }
     else {
         canvas.remove();
         cancelAnimationFrame(fograf);
     }
-}
-togglefog();
+})();
