@@ -1,6 +1,7 @@
 var video = document.getElementsByTagName("video")[0];
 var pop;
 function popout() {
+	video.removeAttribute("disablePictureInPicture");
 	video.requestPictureInPicture();
 }
 function popin() {
