@@ -20,7 +20,7 @@ function videoAnchor() {
 		var commentRect = comment.getBoundingClientRect();
 		var minRatio = 320 / videoRect.width;
 		var widthRatio = (window.innerWidth - commentRect.right) / videoRect.width;
-		var heightRatio = window.innerHeight / videoRect.height;
+		var heightRatio = (window.innerHeight - mastRect.height) / videoRect.height;
 		player.style.position = "fixed";
 		player.style.right = "0";
 		player.style.top = mastRect.height + "px";
