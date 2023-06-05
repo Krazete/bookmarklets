@@ -18,6 +18,7 @@ function videoAnchor() {
 			document.getElementById("primary")
 		);
 		var commentRect = comment.getBoundingClientRect();
+		var minRatio = 320 / videoRect.width;
 		var widthRatio = (window.innerWidth - commentRect.right) / videoRect.width;
 		var heightRatio = window.innerHeight / videoRect.height;
 		player.style.position = "fixed";
@@ -26,7 +27,7 @@ function videoAnchor() {
 		player.style.width = videoRect.width + "px";
 		player.style.height = videoRect.height + "px";
 		player.style.transformOrigin = "right top";
-		player.style.transform = "scale(" + Math.min(widthRatio, heightRatio) + ")";
+		player.style.transform = "scale(" + Math.max(minRatio, Math.min(widthRatio, heightRatio)) + ")";
 		player.style.zIndex = "1500";
 		control.style.left = "12px";
 		control.style.width = (videoRect.width - 24) + "px";
