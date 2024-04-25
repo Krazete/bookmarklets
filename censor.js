@@ -1,24 +1,5 @@
 javascript:
-var censorStyle = document.createElement("style");
-censorStyle.innerHTML = `.censor {
-    opacity: 1 !important;
-    image-rendering: pixelated !important;
-}
-.censor + img {
-    display: none !important;
-}
-.censor + video {
-    visibility: hidden !important;
-}
-.censor-parent:hover .censor {
-    display: none !important;
-}
-.censor-parent:hover .censor + img {
-    display: unset !important;
-}
-.censor-parent:hover .censor + video {
-    visibility: visible !important;
-}`;
+var censorStyle;
 var sensed;
 var censors;
 var af;
@@ -112,6 +93,26 @@ if (af) {
     censorStyle.remove();
 }
 else {
+    censorStyle = document.createElement("style");
+    censorStyle.innerHTML = `.censor {
+    opacity: 1 !important;
+    image-rendering: pixelated !important;
+}
+.censor + img {
+    display: none !important;
+}
+.censor + video {
+    visibility: hidden !important;
+}
+.censor-parent:hover .censor {
+    display: none !important;
+}
+.censor-parent:hover .censor + img {
+    display: unset !important;
+}
+.censor-parent:hover .censor + video {
+    visibility: visible !important;
+}`;
     document.body.appendChild(censorStyle);
     sensed = [];
     censors = [];
