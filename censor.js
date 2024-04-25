@@ -51,6 +51,7 @@ function updateCensor(e, canvas) {
 
         var context = canvas.getContext("2d");
         context.drawImage(e, 0, 0, canvas.width, canvas.height);
+        e.parentElement.classList.add("censor-parent");
         return canvas;
     }
 }
