@@ -60,6 +60,8 @@ Add a piano to any webpage.
 
 If you want shorter code for some reason, replace the big `disc:[[],[{ ... timeout:null}]]` block with `disc:[[]]`. This deletes the sample tracks.
 
+![piano](gif/piano.gif)
+
 Left Menu:
 
 - Wave: waveform type
@@ -80,8 +82,6 @@ Right Menu:
 - `⬆︎`: export all tracks
   - search console output for the track (disc) you want to save and paste it at the end of `piano.disc` list in the script
   - only useful with a local copy of the source code (e.g. me and pull requesters)
-
-![piano](gif/piano.gif)
 
 ## [Mouselight.js](min/mouselight.min.js)
 
@@ -104,6 +104,24 @@ A replicated memory game. See **Lu**mosity's [**pi**nball **re**call](https://lu
 [LupireMobile.js](min/lupiremobile.min.js) is optimized for mobile devices.
 
 ![lupire](gif/lupire.gif)
+
+## [Censor.js](min/censor.min.js)
+
+Pixelates all visible img and video elements. Uncensors on hover.
+
+![censor](gif/censor.gif)
+
+Very buggy. Issues include:
+
+- most lazy-loaded images won't load at all
+- may not update to style changes of img or video
+- doesn't work for iframes
+- GIFs only show the first frame
+- layout shifts
+- will shrink or stretch if img or video doesn't fill its space
+- hovering doesn't always uncensor
+
+Instead of fixing these, I made the bookmarklet togglable. Click twice to reset the censors. (This fixes the first two issues only).
 
 # YouTube Tools
 
