@@ -22,7 +22,7 @@ censorStyle.innerHTML = `.censor {
 var sensed;
 var censors;
 var af;
-var quality = 1; /* higher = more pixels */
+var quality = 1.5; /* higher = more pixels */
 
 function onScreen(r) {
     return r.right > 0 && r.bottom > 0 && r.left < innerWidth && r.top < innerHeight;
