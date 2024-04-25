@@ -1,6 +1,6 @@
 javascript:
-var style = document.createElement("style");
-style.innerHTML = `.censor {
+var censorStyle = document.createElement("style");
+censorStyle.innerHTML = `.censor {
     opacity: 1 !important;
     image-rendering: pixelated !important;
 }
@@ -109,10 +109,10 @@ if (af) {
     for (var e of sensed) {
         e.parentElement.classList.remove("censor-parent");
     }
-    style.remove();
+    censorStyle.remove();
 }
 else {
-    document.body.appendChild(style);
+    document.body.appendChild(censorStyle);
     sensed = [];
     censors = [];
     sense();
