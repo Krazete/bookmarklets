@@ -12,6 +12,7 @@ A collection of JavaScript bookmarklets I wrote.
   - [Mouselight.js](#mouselightjs)
   - [Tic.js](#ticjs)
   - [Lupire.js](#lupirejs)
+  - [Censor.js](#censorjs)
 - [YouTube Tools](#youtube-tools)
   - [YTEngagement.js](#ytengagementjs)
   - [YTScroller.js](#ytscrollerjs)
