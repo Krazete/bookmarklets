@@ -13,8 +13,8 @@ var fograf;
         function updatefog() {
             var video = document.querySelector("ytd-watch-flexy video") || document.querySelector("video");
             var rect = video.getBoundingClientRect();
-            canvas.width = rect.width / 8;
-            canvas.height = rect.height / 8;
+            canvas.width = 64;
+            canvas.height = 64 * rect.height / rect.width;
             canvas.style.width = rect.width + "px";
             canvas.style.height = rect.height + "px";
             context.drawImage(video, 0, 0, canvas.width, canvas.height);
