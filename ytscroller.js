@@ -77,7 +77,7 @@ window.addEventListener("resize", videoAnchor);
 				requestAnimationFrame(scrollToXY);
 			}
 		}
-		if (e.target.classList.contains("yt-simple-endpoint") && e.button == 0) {
+		if (/[?&]t=\d+s/.test(e.target.href)) {
 			x = window.scrollX;
 			y = window.scrollY;
 			returner.style.display = "block";
