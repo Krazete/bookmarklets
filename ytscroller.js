@@ -67,6 +67,7 @@ window.addEventListener("resize", videoAnchor);
 	}
 
 	function scrollAnchor(e) {
+		var a = e.target.closest("a");
 		var t0;
 		function scrollToXY(t1) {
 			window.scrollTo(x, y);
@@ -77,7 +78,7 @@ window.addEventListener("resize", videoAnchor);
 				requestAnimationFrame(scrollToXY);
 			}
 		}
-		if (/[?&]t=\d+s/.test(e.target.href)) {
+		if (a && /[?&]t=\d+s/.test(a.href)) {
 			x = window.scrollX;
 			y = window.scrollY;
 			returner.style.display = "block";
