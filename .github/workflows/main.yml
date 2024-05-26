@@ -23,6 +23,12 @@ jobs:
         replace: "%25"
         include: min/**
         regex: false
+    - name: Replace Faulty Wrapper
+      uses: jacobtomlinson/gha-find-replace@v2
+      with:
+        find: "^!(function.*})(\\(\\);?)$" # !function{}() doesn't work in firefox
+        replace: "($1)$2"
+        include: min/**
     - name: Prepend Labels
       uses: jacobtomlinson/gha-find-replace@v2
       with:
