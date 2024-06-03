@@ -24,9 +24,10 @@ function closePane() {
 }
 
 function updateStamp(stamp, time) {
+	var vid = location.search.split(/.+v=|&/)[1] || location.href.split(/\/live\/|\/shorts\/|\?|&/)[1];
 	stamp.innerHTML = formatTime(time);
 	stamp.dataset.time = time;
-	stamp.href = "https://youtu.be/" + location.search.split(/.+v=|&/)[1] + "?t=" + time;
+	stamp.href = "https://youtu.be/" + vid + "?t=" + time;
 }
 
 function clickStamp(e) {
