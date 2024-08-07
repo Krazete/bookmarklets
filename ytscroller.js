@@ -47,7 +47,7 @@ window.addEventListener("resize", videoAnchor);
 (function () {
 	var x, y;
 	var returner = document.createElement("div");
-	returner.innerHTML = "▼";
+	returner.textContent = "▼";
 	returner.style.background = "red";
 	returner.style.color = "white";
 	returner.style.fontSize = "24px";

@@ -19,7 +19,11 @@ menu.style.width=9*unit+'px';
 menu.style.transform='translate(-50%,-50%)';
 menu.style.webkitTransform='translate(-50%,-50%)';
 menu.style.zIndex=9999;
-menu.innerHTML='<a style=\'background:white;position:absolute;left:100%;cursor:pointer\' onClick=\'menu.remove()\'>exit</a>';
+var exit=document.createElement('a');
+exit.style='background:white;position:absolute;left:100%;cursor:pointer';
+exit.textContent='exit';
+exit.addEventListener('click',function(){menu.remove()});
+menu.appendChild(exit);
 document.body.appendChild(menu);
 
 /* Create board. */
@@ -52,9 +56,9 @@ for(var i=0;i<3;i++){
 			for(var l=0;l<3;l++){
 				var box=document.createElement('div');
 				
-				box.setAttribute('onMouseOver','this.style.background=\'rgba(0,0,0,0.25)\'');
-				box.setAttribute('onMouseOut','this.style.background=\'transparent\'');
-				box.setAttribute('onClick','pick(this)');
+				box.addEventListener('mouseover',onmouseover);
+				box.addEventListener('mouseout',onmouseout);
+				box.addEventListener('click',pick);
 				
 				box.style.position='absolute';
 				box.style.top=k*100/3+'%';
@@ -178,7 +182,8 @@ function marker(obj){
 }
 
 /* Do stuff to a box upon click. */
-function pick(b){
+function pick(){
+	var b=this;
 	/* Mark box. */
 	marker(b);
 	
@@ -223,9 +228,9 @@ function pick(b){
 /* Disables a box. */
 function disable(b){
 	b.style.background='rgba(0,0,0,0.25)';
-	b.setAttribute('onMouseOver','');
-	b.setAttribute('onMouseOut','');
-	b.setAttribute('onClick','');
+	b.removeEventListener('mouseover',onmouseover);
+	b.removeEventListener('mouseout',onmouseout);
+	b.removeEventListener('click',pick);
 }
 
 /* Enables a box. */
@@ -234,7 +239,15 @@ function enable(b){
 	if(b.mark==null){
 		b.style.background='transparent';
 	}
-	b.setAttribute('onMouseOver','this.style.background=\'rgba(0,0,0,0.25)\'');
-	b.setAttribute('onMouseOut','this.style.background=\'transparent\'');
-	b.setAttribute('onClick','pick(this)');
+	b.addEventListener('mouseover',onmouseover);
+	b.addEventListener('mouseout',onmouseout);
+	b.addEventListener('click',pick);
+}
+
+function onmouseover() {
+	this.style.background='rgba(0,0,0,0.25)';
+}
+
+function onmouseout() {
+	this.style.background='transparent';
 }

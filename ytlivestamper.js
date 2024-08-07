@@ -25,7 +25,7 @@ function closePane() {
 
 function updateStamp(stamp, time) {
 	var vid = location.search.split(/.+v=|&/)[1] || location.href.split(/\/live\/|\/shorts\/|\?|&/)[1];
-	stamp.innerHTML = formatTime(time);
+	stamp.textContent = formatTime(time);
 	stamp.dataset.time = time;
 	stamp.href = "https://youtu.be/" + vid + "?t=" + time;
 }
@@ -66,9 +66,9 @@ function newLi(time, note) {
 	var plus = document.createElement("span");
 	var a = document.createElement("a");
 	var text = document.createElement("input");
-	minus.innerHTML = "➖";
+	minus.textContent = "➖";
 	minus.dataset.increment = -1;
-	plus.innerHTML = "➕";
+	plus.textContent = "➕";
 	plus.dataset.increment = 1;
 	updateStamp(a, time);
 	li.appendChild(minus);
@@ -81,7 +81,7 @@ function newLi(time, note) {
 
 function pasteList() {
 	var lines = box.value.split("\n");
-	list.innerHTML = "";
+	list.textContent = "";
 	for (var i = 0; i < lines.length; i++) {
 		var line = lines[i].trim();
 		var stamp = line.split(/\s+/, 1)[0];
@@ -109,17 +109,17 @@ function addStamp() {
 
 function resetCopier() {
 	firstcopy = true;
-	copier.innerHTML = "Copy List";
+	copier.textContent = "Copy List";
 }
 
 function copyList() {
 	var string = "";
 	if (firstcopy) {
 		firstcopy = false;
-		copier.innerHTML = "Copy Links";
+		copier.textContent = "Copy Links";
 		setTimeout(resetCopier, 500);
 		for (var i = 0; i < list.children.length - 1; i++) {
-			var stamp = list.children[i].children[2].innerHTML;
+			var stamp = list.children[i].children[2].textContent;
 			var note = list.children[i].children[3].value;
 			string += (i > 0 ? "\n" : "") + (stamp + " " + note).trim();
 		}
@@ -144,16 +144,16 @@ function warn(e) {
 }
 
 pane.id = "ytls-pane";
-exit.innerHTML = "&times;";
+exit.textContent = "×";
 watchTime();
 nowtext.disabled = true;
 nowtext.value = "End of Video";
 box.id = "ytls-box";
 buttons.id = "ytls-buttons";
-paster.innerHTML = "Import List";
-adder.innerHTML = "Add Timestamp";
-copier.innerHTML = "Copy List";
-style.innerHTML = `
+paster.textContent = "Import List";
+adder.textContent = "Add Timestamp";
+copier.textContent = "Copy List";
+style.textContent = `
 	#ytls-pane {
 		background: rgba(0,0,0,.5);
 		text-align: right;

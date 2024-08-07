@@ -38,14 +38,14 @@
 		},
 		updateCSS: function() {
 			if (tri.non.checked)
-				tri.cssDynamic.innerHTML = "";
+				tri.cssDynamic.textContent = "";
 			else if (tri.off.checked)
-				tri.cssDynamic.innerHTML = "* { transform-style: preserve-3d; }";
+				tri.cssDynamic.textContent = "* { transform-style: preserve-3d; }";
 			else {
 				for (var depth = 0; document.querySelector("body" + " > *".repeat(depth)); depth++);
 				var gap = tri.gap.value / depth;
 				var sag = -Math.PI * tri.sag.value / depth;
-				tri.cssDynamic.innerHTML = `
+				tri.cssDynamic.textContent = `
 * {
 	transform: translateZ(${gap}px) rotateX(${sag}rad);
 	transform-style: preserve-3d;
@@ -86,14 +86,14 @@
 			e.step = step;
 			e.value = value;
 			e.addEventListener("input", f);
-			tri.menu.appendChild(document.createElement("span")).innerHTML = label;
+			tri.menu.appendChild(document.createElement("span")).textContent = label;
 			tri.menu.appendChild(document.createElement("br"));
 		},
 		newCheckbox: function(e, label, f) {
 			tri.menu.appendChild(e);
 			e.type = "checkbox";
 			e.addEventListener("click", f);
-			tri.menu.appendChild(document.createElement("span")).innerHTML = label;
+			tri.menu.appendChild(document.createElement("span")).textContent = label;
 			tri.menu.appendChild(document.createElement("br"));
 		},
 		newButton: function(e, label, f) {
@@ -118,7 +118,7 @@
 			tri.newButton(tri.end, "Quit", tri.quit);
 			tri.newButton(tri.tgl, "≡", tri.toggle);
 			tri.tgl.id = "tri-toggle";
-			tri.menu.appendChild(tri.cssStatic).innerHTML = `
+			tri.menu.appendChild(tri.cssStatic).textContent = `
 html, body {
 	transition-property: none;
 	height: 100%;

@@ -68,8 +68,8 @@ var blocks=[
 
 /* Stylesheet for spinners. */
 var spinster=document.createElement('style');
-spinster.innerHTML='@keyframes cwise{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }';
-spinster.innerHTML+='@keyframes ccwise{ from{transform:rotate(360deg);} to{transform:rotate(0deg);} }';
+spinster.textContent='@keyframes cwise{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }';
+spinster.textContent+='@keyframes ccwise{ from{transform:rotate(360deg);} to{transform:rotate(0deg);} }';
 document.body.appendChild(spinster);
 
 /* SETTINGS */
@@ -116,7 +116,7 @@ board.style.borderRadius='1vmin';
 board.style.zIndex='9999';
 document.body.appendChild(board);
 
-var tab=' &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; &shy; ';
+var tab=' | ';
 
 /* Refreshes game with new settings. */
 function newGame(s,d,z,v){
@@ -132,13 +132,13 @@ function newGame(s,d,z,v){
 	
 	/* Updates board. */
 	board.style.opacity=1;
-	board.innerHTML='Lives: '+hp+tab+'Points: '+pts+tab+'Level: '+(span-2)+tab+'Sublevel: '+lvl+'/'+(span-2)+'</br>';
+	board.textContent='Lives: '+hp+tab+'Points: '+pts+tab+'Level: '+(span-2)+tab+'Sublevel: '+lvl+'/'+(span-2);
 	
 	if(hp==0 || span==2){
 		hide();
 		disable();
 		ball.remove();
-		board.innerHTML+='GAME OVER';
+		board.innerText+='\nGAME OVER';
 		return 0;
 	}
 	
@@ -215,9 +215,9 @@ function newBoard(){
 				/* Specifies function of each corner block. */
 				if(i==0 && j==0){
 					box.style.borderTopLeftRadius='50%';
-					box.setAttribute('onMouseOver','this.style.borderTopLeftRadius=\'25%\'');
-					box.setAttribute('onMouseOut','this.style.borderTopLeftRadius=\'50%\'');
-					box.setAttribute('onClick','newGame()');
+					box.addEventListener('mouseover',function(){this.style.borderTopLeftRadius='25%'});
+					box.addEventListener('mouseout',function(){this.style.borderTopLeftRadius='50%'});
+					box.addEventListener('click',newGame);
 				}
 				else if(i==0 && j==span-1){
 					var exit1=document.createElement('div');
@@ -235,21 +235,28 @@ function newBoard(){
 					box.appendChild(exit2);
 					
 					box.style.borderTopRightRadius='50%';
-					box.setAttribute('onMouseOver','this.style.borderTopRightRadius=\'25%\'');
-					box.setAttribute('onMouseOut','this.style.borderTopRightRadius=\'50%\'');
-					box.setAttribute('onClick','game.style.opacity=0;board.style.opacity=0;setTimeout(function(){ game.remove(); board.remove(); },100)');
+					box.addEventListener('mouseover',function(){this.style.borderTopRightRadius='25%'});
+					box.addEventListener('mouseout',function(){this.style.borderTopRightRadius='50%'});
+					box.addEventListener('click',function(){
+						game.style.opacity=0;
+						board.style.opacity=0;
+						setTimeout(function(){
+							game.remove();
+							board.remove();
+						},100);
+					});
 				}
 				else if(i==span-1 && j==span-1){
 					box.style.borderBottomRightRadius='50%';
-					box.setAttribute('onMouseOver','this.style.borderBottomRightRadius=\'25%\'');
-					box.setAttribute('onMouseOut','this.style.borderBottomRightRadius=\'50%\'');
-					box.setAttribute('onClick','hide()');
+					box.addEventListener('mouseover',function(){this.style.borderBottomRightRadius='25%'});
+					box.addEventListener('mouseout',function(){this.style.borderBottomRightRadius='50%'});
+					box.addEventListener('click',hide);
 				}
 				else if(i==span-1 && j==0){
 					box.style.borderBottomLeftRadius='50%';
-					box.setAttribute('onMouseOver','this.style.borderBottomLeftRadius=\'25%\'');
-					box.setAttribute('onMouseOut','this.style.borderBottomLeftRadius=\'50%\'');
-					box.setAttribute('onClick','show()');
+					box.addEventListener('mouseover',function(){this.style.borderBottomLeftRadius='25%'});
+					box.addEventListener('mouseout',function(){this.style.borderBottomLeftRadius='50%'});
+					box.addEventListener('click',show);
 				}
 			}
 			else if(i==0 || i==span-1 || j==0 || j==span-1){
@@ -468,9 +475,9 @@ function newGoal(){
 function enable(){
 	for(var i=0;i<edges.length;i++){
 		edges[i].style.background='transparent';
-		edges[i].setAttribute('onMouseOver','this.style.background=\'rgba(0,0,0,0.25)\'');
-		edges[i].setAttribute('onMouseOut','this.style.background=\'transparent\'');
-		edges[i].setAttribute('onClick','guess('+goal.x+','+goal.y+','+edges[i].x+','+edges[i].y+')');
+		edges[i].addEventListener('mouseover',onmouseover);
+		edges[i].addEventListener('mouseout',onmouseout);
+		edges[i].addEventListener('click',guess);
 	}
 }
 
@@ -478,16 +485,24 @@ function enable(){
 function disable(){
 	for(var i=0;i<edges.length;i++){
 		edges[i].style.background='rgba(0,0,0,0.25)';
-		edges[i].removeAttribute('onMouseOver');
-		edges[i].removeAttribute('onMouseOut');
-		edges[i].removeAttribute('onClick');
+		edges[i].removeEventListener('mouseover',onmouseover);
+		edges[i].removeEventListener('mouseout',onmouseout);
+		edges[i].removeEventListener('click',guess);
 	}
 }
 
+function onmouseover() {
+	this.style.background='rgba(0,0,0,0.25)';
+}
+
+function onmouseout() {
+	this.style.background='transparent';
+}
+
 /* Start the ball with your prospective destination. */
-function guess(x,y,h,k){
+function guess(){
 	disable();
-	move(h,k,x,y);
+	move(this.x,this.y,goal.x,goal.y);
 }
 
 /* Begin. */

@@ -94,7 +94,7 @@ if (af) {
 }
 else {
     censorStyle = document.createElement("style");
-    censorStyle.innerHTML = `.censor {
+    censorStyle.textContent = `.censor {
     opacity: 1 !important;
     image-rendering: pixelated !important;
 }

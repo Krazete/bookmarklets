@@ -6,7 +6,7 @@ function initDash() {
     dash.style.zIndex = "4999";
 
     var x = document.createElement("div");
-    x.innerHTML = "❌";
+    x.textContent = "❌";
     x.addEventListener("click", function () {
         dash.remove();
     });
@@ -28,7 +28,7 @@ function initDash() {
     for (var i of [1, 2, 3, 5, 10]) {
         var button = document.createElement("button");
         button.value = i;
-        button.innerHTML = "x" + i;
+        button.textContent = "x" + i;
         speed.appendChild(button);
     }
     speed.addEventListener("click", function (e) {

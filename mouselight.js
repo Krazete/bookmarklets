@@ -52,7 +52,7 @@ function fillBounds() {
 }
 
 function resizeCanvas() {
-	style.innerHTML = `#canvas {
+	style.textContent = `#canvas {
 		position: fixed;
 		left: 0;
 		top: 0;

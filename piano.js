@@ -77,7 +77,7 @@ var piano = {
 
     /* helper functions */
     newcss: function() {
-        piano.css.innerHTML = `
+        piano.css.textContent = `
             #piano-ui {
                 background: linear-gradient(transparent, rgba(64, 64, 64, 0.5));
                 color: black;
@@ -186,13 +186,13 @@ var piano = {
     },
     newselect: function(p, c, label, options, value, func) {
         options.forEach(function(e) {
-            c.appendChild(document.createElement("option")).innerHTML = e;
+            c.appendChild(document.createElement("option")).textContent = e;
         });
         c.value = options[value];
         if (func != null) {
             c.addEventListener("input", func);
         }
-        p.appendChild(document.createElement("label")).innerHTML = label;
+        p.appendChild(document.createElement("label")).textContent = label;
         p.appendChild(c);
     },
     newrange: function(p, c, label, min, step, max, value, func) {
@@ -203,7 +203,7 @@ var piano = {
         c.value = value;
         c.min = min;
         c.addEventListener("input", func);
-        p.appendChild(document.createElement("label")).innerHTML = label;
+        p.appendChild(document.createElement("label")).textContent = label;
         p.appendChild(c);
     },
     newbutton: function(p, label, func) {
@@ -352,7 +352,7 @@ var piano = {
         }
     },
     playbackmode: function() {
-        piano.menuright.innerHTML = "";
+        piano.menuright.textContent = "";
         var d1 = piano.newbutton(piano.menuright, "↻ ▶", e => piano.playstop(e, 0));
         var d2 = piano.newbutton(piano.menuright, "⬇", piano.saveDisc);
         if (piano.disc[0].length == 0) {
@@ -381,7 +381,7 @@ var piano = {
     },
     deletionmode: function() {
         piano.stopDiscs();
-        piano.menuright.innerHTML = "";
+        piano.menuright.textContent = "";
         var d1 = piano.newbutton(piano.menuright, "↻ ✖", e => piano.deleteDisc(0));
         if (piano.disc[0].length == 0) {
             d1.setAttribute("disabled", 1);
@@ -416,7 +416,7 @@ var piano = {
         piano.ui.id = "piano-ui";
         var quit = document.createElement("div");
         quit.id = "piano-quit";
-        quit.innerHTML = "✕";
+        quit.textContent = "✕";
         quit.addEventListener("click", piano.quit);
         piano.ui.appendChild(quit);
         /* place ui settings */
@@ -446,10 +446,10 @@ var piano = {
             var keyval = document.createElement("span");
             keyval.className = "piano-keyval";
             if (key.length == 1) {
-                keyval.innerHTML = key;
+                keyval.textContent = key;
             }
             else {
-                keyval.innerHTML = {"Tab": "⇥", "Backspace": "⌫", "ShiftLeft": "⇧L", "ShiftRight": "⇧R", "Enter": "↵"}[key];
+                keyval.textContent = {"Tab": "⇥", "Backspace": "⌫", "ShiftLeft": "⇧L", "ShiftRight": "⇧R", "Enter": "↵"}[key];
             }
             dom.appendChild(keyval);
             piano.keyboard.appendChild(dom);
