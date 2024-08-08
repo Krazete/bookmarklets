@@ -16,7 +16,7 @@ function engage() {
 				var ytid = JSON.parse(this.responseText.match(/var ytInitialData = ({.+?});/)[1]);
 				if (!ytid.contents.twoColumnWatchNextResults.results.results.contents[0].videoPrimaryInfoRenderer.viewCount.videoViewCountRenderer.isLive) {
 					try {
-						var likes = parseInt(ytid.contents.twoColumnWatchNextResults.results.results.contents[0].videoPrimaryInfoRenderer.videoActions.menuRenderer.topLevelButtons[0].toggleButtonRenderer.defaultText.accessibility.accessibilityData.label.replace(/\D/g, ""));
+						var likes = parseInt(ytid.contents.twoColumnWatchNextResults.results.results.contents[0].videoPrimaryInfoRenderer.videoActions.menuRenderer.topLevelButtons[0].segmentedLikeDislikeButtonViewModel.likeCountEntity.likeCountIfDislikedNumber.replace(/\D/g, ""));
 						var views = parseInt(ytid.contents.twoColumnWatchNextResults.results.results.contents[0].videoPrimaryInfoRenderer.viewCount.videoViewCountRenderer.viewCount.simpleText.replace(/\D/g, ""));
 						var rating = views ? 100 * Math.log(likes + 1) / Math.log(views + 1) : 0;
 						e.style.borderBottom = "3px solid";
