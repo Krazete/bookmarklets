@@ -35,15 +35,15 @@ Copy and paste the **minified** script (linked in the titles) into your bookmark
 
 Note:
 
-- The **full** script may not work in bookmarklet format due to comments (`//`) or certain characters (`%`). Use the **minified** script.
-- You can alternatively use the following script, replacing `[SCRIPT_NAME]` with `tri` or `piano` or `lupire` etc.
+- The **full** script may not work in bookmarklet format due to comments (`//`) or certain unencoded characters (`%`). Use the **minified** script.
+- Likewise, the **minified** script may not work if pasted into the developer console or used within a userscript. This is because I replaced all `%`s with `%25` in the minified scripts to make them bookmarklet-compatible. Use the **full** script for userscript purposes.
+- Bookmarklets must have `javascript:` at the beginning to work.  Some browsers automatically delete this label when pasting, so make sure it's there.
+- Instead of the minified script, you can alternatively use the following script (replacing `[SCRIPT_NAME]` with `tri` or `piano` or `lupire` etc.)
   - `javascript:void(document.head.appendChild(document.createElement("script")).src="https://cdn.jsdelivr.net/gh/Krazete/bookmarklets/[SCRIPT_NAME].js")`
   - This type of bookmarklet retrieves the script from this repository every time. This has pros and cons.
     - It is always up-to-date.
     - It may take longer to load depending on your internet and the servers of GitHub and jsDelivr.
-    - It may not work on some websites due to CORB or other security measures.
-- Bookmarklets must have `javascript:` at the beginning to work.  Some browsers automatically delete this label when pasting, so make sure it's there.
-- If pasted into the developer console or used within a userscript, the minified script may not work. This is because I replaced all `%`s with `%25` in the minified scripts to make them bookmarklet-compatible. Use the full script for userscript purposes.
+    - It may not work on some websites due to CORS, CORB, TrustedTypePolicy, or other security measures.
 
 # Novelties
 
