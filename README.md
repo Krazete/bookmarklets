@@ -12,7 +12,6 @@ A collection of JavaScript bookmarklets I wrote.
   - [Mouselight.js](#mouselightjs)
   - [Tic.js](#ticjs)
   - [Lupire.js](#lupirejs)
-  - [Censor.js](#censorjs)
 - [YouTube Tools](#youtube-tools)
   - [YTEngagement.js](#ytengagementjs)
   - [YTScroller.js](#ytscrollerjs)
@@ -25,7 +24,10 @@ A collection of JavaScript bookmarklets I wrote.
   - [Edit.js](#editjs)
   - [Invert.js](#invertjs)
   - [InvertMedia.js](#invertmediajs)
+  - [Censor.js](#censorjs)
+- [Selections](#selections)
   - [InvertSelection.js](#invertselectionjs)
+  - [DeleteSelection.js](#deleteselectionjs)
 
 </details>
 
@@ -105,24 +107,6 @@ A replicated memory game. See **Lu**mosity's [**pi**nball **re**call](https://lu
 [LupireMobile.js](min/lupiremobile.min.js) is optimized for mobile devices.
 
 ![lupire](gif/lupire.gif)
-
-## [Censor.js](min/censor.min.js)
-
-Pixelates all visible img and video elements. Uncensors on hover.
-
-![censor](gif/censor.gif)
-
-Very buggy. Issues include:
-
-- most lazy-loaded images won't load at all
-- may not update to style changes of img or video
-- doesn't work for iframes
-- GIFs only show the first frame
-- layout shifts
-- will shrink or stretch if img or video doesn't fill its space
-- hovering doesn't always uncensor
-
-Instead of fixing these, I made the bookmarklet togglable. Click twice to reset the censors. (This fixes the first two issues only).
 
 # YouTube Tools
 
@@ -215,8 +199,32 @@ Invert the webpage. Useful with InvertMedia.js to create a dark mode for bright 
 
 Invert image and video elements.
 
+## [Censor.js](min/censor.min.js)
+
+Pixelates all visible img and video elements. Uncensors on hover.
+
+![censor](gif/censor.gif)
+
+Very buggy. Issues include:
+
+- most lazy-loaded images won't load at all
+- may not update to style changes of img or video
+- doesn't work for iframes
+- GIFs only show the first frame
+- layout shifts
+- will shrink or stretch if img or video doesn't fill its space
+- hovering doesn't always uncensor
+
+Toggle twice to reset the censors (this fixes the first two issues only).
+
+# Selections
+
+More tools. Select an area of the page to choose which elements to affect.
+
 ## [InvertSelection.js](min/invertselection.min.js)
 
-Select an area of the page to invert. This works by sampling 100 points within your selection and inverting the topmost common element.
+Inverts selected elements. This works by sampling 100 points within your selection and inverting the topmost common element.
 
-This bookmarklet doesn't really qualify as a Toggle, but the other inverters are here so `¯\_(ツ)_/¯`.
+## [DeleteSelection.js](min/deleteselection.min.js)
+
+Deleted selected elements. Useful for some ads and paywalls.
