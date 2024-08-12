@@ -47,7 +47,7 @@ function removeSelection() {
 	var elementsFromPoints = [];
 	for (var x = x0; x <= x1; x += dx) {
 		for (var y = y0; y <= y1; y += dy) {
-			elementsFromPoints.push(document.elementsFromPoint(x, y));
+			elementsFromPoints.push(document.elementsFromPoint(x - window.scrollX, y - window.scrollY));
 		}
 	}
 	elementsFromPoints.sort((a, b) => a.length - b.length);
