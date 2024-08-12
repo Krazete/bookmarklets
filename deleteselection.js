@@ -19,6 +19,7 @@ function box() {
 	b.style.boxShadow = "inset 0 0 30px 3px pink";
 	b.style.mixBlendMode = "difference";
 	b.style.overflow = "hidden";
+	b.style.zIndex = 1e13;
 	document.body.appendChild(b);
 }
 
