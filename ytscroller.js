@@ -1,7 +1,7 @@
 /* keep video on top right when scrolling */
 function videoAnchor() {
-	var miniplayer = document.getElementsByClassName("miniplayer")[0];
-	if (miniplayer.parentElement.active) {
+	var miniplayer = document.getElementsByClassName("ytdMiniplayerComponentVisible")[0];
+	if (miniplayer) {
 		return;
 	}
 	var player = document.getElementById("movie_player");
