@@ -1,13 +1,16 @@
 function getCurrentVideo() {
     var videos = Array.from(document.getElementsByTagName("video"));
-    var playing = videos.filter(v => !v.paused);
-    for (var v of playing) {
+    videos.sort((a, b) => !b.paused - !a.paused);
+    for (var v of videos) {
+        if (v.paused && !videos[0].paused) {
+            break;
+        }
         var vbox = v.getBoundingClientRect();
         if (vbox.bottom > 0 && vbox.top < innerHeight) {
             return v;
         }
     }
-    return playing[0] || videos[0];
+    return videos[0];
 }
 function initDash() {
     var dash = document.createElement("div");
