@@ -2,7 +2,7 @@ function getCurrentVideo() {
     var videos = Array.from(document.getElementsByTagName("video"));
     var playing = videos.filter(v => !v.paused);
     for (var v of playing) {
-        var vbox = video.getBoundingClientRect();
+        var vbox = v.getBoundingClientRect();
         if (vbox.bottom > 0 && vbox.top < innerHeight) {
             return v;
         }
