@@ -227,4 +227,4 @@ Inverts selected elements. This works by sampling 100 points within your selecti
 
 ## [DeleteSelection.js](min/deleteselection.min.js)
 
-Deleted selected elements. Useful for some ads and paywalls.
+Deletes selected elements. Useful for some ads and paywalls.
