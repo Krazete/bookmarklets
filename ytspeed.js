@@ -1,3 +1,14 @@
+function getCurrentVideo() {
+    var videos = Array.from(document.getElementsByTagName("video"));
+    var playing = videos.filter(v => !v.paused);
+    for (var v of playing) {
+        var vbox = video.getBoundingClientRect();
+        if (vbox.bottom > 0 && vbox.top < innerHeight) {
+            return v;
+        }
+    }
+    return playing[0] || videos[0];
+}
 function initDash() {
     var dash = document.createElement("div");
     dash.style.position = "fixed";
@@ -19,7 +30,7 @@ function initDash() {
     range.step = 0.1;
     range.value = 0.7;
     range.addEventListener("input", function () {
-        var video = document.getElementsByTagName("video")[0];
+        var video = getCurrentVideo();
         video.style.filter = "brightness(" + this.value + ")";
     });
     dash.appendChild(range);
@@ -32,7 +43,7 @@ function initDash() {
         speed.appendChild(button);
     }
     speed.addEventListener("click", function (e) {
-        var video = document.getElementsByTagName("video")[0];
+        var video = getCurrentVideo();
         video.playbackRate = parseInt(e.target.value);
     });
     dash.appendChild(speed);
