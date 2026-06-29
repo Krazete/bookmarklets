@@ -26,6 +26,7 @@ A collection of JavaScript bookmarklets I wrote.
   - [InvertMedia.js](#invertmediajs)
   - [Censor.js](#censorjs)
 - [Selections](#selections)
+  - [PopImg.js](#popimgjs)
   - [InvertSelection.js](#invertselectionjs)
   - [DeleteSelection.js](#deleteselectionjs)
 
@@ -185,7 +186,7 @@ These bookmarklets are simple tools and have no UI. Click the bookmarklet to tur
 
 ## [Pop.js](min/pop.min.js)
 
-Toggle picture-in-picture mode for the first video on the page.
+Toggle picture-in-picture mode for the first active video on the page.
 
 ## [Edit.js](min/edit.min.js)
 
@@ -219,7 +220,11 @@ Toggle twice to reset the censors (this fixes the first two issues only).
 
 # Selections
 
-More tools. Select an area of the page to choose which elements to affect.
+More tools. Select an element or area of the page to choose which elements to affect.
+
+## [PopImg.js](min/popimg.min.js)
+
+Copies the selected image onto a video element, which is then displayed picture-in-picture.
 
 ## [InvertSelection.js](min/invertselection.min.js)
 
