@@ -7,7 +7,8 @@ if (!document.getElementById("pipstyle")) {
     function selectImagePIP(e) {
         e.preventDefault();
         pipstyle.remove();
-        document.body.removeEventListener("click", selectImagePIP);
+        document.body.removeEventListener("mousedown", selectImagePIP);
+        document.body.removeEventListener("touchstart", selectImagePIP);
 
         var img = new Image();
         img.crossOrigin = "anonymous";
@@ -32,5 +33,6 @@ if (!document.getElementById("pipstyle")) {
         this.requestPictureInPicture();
     }
 
-    document.body.addEventListener("click", selectImagePIP);
+    document.body.addEventListener("mousedown", selectImagePIP);
+    document.body.addEventListener("touchstart", selectImagePIP);
 }
