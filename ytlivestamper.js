@@ -156,6 +156,8 @@ function warn(e) {
 }
 
 pane.id = "ytls-pane";
+pane.className = "notranslate";
+pane.translate = false;
 exit.textContent = "×";
 watchTime();
 nowtext.disabled = true;
